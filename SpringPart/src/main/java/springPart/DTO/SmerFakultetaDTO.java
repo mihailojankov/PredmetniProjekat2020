@@ -1,5 +1,11 @@
 package springPart.DTO;
 
-public class SmerFakultetaDTO {
+import java.util.List;
 
+public class SmerFakultetaDTO {
+	Long id;
+	String naziv;
+	String opis;
+	List<PredmetDTO> predmeti;
+	FakultetDTO fakultet;
 }
