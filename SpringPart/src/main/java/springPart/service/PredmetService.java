@@ -1,10 +1,12 @@
 package springPart.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import springPart.model.Predmet;
 import springPart.repository.PredmetRepository;
 
+@Service
 public class PredmetService {
 	
 	@Autowired
