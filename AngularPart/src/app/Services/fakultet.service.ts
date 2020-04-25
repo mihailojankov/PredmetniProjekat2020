@@ -9,7 +9,7 @@ import { Fakultet } from '../Models/fakultet';
 })
 export class FakultetService {
   
-  adresaFakultet:string = "http://localhost:3000/fakultet"
+  adresaFakultet:string = "http://localhost:8080/fakultet"
 
   constructor(public http:HttpClient) { }
 
@@ -21,7 +21,7 @@ export class FakultetService {
   }
 
   dodaj(obj):Observable<Fakultet>{
-    return this.http.post<Fakultet>(this.adresaFakultet + "/", obj) ;
+    return this.http.post<Fakultet>(this.adresaFakultet, obj) ;
   }
 
   izmeni(obj):Observable<Fakultet>{

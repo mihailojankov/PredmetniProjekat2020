@@ -8,7 +8,7 @@ import { Predmet } from '../Models/predmet';
 })
 export class PredmetService {
 
-  adresaPredmet:string = "http://localhost:3000/predmet"
+  adresaPredmet:string = "http://localhost:8080/predmet"
 
   constructor(public http:HttpClient) { }
 
@@ -20,7 +20,7 @@ export class PredmetService {
   }
 
   dodaj(obj):Observable<Predmet>{
-    return this.http.post<Predmet>(this.adresaPredmet + "/", obj) ;
+    return this.http.post<Predmet>(this.adresaPredmet, obj) ;
   }
 
   izmeni(obj):Observable<Predmet>{

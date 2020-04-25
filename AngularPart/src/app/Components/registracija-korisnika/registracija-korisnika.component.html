@@ -1,0 +1,52 @@
+<form [formGroup]="regForm" (ngSubmit)="registruj(regForm.value)" ngNativeValidate>
+    <div>
+        <label for="korisnickoIme">
+          Korisnicko ime
+        </label>
+        <input id="korisnickoIme" type="text" formControlName="korisnickoIme" required>
+    </div>
+    
+    <div>
+        <label for="lozinka">
+          Lozinka
+        </label>
+        <input id="lozinka" type="password" formControlName="lozinka" required>
+    </div>
+
+    <div>
+        <label for="email">
+          Email
+        </label>
+        <input id="email" type="email" formControlName="email" required>
+    </div>
+
+    <div>
+        <label for="ime">
+          Ime
+        </label>
+        <input id="ime" type="text" formControlName="ime" required>
+    </div>
+
+    <div>
+        <label for="prezime">
+          Prezime
+        </label>
+        <input id="prezime" type="text" formControlName="prezime" required>
+    </div>
+
+    <div>
+        <label for="brojTelefona">
+          Broj telefona
+        </label>
+        <input id="brojTelefona" type="text" formControlName="brojTelefona" required>
+    </div>
+
+    <div>
+        <label for="adresa">
+          Adresa
+        </label>
+        <input id="adresa" type="text" formControlName="adresa" required>
+    </div>
+
+    <button class="button" type="submit">Registruj se</button>
+</form>

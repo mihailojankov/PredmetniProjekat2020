@@ -8,7 +8,7 @@ import { SmerFakulteta } from '../Models/smer-fakulteta';
 })
 export class SmerFakultetaService {
 
-  adresaSmerFakulteta:string = "http://localhost:3000/smerFakulteta"
+  adresaSmerFakulteta:string = "http://localhost:8080/smerFakulteta"
 
   constructor(public http:HttpClient) { }
 
@@ -20,7 +20,7 @@ export class SmerFakultetaService {
   }
 
   dodaj(obj):Observable<SmerFakulteta>{
-    return this.http.post<SmerFakulteta>(this.adresaSmerFakulteta + "/", obj) ;
+    return this.http.post<SmerFakulteta>(this.adresaSmerFakulteta, obj) ;
   }
 
   izmeni(obj):Observable<SmerFakulteta>{

@@ -21,6 +21,7 @@ import springPart.service.RegistrovanKorisnikService;
 @Controller
 @CrossOrigin
 @RequestMapping(path = "/registrovanKorisnik")
+
 public class RegistrovanKorisnikController {
 	@Autowired
 	RegistrovanKorisnikService service;
@@ -35,7 +36,7 @@ public class RegistrovanKorisnikController {
 		for(RegistrovanKorisnik x:service.dobaviSve()) {
 			lista.add(mm.map(x, RegistrovanKorisnikDTO.class));
 		}
-		
+		System.out.println("Radi");
 		return new ResponseEntity<ArrayList<RegistrovanKorisnikDTO>>(lista, HttpStatus.OK);
 	}
 	
@@ -57,10 +58,20 @@ public class RegistrovanKorisnikController {
 	//Dodavanje novog
 	@RequestMapping(path = "", method = RequestMethod.POST)
     public ResponseEntity<RegistrovanKorisnik> dodajNovi(@RequestBody RegistrovanKorisnik obj) {
-        if (service.dobaviPoId(obj.getId()) != null) {
-            return new ResponseEntity<RegistrovanKorisnik>(HttpStatus.CONFLICT);
-        }
+		
+		//Provera postojecih
+		for(RegistrovanKorisnik x:service.dobaviSve()) {
+			if(
+					x.getId() == obj.getId() || 
+					x.getKorisnickoIme().equals(obj.getKorisnickoIme()) || 
+					x.getEmail().equals(obj.getEmail())) {
+				
+				return new ResponseEntity<RegistrovanKorisnik>(HttpStatus.CONFLICT);
+			}
+		}
+        
         service.save(obj);
+        
         return new ResponseEntity<RegistrovanKorisnik>(HttpStatus.OK);
     }
 	

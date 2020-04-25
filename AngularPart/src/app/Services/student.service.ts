@@ -8,7 +8,7 @@ import { Student } from '../Models/student';
 })
 export class StudentService {
 
-  adresaStudent:string = "http://localhost:3000/student"
+  adresaStudent:string = "http://localhost:8080/student"
 
   constructor(public http:HttpClient) { }
 
@@ -20,7 +20,7 @@ export class StudentService {
   }
 
   dodaj(obj):Observable<Student>{
-    return this.http.post<Student>(this.adresaStudent + "/", obj) ;
+    return this.http.post<Student>(this.adresaStudent, obj) ;
   }
 
   izmeni(obj):Observable<Student>{

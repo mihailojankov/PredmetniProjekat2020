@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { RegistrovanKorisnik } from '../Models/registrovan-korisnik';
 
@@ -8,7 +8,7 @@ import { RegistrovanKorisnik } from '../Models/registrovan-korisnik';
 })
 export class RegistrovanKorisnikService {
 
-  adresaRegistrovanKorisnik:string = "http://localhost:3000/registrovanKorisnik"
+  adresaRegistrovanKorisnik:string = "http://localhost:8080/registrovanKorisnik"
 
   constructor(public http:HttpClient) { }
 
@@ -19,8 +19,8 @@ export class RegistrovanKorisnikService {
     return this.http.get<RegistrovanKorisnik>(this.adresaRegistrovanKorisnik + "/" + id);
   }
 
-  dodaj(obj):Observable<RegistrovanKorisnik>{
-    return this.http.post<RegistrovanKorisnik>(this.adresaRegistrovanKorisnik + "/", obj) ;
+  dodaj(obj):Observable<HttpResponse<RegistrovanKorisnik>>{
+    return this.http.post<RegistrovanKorisnik>(this.adresaRegistrovanKorisnik, obj, {observe:'response'});
   }
 
   izmeni(obj):Observable<RegistrovanKorisnik>{

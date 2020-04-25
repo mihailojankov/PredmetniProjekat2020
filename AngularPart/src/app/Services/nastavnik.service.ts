@@ -8,7 +8,7 @@ import { Nastavnik } from '../Models/nastavnik';
 })
 export class NastavnikService {
 
-  adresaNastavnik:string = "http://localhost:3000/nastavnik"
+  adresaNastavnik:string = "http://localhost:8080/nastavnik"
 
   constructor(public http:HttpClient) { }
 
@@ -20,7 +20,7 @@ export class NastavnikService {
   }
 
   dodaj(obj):Observable<Nastavnik>{
-    return this.http.post<Nastavnik>(this.adresaNastavnik + "/", obj) ;
+    return this.http.post<Nastavnik>(this.adresaNastavnik, obj) ;
   }
 
   izmeni(obj):Observable<Nastavnik>{

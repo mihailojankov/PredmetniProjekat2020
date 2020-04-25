@@ -8,7 +8,7 @@ import { Univerzitet } from '../Models/univerzitet';
 })
 export class UniverzitetService {
 
-  adresaUniverzitet:string = "http://localhost:3000/univerzitet"
+  adresaUniverzitet:string = "http://localhost:8080/univerzitet"
 
   constructor(public http:HttpClient) { }
 
@@ -20,7 +20,7 @@ export class UniverzitetService {
   }
 
   dodaj(obj):Observable<Univerzitet>{
-    return this.http.post<Univerzitet>(this.adresaUniverzitet + "/", obj) ;
+    return this.http.post<Univerzitet>(this.adresaUniverzitet, obj) ;
   }
 
   izmeni(obj):Observable<Univerzitet>{
