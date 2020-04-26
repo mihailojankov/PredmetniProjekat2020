@@ -28,5 +28,9 @@ public class SmerFakultetaService {
     public void delete(Long id) {
         repo.deleteById(id);
     }
+    
+    public Iterable<SmerFakulteta> dobaviPoIdFakulteta(Long id) {
+    	return repo.pronadjiSmeroveFakulteta(id);
+    }
 
 }

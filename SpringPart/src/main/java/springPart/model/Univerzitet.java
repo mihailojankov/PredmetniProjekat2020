@@ -1,6 +1,6 @@
 package springPart.model;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -16,7 +16,7 @@ public class Univerzitet {
 	Long id;
 	
 	String naziv;
-	Date datumOsnivanja;
+	LocalDate datumOsnivanja;
 	String drzava;
 	String adresa;
 	String mesto;
@@ -29,7 +29,7 @@ public class Univerzitet {
 		
 	}
 
-	public Univerzitet(Long id, String naziv, Date datumOsnivanja, String drzava, String adresa, String mesto,
+	public Univerzitet(Long id, String naziv, LocalDate datumOsnivanja, String drzava, String adresa, String mesto,
 			String opisUniverziteta, List<Fakultet> fakulteti) {
 		super();
 		this.id = id;
@@ -58,11 +58,11 @@ public class Univerzitet {
 		this.naziv = naziv;
 	}
 
-	public Date getDatumOsnivanja() {
+	public LocalDate getDatumOsnivanja() {
 		return datumOsnivanja;
 	}
 
-	public void setDatumOsnivanja(Date datumOsnivanja) {
+	public void setDatumOsnivanja(LocalDate datumOsnivanja) {
 		this.datumOsnivanja = datumOsnivanja;
 	}
 

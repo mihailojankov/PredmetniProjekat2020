@@ -77,6 +77,14 @@ public class SmerFakulteta {
 	public void setPredmeti(List<Predmet> predmeti) {
 		this.predmeti = predmeti;
 	}
+
+	public Fakultet getFakultet() {
+		return fakultet;
+	}
+
+	public void setFakultet(Fakultet fakultet) {
+		this.fakultet = fakultet;
+	}
 	
 	
 	

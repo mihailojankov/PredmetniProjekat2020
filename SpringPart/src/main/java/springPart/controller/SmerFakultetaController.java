@@ -91,4 +91,17 @@ public class SmerFakultetaController {
         service.delete(id);
         return new ResponseEntity<Object>(HttpStatus.OK);
     }
+    
+    //Pronadji smerove fakulteta
+    @RequestMapping(path = "/pronadjiSmeroveFakulteta/{id}", method = RequestMethod.GET)
+    public ResponseEntity<ArrayList<SmerFakultetaDTO>> pronadjiSmeroveFakulteta(@PathVariable("id") Long id){
+    	ModelMapper mm = new ModelMapper();
+		
+		lista = new ArrayList<SmerFakultetaDTO>();
+		for(SmerFakulteta x:service.dobaviPoIdFakulteta(id)) {
+			lista.add(mm.map(x, SmerFakultetaDTO.class));
+		}
+		
+		return new ResponseEntity<ArrayList<SmerFakultetaDTO>>(lista, HttpStatus.OK);
+    }
 }

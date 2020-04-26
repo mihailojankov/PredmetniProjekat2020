@@ -31,6 +31,9 @@ export class SmerFakultetaService {
     return this.http.delete<SmerFakulteta>(this.adresaSmerFakulteta + "/" + id);
   }
 
+  dobaviPoIdFakulteta(id):Observable<SmerFakulteta[]>{
+    return this.http.get<SmerFakulteta[]>(this.adresaSmerFakulteta + "/pronadjiSmeroveFakulteta/" + id);
+  }
 
 
 

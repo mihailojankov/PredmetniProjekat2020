@@ -7,12 +7,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MainPageComponent } from './Components/main-page/main-page.component';
 import { RegistracijaKorisnikaComponent } from './Components/registracija-korisnika/registracija-korisnika.component';
+import { PrikazFakultetaComponent } from './Components/prikaz-fakulteta/prikaz-fakulteta.component';
+import { PrikazSmerovaComponent } from './Components/prikaz-smerova/prikaz-smerova.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainPageComponent,
-    RegistracijaKorisnikaComponent
+    RegistracijaKorisnikaComponent,
+    PrikazFakultetaComponent,
+    PrikazSmerovaComponent
   ],
   imports: [
     BrowserModule,
