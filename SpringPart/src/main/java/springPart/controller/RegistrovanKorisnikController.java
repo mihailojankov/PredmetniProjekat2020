@@ -71,7 +71,6 @@ public class RegistrovanKorisnikController {
 		}
         
         service.save(obj);
-        
         return new ResponseEntity<RegistrovanKorisnik>(HttpStatus.OK);
     }
 	
