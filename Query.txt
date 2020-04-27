@@ -16,3 +16,76 @@ insert into smer_fakulteta values(0, "Smer 6", "Neki opis", 2);
 insert into smer_fakulteta values(0, "Smer 7", "Neki opis", 3);
 insert into smer_fakulteta values(0, "Smer 8", "Neki opis", 3);
 insert into smer_fakulteta values(0, "Smer 9", "Neki opis", 3);
+
+insert into registrovan_korisnik values (0, "Adresa 1 korisnika", "23525325", "misa@gmail", "Mihailo", "misa123", "misa123","Jankov");
+insert into registrovan_korisnik values (0, "Adresa 2 korisnika", "463151", "kasija@gmail", "Kasija", "kasija123", "kasija123","Vukajlovic");
+insert into registrovan_korisnik values (0, "Adresa 3 korisnika", "7577575", "bogi@gmail", "Bogdan", "bogi123", "bogi123","Solomun");
+insert into registrovan_korisnik values (0, "Adresa 4 korisnika", "12345", "pera@gmail", "Pera", "pera123", "pera123","Peric");
+insert into registrovan_korisnik values (0, "Adresa 5 korisnika", "98412041", "dejan@gmail", "Dejan", "dejan123", "dejan123","Zivkovic");
+insert into registrovan_korisnik values (0, "Adresa 6 korisnika", "908421", "djordje@gmail", "Djordje", "djordje123", "djordje123","Obradovic");
+insert into registrovan_korisnik values (0, "Adresa 7 korisnika", "59342", "zora@gmail", "Zora", "zora123", "zora123","Konjevic");
+insert into registrovan_korisnik values (0, "Adresa 8 korisnika", "2098520935", "ivan@gmail", "Ivan", "ivan123", "ivan123","Radosavljevic");
+insert into registrovan_korisnik values (0, "Adresa 9 korisnika", "412414", "mladen@gmail", "Mladen", "mladen123", "mladen123","Vidovic");
+insert into registrovan_korisnik values (0, "Adresa 10 korisnika", "098533", "aleksandra@gmail", "Aleksandra", "aleksandra123", "aleksandra123","Mitrovic");
+
+
+insert into nastavnik values (0, true, "biografija asistenta ivana", "414214", false, 8);
+insert into nastavnik values (0, true, "biografija asistenta mladena", "7845745", false, 9);
+insert into nastavnik values (0, true, "biografija asistenta aleksandre", "744574354", false, 10);
+insert into nastavnik values (0, false, "biografija profesora dejana", 6442342, true, 5);
+insert into nastavnik values (0, false, "biografija profesora djordja", "9732509528", true, 6);
+insert into nastavnik values (0, false, "biografija profesorice zore", "1414124", true, 7);
+
+
+insert into student values (0, "270111", '1997-6-12', "Srbija", '2019-1-1', "631244", "Kikinda", false, 1);
+insert into student values (0, "270222", '1998-1-1', "Srbija", '2019-1-1', "97124", "Beograd", false, 2);
+insert into student values (0, "270333", '1998-10-30', "Srbija", '2019-1-1', "423089", "Novi Sad", false, 3);
+insert into student values (0, "270444", '2000-12-5', "Srbija", '2020-1-1', "980543", "Kragujevac", false, 4);
+
+
+
+insert into predmet values (0, 15, 15, 240, 1, "Matematika", true, 1);
+insert into predmet values (0, 15, 15, 240, 1, "Osnove prog", true, 2);
+insert into predmet values (0, 15, 15, 240, 2, "Spec", true, 4);
+insert into predmet values (0, 15, 15, 240, 2, "Arhitektura", true, 3);
+insert into predmet values (0, 15, 15, 240, 3, "Android", true, 5);
+insert into predmet values (0, 15, 15, 240, 3, "Isa", true, 6);
+
+
+
+insert into predmeti_na_smeru values (1, 1);
+insert into predmeti_na_smeru values (2, 2);
+insert into predmeti_na_smeru values (3, 6);
+insert into predmeti_na_smeru values (4, 3);
+insert into predmeti_na_smeru values (5, 7);
+insert into predmeti_na_smeru values (6, 1);
+
+
+
+insert into studenti_na_predmetu values (1,3);
+insert into studenti_na_predmetu values (1,5);
+insert into studenti_na_predmetu values (1,2);
+insert into studenti_na_predmetu values (2,1);
+insert into studenti_na_predmetu values (2,6);
+insert into studenti_na_predmetu values (2,2);
+insert into studenti_na_predmetu values (3,3);
+insert into studenti_na_predmetu values (3,1);
+insert into studenti_na_predmetu values (3,5);
+
+
+
+insert into nastavnici_na_predmetu values (1,1);
+insert into nastavnici_na_predmetu values (4,1);
+insert into nastavnici_na_predmetu values (2,2);
+insert into nastavnici_na_predmetu values (6,2);
+insert into nastavnici_na_predmetu values (3,3);
+insert into nastavnici_na_predmetu values (5,3);
+insert into nastavnici_na_predmetu values (1,4);
+insert into nastavnici_na_predmetu values (6,4);
+insert into nastavnici_na_predmetu values (2,5);
+insert into nastavnici_na_predmetu values (4,5);
+insert into nastavnici_na_predmetu values (3,6);
+insert into nastavnici_na_predmetu values (4,6);
+
+
+
