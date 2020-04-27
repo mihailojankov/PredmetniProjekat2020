@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 export class PrikazFakultetaComponent implements OnInit {
 
   fakulteti:Fakultet[];
+  public izabranFakultet:Fakultet;
 
 
   constructor(private service:FakultetService, private router:Router) { }
@@ -23,9 +24,6 @@ export class PrikazFakultetaComponent implements OnInit {
     this.service.dobavi().subscribe(data => this.fakulteti = data);
   }
 
-  izabranFakultet(izabranFakultet:Fakultet){
-
-  }
 
 
 }
