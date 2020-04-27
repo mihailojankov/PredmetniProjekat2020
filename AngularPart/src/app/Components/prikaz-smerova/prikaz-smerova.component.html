@@ -1,0 +1,11 @@
+<div class="container" class="d-inline justify-content-center" *ngIf="(fakultet$ | async) as fakultet">
+
+    <div class="row" *ngFor="let smer of fakultet.smerovi">
+            <a [routerLink]="['predmeti']" [queryParams]="{id:smer.id}">
+                <div class="col">
+                    <h2>{{smer.naziv}}</h2>
+                    <p>{{smer.opis}}</p>
+                </div>
+            </a>
+    </div>
+</div>

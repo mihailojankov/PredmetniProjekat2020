@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Fakultet } from 'src/app/Models/fakultet';
 import { FakultetService } from 'src/app/Services/fakultet.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-prikaz-smerova',
@@ -10,7 +11,7 @@ import { FakultetService } from 'src/app/Services/fakultet.service';
 })
 export class PrikazSmerovaComponent implements OnInit {
 
-  fakultet:Fakultet;
+  fakultet$:Observable<Fakultet>;
 
   constructor(private service:FakultetService, private route:ActivatedRoute, private router:Router) { }
 
@@ -19,7 +20,7 @@ export class PrikazSmerovaComponent implements OnInit {
   }
 
   dobaviFakultet(){
-    this.service.dobaviPoId(this.route.snapshot.queryParams["id"]).subscribe(data => this.fakultet = data);
+    this.fakultet$ = this.service.dobaviPoId(this.route.snapshot.queryParams["id"]);
   }
 
 }

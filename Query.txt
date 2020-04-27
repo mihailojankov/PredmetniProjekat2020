@@ -1,0 +1,18 @@
+insert into registrovan_korisnik values(0, "Milutina Bojica 8", "06229911", "jankovm97@gmail.com", "Mihailo",  "miske123", "miske123", "Jankov");
+insert into univerzitet values(0, "Danijelova 11", '1998-07-05', "Srbija", "Beograd", "Singidunum", "Neki opis");
+
+insert into fakultet values(0, "Danijelova 11", "Beograd", "Tehnicki fakultet", "Neki opis", 1);
+insert into fakultet values(0, "Danijelova 11", "Beograd", "Informacioni fakultet", "Neki opis", 1);
+insert into fakultet values(0, "Danijelova 11", "Beograd", "Ekonomski fakultet", "Neki opis", 1);
+
+insert into smer_fakulteta values(0, "Smer 1", "Neki opis", 1);
+insert into smer_fakulteta values(0, "Smer 2", "Neki opis", 1);
+insert into smer_fakulteta values(0, "Smer 3", "Neki opis", 1);
+
+insert into smer_fakulteta values(0, "Smer 4", "Neki opis", 2);
+insert into smer_fakulteta values(0, "Smer 5", "Neki opis", 2);
+insert into smer_fakulteta values(0, "Smer 6", "Neki opis", 2);
+
+insert into smer_fakulteta values(0, "Smer 7", "Neki opis", 3);
+insert into smer_fakulteta values(0, "Smer 8", "Neki opis", 3);
+insert into smer_fakulteta values(0, "Smer 9", "Neki opis", 3);

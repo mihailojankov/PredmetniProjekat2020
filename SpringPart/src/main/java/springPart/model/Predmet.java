@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -28,11 +29,11 @@ public class Predmet {
 	int godinaStudija;
 	int semestar;
 	
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name = "profesor_id")
 	Nastavnik profesor;
 	
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name = "asistent_id")
 	Nastavnik asistent;
 	

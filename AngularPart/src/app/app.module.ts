@@ -9,6 +9,7 @@ import { MainPageComponent } from './Components/main-page/main-page.component';
 import { RegistracijaKorisnikaComponent } from './Components/registracija-korisnika/registracija-korisnika.component';
 import { PrikazFakultetaComponent } from './Components/prikaz-fakulteta/prikaz-fakulteta.component';
 import { PrikazSmerovaComponent } from './Components/prikaz-smerova/prikaz-smerova.component';
+import { PrikazPredmetaSmeraComponent } from './Components/prikaz-predmeta-smera/prikaz-predmeta-smera.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { PrikazSmerovaComponent } from './Components/prikaz-smerova/prikaz-smero
     MainPageComponent,
     RegistracijaKorisnikaComponent,
     PrikazFakultetaComponent,
-    PrikazSmerovaComponent
+    PrikazSmerovaComponent,
+    PrikazPredmetaSmeraComponent
   ],
   imports: [
     BrowserModule,
