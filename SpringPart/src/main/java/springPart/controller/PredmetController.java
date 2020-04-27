@@ -91,4 +91,17 @@ public class PredmetController {
         service.delete(id);
         return new ResponseEntity<Object>(HttpStatus.OK);
     }
+    
+    //Dobavi predmete po idSmera
+    @RequestMapping(path = "/pronadjiPoSmeru/{id}")
+    public ResponseEntity<ArrayList<PredmetDTO>> dobaviPoIdSmera(@PathVariable("id") Long id){
+    	ModelMapper mm = new ModelMapper();
+		
+		lista = new ArrayList<PredmetDTO>();
+		for(Predmet x:service.dobaviPoIdSmera(id)) {
+			lista.add(mm.map(x, PredmetDTO.class));
+		}
+		
+		return new ResponseEntity<ArrayList<PredmetDTO>>(lista, HttpStatus.OK);
+    }
 }

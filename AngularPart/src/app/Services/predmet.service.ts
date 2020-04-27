@@ -31,6 +31,9 @@ export class PredmetService {
     return this.http.delete<Predmet>(this.adresaPredmet + "/" + id);
   }
 
+  dobaviPoIdSmera(id):Observable<Predmet[]>{
+    return this.http.get<Predmet[]>(this.adresaPredmet + "/pronadjiPoSmeru/" + id);
+  }
 
 
 
