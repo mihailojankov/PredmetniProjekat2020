@@ -10,6 +10,7 @@ import { RegistracijaKorisnikaComponent } from './Components/registracija-korisn
 import { PrikazFakultetaComponent } from './Components/prikaz-fakulteta/prikaz-fakulteta.component';
 import { PrikazSmerovaComponent } from './Components/prikaz-smerova/prikaz-smerova.component';
 import { PrikazPredmetaSmeraComponent } from './Components/prikaz-predmeta-smera/prikaz-predmeta-smera.component';
+import { DetaljiOPredmetuComponent } from './Components/detalji-opredmetu/detalji-opredmetu.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { PrikazPredmetaSmeraComponent } from './Components/prikaz-predmeta-smera
     RegistracijaKorisnikaComponent,
     PrikazFakultetaComponent,
     PrikazSmerovaComponent,
-    PrikazPredmetaSmeraComponent
+    PrikazPredmetaSmeraComponent,
+    DetaljiOPredmetuComponent
   ],
   imports: [
     BrowserModule,

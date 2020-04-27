@@ -1,11 +1,11 @@
 <div class="container" class="d-inline justify-content-center" *ngIf="(predmeti$ | async) as predmeti">
     {{nazivSmera}}
     <div class="row" *ngFor="let predmet of predmeti">
-           <!--<a [routerLink]="['predmeti']" [queryParams]="{id:smer.id}">--> 
+            <a [routerLink]="['detalji']" [queryParams]="{id:predmet.id}">
                 <div class="col">
                     <h2>{{predmet.naziv}}</h2>
                     <p>{{predmet.espb}}</p>
                 </div>
-            
+            </a>
     </div>
 </div>

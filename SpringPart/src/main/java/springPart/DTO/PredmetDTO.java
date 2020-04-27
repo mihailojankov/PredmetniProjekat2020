@@ -9,13 +9,21 @@ public class PredmetDTO {
 	boolean obavezan;
 	int brojPredavanja;
 	int brojVezbi;
+	String silabus;
 	//int drugiObliciNastave
 	//int istrazivackiRad
 	//int ostaliCasovi
 	int godinaStudija;
 	int semestar;
 	
+	List<NastavnikDTO> listaNastavnika;
 	
+	public List<NastavnikDTO> getListaNastavnika() {
+		return listaNastavnika;
+	}
+	public void setListaNastavnika(List<NastavnikDTO> listaNastavnika) {
+		this.listaNastavnika = listaNastavnika;
+	}
 	public Long getId() {
 		return id;
 	}
@@ -63,6 +71,12 @@ public class PredmetDTO {
 	}
 	public void setSemestar(int semestar) {
 		this.semestar = semestar;
+	}
+	public String getSilabus() {
+		return silabus;
+	}
+	public void setSilabus(String silabus) {
+		this.silabus = silabus;
 	}
 	
 	

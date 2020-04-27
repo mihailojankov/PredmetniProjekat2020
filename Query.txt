@@ -44,12 +44,12 @@ insert into student values (0, "270444", '2000-12-5', "Srbija", '2020-1-1', "980
 
 
 
-insert into predmet values (0, 15, 15, 240, 1, "Matematika", true, 1);
-insert into predmet values (0, 15, 15, 240, 1, "Osnove prog", true, 2);
-insert into predmet values (0, 15, 15, 240, 2, "Spec", true, 4);
-insert into predmet values (0, 15, 15, 240, 2, "Arhitektura", true, 3);
-insert into predmet values (0, 15, 15, 240, 3, "Android", true, 5);
-insert into predmet values (0, 15, 15, 240, 3, "Isa", true, 6);
+insert into predmet values (0, 15, 15, 240, 1, "Matematika", true, 1, "Lorem ipsum asfasfasfsdgsgsdgsdgsdgsdsdg");
+insert into predmet values (0, 15, 15, 240, 1, "Osnove prog", true, 2, "Lorem ipsum asfasfasfsdgsgsdgsdgsdgsdsdg");
+insert into predmet values (0, 15, 15, 240, 2, "Spec", true, 4, "Lorem ipsum asfasfasfsdgsgsdgsdgsdgsdsdg");
+insert into predmet values (0, 15, 15, 240, 2, "Arhitektura", true, 3, "Lorem ipsum asfasfasfsdgsgsdgsdgsdgsdsdg");
+insert into predmet values (0, 15, 15, 240, 3, "Android", true, 5, "Lorem ipsum asfasfasfsdgsgsdgsdgsdgsdsdg");
+insert into predmet values (0, 15, 15, 240, 3, "Isa", true, 6, "Lorem ipsum asfasfasfsdgsgsdgsdgsdgsdsdg");
 
 
 

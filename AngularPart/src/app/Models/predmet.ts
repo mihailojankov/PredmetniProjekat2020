@@ -1,3 +1,5 @@
+import { Nastavnik } from './nastavnik';
+
 export interface Predmet {
     id:number;
     naziv:string;
@@ -7,4 +9,6 @@ export interface Predmet {
     brojVezbi:number;
     godinaStudija:number;
     semestar:number;
+    silabus:string;
+    listaNastavnika:Nastavnik[];
 }

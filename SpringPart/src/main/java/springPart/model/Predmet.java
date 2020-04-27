@@ -23,6 +23,7 @@ public class Predmet {
 	boolean obavezan;
 	int brojPredavanja;
 	int brojVezbi;
+	String silabus;
 	//int drugiObliciNastave
 	//int istrazivackiRad
 	//int ostaliCasovi
@@ -51,7 +52,7 @@ public class Predmet {
 
 	public Predmet(Long id, String naziv, int espb, boolean obavezan, int brojPredavanja, int brojVezbi,
 			int godinaStudija, int semestar, List<Nastavnik> listaNastavnika, List<Student> listaStudenata,
-			List<SmerFakulteta> listaSmerovaFakulteta) {
+			List<SmerFakulteta> listaSmerovaFakulteta, String silabus) {
 		super();
 		this.id = id;
 		this.naziv = naziv;
@@ -64,6 +65,7 @@ public class Predmet {
 		this.listaNastavnika = listaNastavnika;
 		this.listaStudenata = listaStudenata;
 		this.listaSmerovaFakulteta = listaSmerovaFakulteta;
+		this.silabus = silabus;
 	}
 	
 	
@@ -187,6 +189,21 @@ public class Predmet {
 	public void setListaStudenata(List<Student> listaStudenata) {
 		this.listaStudenata = listaStudenata;
 	}
+
+
+
+
+	public String getSilabus() {
+		return silabus;
+	}
+
+
+
+
+	public void setSilabus(String silabus) {
+		this.silabus = silabus;
+	}
+	
 	
 	
 }
