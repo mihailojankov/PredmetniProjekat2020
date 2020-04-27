@@ -29,13 +29,9 @@ public class Predmet {
 	int godinaStudija;
 	int semestar;
 	
-	@ManyToOne
-	@JoinColumn(name = "profesor_id")
-	Nastavnik profesor;
-	
-	@ManyToOne
-	@JoinColumn(name = "asistent_id")
-	Nastavnik asistent;
+	@ManyToMany
+	@JoinTable(name = "nastavniciNaPredmetu", joinColumns = @JoinColumn(name="nastavnik_id"), inverseJoinColumns = @JoinColumn(name="predmet_id"))
+	List<Nastavnik> listaNastavnika;
 	
 	@ManyToMany(mappedBy = "listaPredmeta")
 	List<Student> listaStudenata;
@@ -50,8 +46,12 @@ public class Predmet {
 		
 	}
 	
+	
+
+
 	public Predmet(Long id, String naziv, int espb, boolean obavezan, int brojPredavanja, int brojVezbi,
-			int godinaStudija, int semestar, Nastavnik profesor, Nastavnik asistent, List<Student> listaStudenata) {
+			int godinaStudija, int semestar, List<Nastavnik> listaNastavnika, List<Student> listaStudenata,
+			List<SmerFakulteta> listaSmerovaFakulteta) {
 		super();
 		this.id = id;
 		this.naziv = naziv;
@@ -61,10 +61,42 @@ public class Predmet {
 		this.brojVezbi = brojVezbi;
 		this.godinaStudija = godinaStudija;
 		this.semestar = semestar;
-		this.profesor = profesor;
-		this.asistent = asistent;
+		this.listaNastavnika = listaNastavnika;
 		this.listaStudenata = listaStudenata;
+		this.listaSmerovaFakulteta = listaSmerovaFakulteta;
 	}
+	
+	
+
+
+
+
+	public List<Nastavnik> getListaNastavnika() {
+		return listaNastavnika;
+	}
+
+
+
+
+	public void setListaNastavnika(List<Nastavnik> listaNastavnika) {
+		this.listaNastavnika = listaNastavnika;
+	}
+
+
+
+
+	public List<SmerFakulteta> getListaSmerovaFakulteta() {
+		return listaSmerovaFakulteta;
+	}
+
+
+
+
+	public void setListaSmerovaFakulteta(List<SmerFakulteta> listaSmerovaFakulteta) {
+		this.listaSmerovaFakulteta = listaSmerovaFakulteta;
+	}
+
+
 
 
 	public Long getId() {
@@ -144,26 +176,6 @@ public class Predmet {
 
 	public void setSemestar(int semestar) {
 		this.semestar = semestar;
-	}
-
-
-	public Nastavnik getProfesor() {
-		return profesor;
-	}
-
-
-	public void setProfesor(Nastavnik profesor) {
-		this.profesor = profesor;
-	}
-
-
-	public Nastavnik getAsistent() {
-		return asistent;
-	}
-
-
-	public void setAsistent(Nastavnik asistent) {
-		this.asistent = asistent;
 	}
 
 

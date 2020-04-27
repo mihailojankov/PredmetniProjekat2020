@@ -23,5 +23,9 @@ export class PrikazFakultetaComponent implements OnInit {
     this.service.dobavi().subscribe(data => this.fakulteti = data);
   }
 
+  izabranFakultet(izabranFakultet:Fakultet){
+
+  }
+
 
 }
