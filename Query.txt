@@ -28,7 +28,6 @@ insert into registrovan_korisnik values (0, "Adresa 8 korisnika", "2098520935", 
 insert into registrovan_korisnik values (0, "Adresa 9 korisnika", "412414", "mladen@gmail", "Mladen", "mladen123", "mladen123","Vidovic");
 insert into registrovan_korisnik values (0, "Adresa 10 korisnika", "098533", "aleksandra@gmail", "Aleksandra", "aleksandra123", "aleksandra123","Mitrovic");
 
-
 insert into nastavnik values (0, true, "biografija asistenta ivana", "414214", false, 8);
 insert into nastavnik values (0, true, "biografija asistenta mladena", "7845745", false, 9);
 insert into nastavnik values (0, true, "biografija asistenta aleksandre", "744574354", false, 10);
