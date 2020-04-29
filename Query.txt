@@ -84,7 +84,7 @@ insert into nastavnici_na_predmetu values (1,4);
 insert into nastavnici_na_predmetu values (6,4);
 insert into nastavnici_na_predmetu values (2,5);
 insert into nastavnici_na_predmetu values (4,5);
-insert into nastavnici_na_predmetu values (3,6);
+insert into nastavnici_na_predmetu values (3,6);  
 insert into nastavnici_na_predmetu values (4,6);
 
 
