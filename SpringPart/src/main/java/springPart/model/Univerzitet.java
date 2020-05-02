@@ -7,7 +7,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Univerzitet {
@@ -22,6 +24,11 @@ public class Univerzitet {
 	String mesto;
 	String opisUniverziteta;
 	
+	
+	@OneToOne
+	@JoinColumn(name = "rektor_id")
+	Nastavnik rektor;
+	
 	@OneToMany(mappedBy = "univerzitet")
 	List<Fakultet> fakulteti;
 	
@@ -30,7 +37,7 @@ public class Univerzitet {
 	}
 
 	public Univerzitet(Long id, String naziv, LocalDate datumOsnivanja, String drzava, String adresa, String mesto,
-			String opisUniverziteta, List<Fakultet> fakulteti) {
+			String opisUniverziteta, List<Fakultet> fakulteti, Nastavnik rektor) {
 		super();
 		this.id = id;
 		this.naziv = naziv;
@@ -40,6 +47,7 @@ public class Univerzitet {
 		this.mesto = mesto;
 		this.opisUniverziteta = opisUniverziteta;
 		this.fakulteti = fakulteti;
+		this.rektor = rektor;
 	}
 
 	public Long getId() {
@@ -105,5 +113,15 @@ public class Univerzitet {
 	public void setFakulteti(List<Fakultet> fakulteti) {
 		this.fakulteti = fakulteti;
 	}
+
+	public Nastavnik getRektor() {
+		return rektor;
+	}
+
+	public void setRektor(Nastavnik rektor) {
+		this.rektor = rektor;
+	}
+	
+	
 	
 }

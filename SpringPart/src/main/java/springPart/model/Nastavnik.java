@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
@@ -28,6 +29,9 @@ public class Nastavnik {
 	@JoinColumn(name = "korisnik_id")
 	RegistrovanKorisnik korisnik;
 	
+	@OneToMany(mappedBy = "dekan")
+	List<Fakultet> dekanFakulteti; 
+	
 	@ManyToMany(mappedBy = "listaNastavnika")
 	List<Predmet> predmeti;
 	
@@ -37,7 +41,7 @@ public class Nastavnik {
 	}
 
 	public Nastavnik(Long id, String biografija, String jmbg, boolean profesor, boolean asistent,
-			RegistrovanKorisnik korisnik) {
+			RegistrovanKorisnik korisnik, List<Fakultet> dekanFakulteti) {
 		super();
 		this.id = id;
 		this.biografija = biografija;
@@ -45,6 +49,7 @@ public class Nastavnik {
 		this.profesor = profesor;
 		this.asistent = asistent;
 		this.korisnik = korisnik;
+		this.dekanFakulteti = dekanFakulteti;
 	}
 
 	public Long getId() {
@@ -102,6 +107,15 @@ public class Nastavnik {
 	public void setPredmeti(List<Predmet> predmeti) {
 		this.predmeti = predmeti;
 	}
+
+	public List<Fakultet> getDekanFakulteti() {
+		return dekanFakulteti;
+	}
+
+	public void setDekanFakulteti(List<Fakultet> dekanFakulteti) {
+		this.dekanFakulteti = dekanFakulteti;
+	}
+	
 	
 	
 	
