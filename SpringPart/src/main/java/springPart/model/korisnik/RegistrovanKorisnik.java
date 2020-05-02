@@ -1,4 +1,4 @@
-package springPart.model;
+package springPart.model.korisnik;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

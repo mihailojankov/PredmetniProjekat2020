@@ -1,4 +1,4 @@
-package springPart.model;
+package springPart.model.korisnik;
 
 import java.util.List;
 
@@ -12,6 +12,9 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+
+import springPart.model.Fakultet;
+import springPart.model.Predmet;
 
 @Entity
 public class Nastavnik {

@@ -3,7 +3,7 @@ package springPart.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import springPart.model.RegistrovanKorisnik;
+import springPart.model.korisnik.RegistrovanKorisnik;
 import springPart.repository.RegistrovanKorisnikRepository;
 
 @Service

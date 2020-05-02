@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import springPart.DTO.NastavnikDTO;
-import springPart.model.Nastavnik;
+import springPart.model.korisnik.Nastavnik;
 import springPart.service.NastavnikService;
 
 @Controller

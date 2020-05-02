@@ -11,6 +11,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import springPart.model.korisnik.Nastavnik;
+
 @Entity
 public class Fakultet {
 	@Id
