@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import springPart.DTO.StudentDTO;
-import springPart.model.Student;
+import springPart.model.korisnik.Student;
 import springPart.service.RegistrovanKorisnikService;
 import springPart.service.StudentService;
 

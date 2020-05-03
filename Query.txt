@@ -1,21 +1,5 @@
 insert into registrovan_korisnik values(0, "Milutina Bojica 8", "06229911", "jankovm97@gmail.com", "Mihailo",  "miske123", "miske123", "Jankov");
-insert into univerzitet values(0, "Danijelova 11", '1998-07-05', "Srbija", "Beograd", "Singidunum", "Neki opis");
 
-insert into fakultet values(0, "Danijelova 11", "Beograd", "Tehnicki fakultet", "Neki opis", 1);
-insert into fakultet values(0, "Danijelova 11", "Beograd", "Informacioni fakultet", "Neki opis", 1);
-insert into fakultet values(0, "Danijelova 11", "Beograd", "Ekonomski fakultet", "Neki opis", 1);
-
-insert into smer_fakulteta values(0, "Smer 1", "Neki opis", 1);
-insert into smer_fakulteta values(0, "Smer 2", "Neki opis", 1);
-insert into smer_fakulteta values(0, "Smer 3", "Neki opis", 1);
-
-insert into smer_fakulteta values(0, "Smer 4", "Neki opis", 2);
-insert into smer_fakulteta values(0, "Smer 5", "Neki opis", 2);
-insert into smer_fakulteta values(0, "Smer 6", "Neki opis", 2);
-
-insert into smer_fakulteta values(0, "Smer 7", "Neki opis", 3);
-insert into smer_fakulteta values(0, "Smer 8", "Neki opis", 3);
-insert into smer_fakulteta values(0, "Smer 9", "Neki opis", 3);
 
 insert into registrovan_korisnik values (0, "Adresa 1 korisnika", "23525325", "misa@gmail", "Mihailo", "misa123", "misa123","Jankov");
 insert into registrovan_korisnik values (0, "Adresa 2 korisnika", "463151", "kasija@gmail", "Kasija", "kasija123", "kasija123","Vukajlovic");
@@ -28,7 +12,6 @@ insert into registrovan_korisnik values (0, "Adresa 8 korisnika", "2098520935", 
 insert into registrovan_korisnik values (0, "Adresa 9 korisnika", "412414", "mladen@gmail", "Mladen", "mladen123", "mladen123","Vidovic");
 insert into registrovan_korisnik values (0, "Adresa 10 korisnika", "098533", "aleksandra@gmail", "Aleksandra", "aleksandra123", "aleksandra123","Mitrovic");
 
-
 insert into nastavnik values (0, true, "biografija asistenta ivana", "414214", false, 8);
 insert into nastavnik values (0, true, "biografija asistenta mladena", "7845745", false, 9);
 insert into nastavnik values (0, true, "biografija asistenta aleksandre", "744574354", false, 10);
@@ -36,6 +19,23 @@ insert into nastavnik values (0, false, "biografija profesora dejana", 6442342, 
 insert into nastavnik values (0, false, "biografija profesora djordja", "9732509528", true, 6);
 insert into nastavnik values (0, false, "biografija profesorice zore", "1414124", true, 7);
 
+insert into univerzitet values(0, "Danijelova 11", '1998-07-05', "Srbija", "Beograd", "Singidunum", "Neki opis", 6);
+
+insert into fakultet values(0, "Danijelova 11", "Beograd", "Tehnicki fakultet", "Neki opis", 4, 1);
+insert into fakultet values(0, "Danijelova 11", "Beograd", "Informacioni fakultet", "Neki opis", 4, 1);
+insert into fakultet values(0, "Danijelova 11", "Beograd", "Ekonomski fakultet", "Neki opis", 5, 1);
+
+insert into smer_fakulteta values(0, "Smer 1", "Neki opis", 1);
+insert into smer_fakulteta values(0, "Smer 2", "Neki opis", 1);
+insert into smer_fakulteta values(0, "Smer 3", "Neki opis", 1);
+
+insert into smer_fakulteta values(0, "Smer 4", "Neki opis", 2);
+insert into smer_fakulteta values(0, "Smer 5", "Neki opis", 2);
+insert into smer_fakulteta values(0, "Smer 6", "Neki opis", 2);
+
+insert into smer_fakulteta values(0, "Smer 7", "Neki opis", 3);
+insert into smer_fakulteta values(0, "Smer 8", "Neki opis", 3);
+insert into smer_fakulteta values(0, "Smer 9", "Neki opis", 3);
 
 insert into student values (0, "270111", '1997-6-12', "Srbija", '2019-1-1', "631244", "Kikinda", false, 1);
 insert into student values (0, "270222", '1998-1-1', "Srbija", '2019-1-1', "97124", "Beograd", false, 2);
@@ -84,8 +84,5 @@ insert into nastavnici_na_predmetu values (1,4);
 insert into nastavnici_na_predmetu values (6,4);
 insert into nastavnici_na_predmetu values (2,5);
 insert into nastavnici_na_predmetu values (4,5);
-insert into nastavnici_na_predmetu values (3,6);
+insert into nastavnici_na_predmetu values (3,6);  
 insert into nastavnici_na_predmetu values (4,6);
-
-
-

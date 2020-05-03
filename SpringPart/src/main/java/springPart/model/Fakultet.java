@@ -6,8 +6,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+
+import springPart.model.korisnik.Nastavnik;
 
 @Entity
 public class Fakultet {
@@ -21,6 +25,10 @@ public class Fakultet {
 	String mesto;
 	String opis;
 	
+	@ManyToOne
+	@JoinColumn(name = "dekan_id")
+	Nastavnik dekan;
+	
 	@OneToMany(mappedBy = "fakultet")
 	List<SmerFakulteta> smerovi;
 	
@@ -32,7 +40,7 @@ public class Fakultet {
 	}
 
 	public Fakultet(Long id, String naziv, String adresa, String mesto, String opis, List<SmerFakulteta> smerovi,
-			Univerzitet univerzitet) {
+			Univerzitet univerzitet, Nastavnik dekan) {
 		super();
 		this.id = id;
 		this.naziv = naziv;
@@ -41,6 +49,7 @@ public class Fakultet {
 		this.opis = opis;
 		this.smerovi = smerovi;
 		this.univerzitet = univerzitet;
+		this.dekan = dekan;
 	}
 
 	public Long getId() {
@@ -98,6 +107,16 @@ public class Fakultet {
 	public void setUniverzitet(Univerzitet univerzitet) {
 		this.univerzitet = univerzitet;
 	}
+
+	public Nastavnik getDekan() {
+		return dekan;
+	}
+
+	public void setDekan(Nastavnik dekan) {
+		this.dekan = dekan;
+	}
+	
+	
 	
 	
 }

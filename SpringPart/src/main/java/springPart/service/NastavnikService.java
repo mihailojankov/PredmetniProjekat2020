@@ -3,7 +3,7 @@ package springPart.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import springPart.model.Nastavnik;
+import springPart.model.korisnik.Nastavnik;
 import springPart.repository.NastavnikRepository;
 
 @Service
