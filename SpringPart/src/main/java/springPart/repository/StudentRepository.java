@@ -1,11 +1,10 @@
 package springPart.repository;
 
-import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import springPart.model.korisnik.Student;
+import springPart.model.Student;
 
 @Repository
-public interface StudentRepository extends CrudRepository<Student, Long>  {
+public interface StudentRepository extends InheritInterface<Student>{
 
 }

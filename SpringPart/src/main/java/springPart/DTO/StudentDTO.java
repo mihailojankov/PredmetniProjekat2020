@@ -3,9 +3,12 @@ package springPart.DTO;
 import java.util.Date;
 import java.util.List;
 
+import lombok.Getter;
+import lombok.Setter;
 
-public class StudentDTO {
-	Long id;
+@Getter
+@Setter
+public class StudentDTO extends AbstractDTO{
 	String jmbg;
 	Date datumRodjenja;
 	String brojIndeksa;
