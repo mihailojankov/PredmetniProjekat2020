@@ -1,0 +1,17 @@
+<form  (ngSubmit)="login()" ngNativeValidate>
+    <div>
+        <label for="korisnickoIme">
+          Korisnicko ime
+        </label>
+        <input id="korisnickoIme" type="text" formControlName="korisnickoIme" required>
+    </div>
+    
+    <div>
+        <label for="lozinka">
+          Lozinka
+        </label>
+        <input id="lozinka" type="password" formControlName="lozinka" required>
+    </div>
+
+    <button class="button" type="submit">Uloguj se</button>
+</form>
