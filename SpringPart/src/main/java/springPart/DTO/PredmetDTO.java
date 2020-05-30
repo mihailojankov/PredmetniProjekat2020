@@ -16,6 +16,6 @@ public class PredmetDTO extends AbstractDTO{
 	String silabus;
 	int godinaStudija;
 	int semestar;
-	List<NastavnikDTO> listaNastavnika;
+	
 	
 }

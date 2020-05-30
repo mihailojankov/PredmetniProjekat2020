@@ -19,14 +19,15 @@ export class DetaljiOPredmetuComponent implements OnInit {
   constructor(private service:PredmetService, private router:Router, private route:ActivatedRoute) { }
 
   ngOnInit(): void {
-      this.service.dobaviPoId(this.route.snapshot.queryParams["id"]).subscribe(data => this.napraviKomponentu(data));
+      this.dobaviPredmet();
   }
 
-  napraviKomponentu(predmet:Predmet){
-      this.profesor = predmet.listaNastavnika.find(x => x.profesor === true);
-      this.asistent = predmet.listaNastavnika.find(x => x.asistent === true);
-      this.predmet = predmet;
+  dobaviPredmet(){
+    this.service.dobaviPoId(this.route.snapshot.queryParams["id"]).subscribe(data =>{
+      this.predmet = data;
+    });
   }
+
 
 
 

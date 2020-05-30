@@ -1,4 +1,4 @@
-<div class="container" class="d-inline justify-content-center" *ngIf="(fakultet$ | async) as fakultet">
+<div class="container" class="d-inline justify-content-center" *ngIf="fakultet">
 
     <div class="row" *ngFor="let smer of fakultet.smerovi">
             <a [routerLink]="['predmeti']" [queryParams]="{id:smer.id}">

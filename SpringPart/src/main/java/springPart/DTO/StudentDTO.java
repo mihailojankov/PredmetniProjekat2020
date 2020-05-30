@@ -9,6 +9,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class StudentDTO extends AbstractDTO{
+	
 	String jmbg;
 	Date datumRodjenja;
 	String brojIndeksa;

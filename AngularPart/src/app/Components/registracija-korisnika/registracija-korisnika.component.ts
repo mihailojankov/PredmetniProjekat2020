@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RegistrovanKorisnikService } from 'src/app/Services/registrovan-korisnik.service';
 import { FormBuilder } from '@angular/forms';
 import { RegistrovanKorisnik } from 'src/app/Models/registrovan-korisnik';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registracija',
@@ -10,12 +11,12 @@ import { RegistrovanKorisnik } from 'src/app/Models/registrovan-korisnik';
 })
 export class RegistracijaKorisnikaComponent implements OnInit {
 
-  //Registraciona forma
   regForm;
 
   constructor(
     private service:RegistrovanKorisnikService,
-    private formBuilder:FormBuilder
+    private formBuilder:FormBuilder,
+    private router:Router
   ) { 
 
     this.regForm = this.formBuilder.group({
@@ -34,18 +35,21 @@ export class RegistracijaKorisnikaComponent implements OnInit {
   }
 
   registruj(data){
-    this.service.dodaj(data).subscribe(data => this.check(data));
+    this.service.registruj(data).subscribe(data => this.check(data));
   }
 
   //Neki lep ispis za uspesni ili neuspesnu registraciju
   check(response){
+    console.log(response);
 
-    if(response.status == 200){
+    if(response.status == 201){
       console.log("Uspesna registracija")
+      this.router.navigate(["/"]);
     }
 
     if(response.status == 409){
       console.log("Postojeci podaci");
+      window.alert("Postojeci podaci");
     }
   }
 

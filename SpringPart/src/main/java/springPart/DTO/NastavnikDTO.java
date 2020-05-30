@@ -1,5 +1,7 @@
 package springPart.DTO;
 
+import java.util.List;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,5 +13,6 @@ public class NastavnikDTO extends AbstractDTO{
 	boolean profesor;
 	boolean asistent;
 	RegistrovanKorisnikDTO korisnik;
+	List<PredmetDTO> predmeti;
 
 }

@@ -10,12 +10,15 @@ export class Interseptor implements HttpInterceptor {
     constructor(private router: Router) { }
 
     private handleAuthError(err: HttpErrorResponse): Observable<any> {
-
-        if (err.status === 401 || err.status === 403) {
-            window.alert("Pogresni podaci!");
-
-            return of(empty);
+        if(err.status === 401 || err.status === 403){
+            window.alert("Nemate pristup!");
+            this.router.navigate([""]);
         }
+
+        if(err.status === 409){
+            window.alert("Pogresni podaci!");
+        }
+
         return throwError(err);
     }
 

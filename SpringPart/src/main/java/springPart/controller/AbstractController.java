@@ -19,7 +19,7 @@ import springPart.service.CommonService;
 public abstract class AbstractController <E extends AbstractModel, D extends AbstractDTO, S extends CommonService<E>>{
 
 	@Autowired
-	private final S service;
+	public final S service;
 	
 	private Class<D> dtoType;
 	ModelMapper mm = new ModelMapper();

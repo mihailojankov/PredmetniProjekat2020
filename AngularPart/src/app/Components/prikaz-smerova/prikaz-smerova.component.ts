@@ -11,7 +11,7 @@ import { Observable } from 'rxjs';
 })
 export class PrikazSmerovaComponent implements OnInit {
 
-  fakultet$:Observable<Fakultet>;
+  fakultet:Fakultet;
 
   constructor(private service:FakultetService, private route:ActivatedRoute, private router:Router) { }
 
@@ -20,7 +20,9 @@ export class PrikazSmerovaComponent implements OnInit {
   }
 
   dobaviFakultet(){
-    this.fakultet$ = this.service.dobaviPoId(this.route.snapshot.queryParams["id"]);
+    this.service.dobaviPoId(this.route.snapshot.queryParams["id"]).subscribe(data =>{
+        this.fakultet = data;
+    });
   }
 
 }

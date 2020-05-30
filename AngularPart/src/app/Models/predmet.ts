@@ -10,5 +10,4 @@ export interface Predmet {
     godinaStudija:number;
     semestar:number;
     silabus:string;
-    listaNastavnika:Nastavnik[];
 }

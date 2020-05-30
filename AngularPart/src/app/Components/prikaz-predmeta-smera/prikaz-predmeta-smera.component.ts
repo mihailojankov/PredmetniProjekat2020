@@ -3,6 +3,8 @@ import { Predmet } from 'src/app/Models/predmet';
 import { Observable } from 'rxjs';
 import { PredmetService } from 'src/app/Services/predmet.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { SmerFakulteta } from 'src/app/Models/smer-fakulteta';
+import { SmerFakultetaService } from 'src/app/Services/smer-fakulteta.service';
 
 @Component({
   selector: 'app-prikaz-predmeta-smera',
@@ -11,14 +13,18 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class PrikazPredmetaSmeraComponent implements OnInit {
 
-  predmeti$:Observable<Predmet[]>;
-  nazivSmera:string;
+  smer:SmerFakulteta;
 
-  constructor(private service:PredmetService, private router:Router, private route:ActivatedRoute) { }
+  constructor(private service:SmerFakultetaService, private router:Router, private route:ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.predmeti$ = this.service.dobaviPoIdSmera(this.route.snapshot.queryParams["id"]);
-    this.nazivSmera = this.route.snapshot.queryParams["naziv"];
+    this.dobaviSmer();
+  }
+
+  dobaviSmer(){
+    this.service.dobaviPoId(this.route.snapshot.queryParams["id"]).subscribe(data => {
+      this.smer = data;
+    });
   }
 
 }

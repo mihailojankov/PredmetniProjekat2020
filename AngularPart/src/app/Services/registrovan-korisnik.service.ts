@@ -15,7 +15,9 @@ export class RegistrovanKorisnikService extends AbstractServiceService<Registrov
    }
 
   
-
+   registruj(obj):Observable<HttpResponse<RegistrovanKorisnik>>{
+     return this.http.post<RegistrovanKorisnik>(this.adresaD, obj, {observe:"response"});
+   }
 
 
 }

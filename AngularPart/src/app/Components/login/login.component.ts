@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { RegistrovanKorisnikService } from 'src/app/Services/registrovan-korisnik.service';
 import { HttpClient } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
+  
 })
 export class LoginComponent implements OnInit {
 

@@ -1,4 +1,5 @@
 import { RegistrovanKorisnik } from './registrovan-korisnik';
+import { Predmet } from './predmet';
 
 export interface Nastavnik {
     id:number;
@@ -7,4 +8,5 @@ export interface Nastavnik {
     profesor:boolean;
     asistent:boolean;
     korisnik:RegistrovanKorisnik;
+    predmeti:Predmet[];
 }

@@ -1,4 +1,6 @@
 package springPart.DTO;
+import java.util.List;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -8,5 +10,6 @@ public class SmerFakultetaDTO extends AbstractDTO{
 	
 	String naziv;
 	String opis;
+	List<PredmetDTO> predmeti;
 	
 }
