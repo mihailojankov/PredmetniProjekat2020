@@ -11,6 +11,7 @@ insert into registrovan_korisnik values (0, "Adresa 7 korisnika", "59342", "zora
 insert into registrovan_korisnik values (0, "Adresa 8 korisnika", "2098520935", "ivan@gmail", "Ivan", "ivan123", "ivan123","Radosavljevic");
 insert into registrovan_korisnik values (0, "Adresa 9 korisnika", "412414", "mladen@gmail", "Mladen", "mladen123", "mladen123","Vidovic");
 insert into registrovan_korisnik values (0, "Adresa 10 korisnika", "098533", "aleksandra@gmail", "Aleksandra", "aleksandra123", "aleksandra123","Mitrovic");
+insert into registrovan_korisnik values (0, "Adresa 11 korisnika", "098533412", "osoblje@gmail", "Tijana", "tijana123", "tijana123","Novakovic");
 
 insert into nastavnik values (0, true, "biografija asistenta ivana", "414214", false, 8);
 insert into nastavnik values (0, true, "biografija asistenta mladena", "7845745", false, 9);
@@ -18,6 +19,8 @@ insert into nastavnik values (0, true, "biografija asistenta aleksandre", "74457
 insert into nastavnik values (0, false, "biografija profesora dejana", 6442342, true, 5);
 insert into nastavnik values (0, false, "biografija profesora djordja", "9732509528", true, 6);
 insert into nastavnik values (0, false, "biografija profesorice zore", "1414124", true, 7);
+
+insert into clan_administrativnog_osoblja values (0,"12575498","studentska sluzba",11);
 
 insert into univerzitet values(0, "Danijelova 11", '1998-07-05', "Srbija", "Beograd", "Singidunum", "Neki opis", 6);
 

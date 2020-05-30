@@ -1,6 +1,7 @@
 package springPart.app.security;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,10 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+
 import springPart.service.RegistrovanKorisnikService;
 
 @EnableWebSecurity
@@ -34,6 +39,20 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth.userDetailsService(service);
+		
+		ArrayList<GrantedAuthority> listaAuth = new ArrayList<GrantedAuthority>();
+		GrantedAuthority admin = new GrantedAuthority() {
+			
+			@Override
+			public String getAuthority() {
+				return "ADMIN";
+			}
+		};
+		
+		listaAuth.add(admin);
+		
+		auth.inMemoryAuthentication()
+			.withUser("admin").password(passwordEncoder().encode("admin123")).authorities(listaAuth);
 	}
 	
 	@Bean
@@ -44,7 +63,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		
-		http.csrf().disable()
+		http.csrf()
+			.disable()
+			.cors().and()
 			.authorizeRequests()
 			.antMatchers("/authenticate").permitAll()
 			.antMatchers(HttpMethod.GET, "/fakultet", "/univerzitet", "/smerFakulteta", "/predmet").permitAll()
@@ -55,6 +76,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		
 		http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
 	}
+	
+	@Bean
+    CorsConfigurationSource corsConfigurationSource() {
+        CorsConfiguration configuration = new CorsConfiguration();
+        configuration.setAllowedOrigins(Arrays.asList("http://localhost:4200"));
+        configuration.setAllowedMethods(Arrays.asList("GET","POST", "PUT", "DELETE"));
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/**", configuration);
+        return source;
+    }
 
 	@Override
 	@Bean
