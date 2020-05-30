@@ -11,26 +11,38 @@ export class LoginComponent implements OnInit {
 
   korisnickoIme:string = "";
   lozinka:string = "";
+  ulogovan = false;
 
   constructor(private http:HttpClient) { }
 
   ngOnInit(): void {
+   /**  if(window.localStorage.getItem("token") != ""){
+      this.ulogovan = true;
+    }
+    */
   }
+
+
 
   login(){
     if(this.korisnickoIme == "" || this.lozinka == ""){
       return;
     }
     let korisnik = {korisnickoIme:this.korisnickoIme, lozinka:this.lozinka};
-    this.http.post<any>("http://localhost:8080/authenticate", korisnik, {observe:'response'}).subscribe(data => {
-      console.log(data);
-      if(typeof data != 'string'){
-        window.alert("Pogresni podaci");
-      }
+    this.http.post<any>("http://localhost:8080/authenticate", korisnik).subscribe(data => {
 
+        window.localStorage.setItem("token", data.jwt);
+        this.ulogovan = true;
     });
-
   }
+
+  logout(){
+      window.localStorage.setItem("token", "");
+      this.ulogovan = false;
+  }
+
+
+
   
 
 }
