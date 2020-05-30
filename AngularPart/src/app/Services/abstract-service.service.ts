@@ -5,14 +5,18 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export abstract class AbstractServiceService <D, adresaDeo>{
+export class AbstractServiceService{
 
-  adresaFakultet:string = "http://localhost:8080/";
+  
+  klasa:<D>  ;
+  deoAdresa:adresaDeo;
+
+  adresaFakultet:string = "http://localhost:8080/" + this.deoAdresa;
 
 
   constructor(public http:HttpClient) { }
 
-  dobavi():Observable<Fakultet[]>{
+  dobavi():Observable<this.klasa[]>{
     return this.http.get<Fakultet[]>(this.adresaFakultet);
   }
   dobaviPoId(id):Observable<Fakultet>{
