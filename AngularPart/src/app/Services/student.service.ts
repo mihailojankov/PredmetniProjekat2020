@@ -2,34 +2,19 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Student } from '../Models/student';
+import { AbstractServiceService } from './abstract-service.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class StudentService {
+export class StudentService extends AbstractServiceService<Student> {
 
-  adresaStudent:string = "http://localhost:8080/student"
 
-  constructor(public http:HttpClient) { }
+  constructor(public http:HttpClient) {
+    super(http, "student");
+   }
 
-  dobavi():Observable<Student[]>{
-    return this.http.get<Student[]>(this.adresaStudent);
-  }
-  dobaviPoId(id):Observable<Student>{
-    return this.http.get<Student>(this.adresaStudent + "/" + id);
-  }
-
-  dodaj(obj):Observable<Student>{
-    return this.http.post<Student>(this.adresaStudent, obj) ;
-  }
-
-  izmeni(obj):Observable<Student>{
-    return this.http.put<Student>(this.adresaStudent + "/" + obj.id, obj);
-  }
-
-  obrisi(id):Observable<Student>{
-    return this.http.delete<Student>(this.adresaStudent + "/" + id);
-  }
+  
 
 
 
