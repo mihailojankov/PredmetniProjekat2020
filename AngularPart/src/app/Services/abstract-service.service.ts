@@ -1,37 +1,36 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Type } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-@Injectable({
-  providedIn: 'root'
-})
-export class AbstractServiceService{
 
+
+export class AbstractServiceService <D>{
+
+  adresaD:string;
   
-  klasa:<D>  ;
-  deoAdresa:adresaDeo;
-
-  adresaFakultet:string = "http://localhost:8080/" + this.deoAdresa;
 
 
-  constructor(public http:HttpClient) { }
+  constructor(public http:HttpClient, public deoAdresa:string) { 
 
-  dobavi():Observable<this.klasa[]>{
-    return this.http.get<Fakultet[]>(this.adresaFakultet);
-  }
-  dobaviPoId(id):Observable<Fakultet>{
-    return this.http.get<Fakultet>(this.adresaFakultet + "/" + id);
+    this.adresaD = "http://localhost:8080/" + this.deoAdresa;
   }
 
-  dodaj(obj):Observable<Fakultet>{
-    return this.http.post<Fakultet>(this.adresaFakultet, obj) ;
+  dobavi():Observable<D[]>{
+    return this.http.get<D[]>(this.adresaD);
+  }
+  dobaviPoId(id):Observable<D>{
+    return this.http.get<D>(this.adresaD + "/" + id);
   }
 
-  izmeni(obj):Observable<Fakultet>{
-    return this.http.put<Fakultet>(this.adresaFakultet + "/" + obj.id, obj);
+  dodaj(obj):Observable<D>{
+    return this.http.post<D>(this.adresaD, obj) ;
   }
 
-  obrisi(id):Observable<Fakultet>{
-    return this.http.delete<Fakultet>(this.adresaFakultet + "/" + id);
+  izmeni(obj):Observable<D>{
+    return this.http.put<D>(this.adresaD + "/" + obj.id, obj);
+  }
+
+  obrisi(id):Observable<D>{
+    return this.http.delete<D>(this.adresaD + "/" + id);
   }
 }
