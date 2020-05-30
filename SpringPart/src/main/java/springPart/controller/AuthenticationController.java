@@ -1,6 +1,7 @@
 package springPart.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -18,9 +19,8 @@ import springPart.model.AuthRequest;
 import springPart.model.AuthResponse;
 import springPart.service.RegistrovanKorisnikService;
 
-
-@CrossOrigin
 @Controller
+@CrossOrigin("http://localhost:4200")
 public class AuthenticationController {
 	
 	@Autowired
@@ -41,7 +41,7 @@ public class AuthenticationController {
 			System.out.println(SecurityContextHolder.getContext().getAuthentication().getPrincipal());
 		}
 		catch(BadCredentialsException e) {
-			throw new Exception("Pogresni podaci", e);
+			return (ResponseEntity<?>) ResponseEntity.notFound();
 		}
 		
 		final UserDetails userDetails = serviceAuth.loadUserByUsername(authRequest.getKorisnickoIme());

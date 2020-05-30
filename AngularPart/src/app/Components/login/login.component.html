@@ -3,14 +3,14 @@
         <label for="korisnickoIme">
           Korisnicko ime
         </label>
-        <input id="korisnickoIme" type="text" formControlName="korisnickoIme" required>
+        <input id="korisnickoIme" type="text" [(ngModel)]="korisnickoIme" name="korisnickoIme" required>
     </div>
     
     <div>
         <label for="lozinka">
           Lozinka
         </label>
-        <input id="lozinka" type="password" formControlName="lozinka" required>
+        <input id="lozinka" type="password" [(ngModel)]="lozinka" name="lozinka"  required>
     </div>
 
     <button class="button" type="submit">Uloguj se</button>

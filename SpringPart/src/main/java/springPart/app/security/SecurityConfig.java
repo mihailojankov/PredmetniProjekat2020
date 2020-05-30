@@ -40,6 +40,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth.userDetailsService(service);
 		
+	
+		
 		ArrayList<GrantedAuthority> listaAuth = new ArrayList<GrantedAuthority>();
 		GrantedAuthority admin = new GrantedAuthority() {
 			
@@ -53,6 +55,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		
 		auth.inMemoryAuthentication()
 			.withUser("admin").password(passwordEncoder().encode("admin123")).authorities(listaAuth);
+		
+		
+		
 	}
 	
 	@Bean
@@ -68,7 +73,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 			.cors().and()
 			.authorizeRequests()
 			.antMatchers("/authenticate").permitAll()
-			.antMatchers(HttpMethod.GET, "/fakultet", "/univerzitet", "/smerFakulteta", "/predmet").permitAll()
+			.antMatchers(HttpMethod.GET, "/fakultet/**", "/univerzitet/**", "/smerFakulteta/**", "/predmet/**").permitAll()
+			.antMatchers(HttpMethod.POST, "/registrovanKorisnik").permitAll()
 			.antMatchers("/nastavnik").hasAuthority("NASTAVNIK")
 			.anyRequest().authenticated()
 			.and()
@@ -82,6 +88,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
         CorsConfiguration configuration = new CorsConfiguration();
         configuration.setAllowedOrigins(Arrays.asList("http://localhost:4200"));
         configuration.setAllowedMethods(Arrays.asList("GET","POST", "PUT", "DELETE"));
+        configuration.setAllowedHeaders(Arrays.asList("*"));
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration);
         return source;
@@ -90,7 +97,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	@Override
 	@Bean
 	public AuthenticationManager authenticationManagerBean() throws Exception {
-		// TODO Auto-generated method stub
+		
+		
+		
 		return super.authenticationManagerBean();
+		
+		
 	}
 }
