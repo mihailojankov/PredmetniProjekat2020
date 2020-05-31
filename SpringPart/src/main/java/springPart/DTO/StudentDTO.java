@@ -16,7 +16,7 @@ public class StudentDTO extends AbstractDTO{
 	String mestoRodjenja;
 	String drzavaRodjenja;
 	boolean vanredni;
-	Date godinaUpisa;
+	String godinaUpisa;
 	RegistrovanKorisnikDTO korisnik;
 	List<PredmetDTO> listaPredmeta;
 }

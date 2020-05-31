@@ -26,4 +26,6 @@ public interface RegistrovanKorisnikRepository extends InheritInterface<Registro
 	@Query
 	("SELECT s FROM Student s WHERE s.korisnik.id = :id ")
 	public Student nadjiStudenta(@PathVariable("id") Long id);
+	
+	
 }

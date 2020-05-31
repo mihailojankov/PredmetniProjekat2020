@@ -46,4 +46,8 @@ public class RegistrovanKorisnikController extends AbstractController<Registrova
 		return new ResponseEntity<RegistrovanKorisnik>(HttpStatus.CREATED);
 	}
 
+	
+	
+	
+
 }

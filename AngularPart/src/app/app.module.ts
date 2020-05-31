@@ -13,6 +13,9 @@ import { PrikazPredmetaSmeraComponent } from './Components/prikaz-predmeta-smera
 import { DetaljiOPredmetuComponent } from './Components/detalji-opredmetu/detalji-opredmetu.component';
 import { LoginComponent } from './Components/login/login.component';
 import { Interseptor } from './Models/interseptor';
+import { ClanAdministrativnogOsobljaProfilComponent } from './Components/clan-administrativnog-osoblja-profil/clan-administrativnog-osoblja-profil.component';
+import { NastavnikProfilComponent } from './Components/nastavnik-profil/nastavnik-profil.component';
+import { StudentProfilComponent } from './Components/student-profil/student-profil.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +26,10 @@ import { Interseptor } from './Models/interseptor';
     PrikazSmerovaComponent,
     PrikazPredmetaSmeraComponent,
     DetaljiOPredmetuComponent,
-    LoginComponent
+    LoginComponent,
+    ClanAdministrativnogOsobljaProfilComponent,
+    NastavnikProfilComponent,
+    StudentProfilComponent
   ],
   imports: [
     BrowserModule,

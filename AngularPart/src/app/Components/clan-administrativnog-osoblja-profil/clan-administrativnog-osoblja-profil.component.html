@@ -1,0 +1,82 @@
+<div *ngIf="studenti">
+    <table class="table table-hover table-dark">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Ime</th>
+            <th scope="col">Prezime</th>
+            <th scope="col">E-mail</th>
+            <th scope="col">Broj indeksa</th>
+            <th scope="col">JMBG</th>
+            <th scope="col">Datum rodjenja</th>
+            <th scope="col">Mesto rodjenja</th>
+            <th scope="col">Drzava rodjenja</th>
+            <th scope="col">Godina upisa</th>
+            <th scope="col">Vanredni</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let student of studenti">
+            <th scope="row">{{student.id}}</th>
+            <td>{{student.korisnik.ime}}</td>
+            <td>{{student.korisnik.prezime}}</td>
+            <td>{{student.korisnik.email}}</td>
+            <td>{{student.brojIndeksa}}</td>
+            <td>{{student.jmbg}}</td>
+            <td>{{student.datumRodjenja}}</td>
+            <td>{{student.mestoRodjenja}}</td>
+            <td>{{student.drzavaRodjenja}}</td>
+            <td>{{student.godinaUpisa}}</td>
+            <td>{{student.vanredni}}</td>
+          </tr>
+        </tbody>
+      </table>
+</div>
+<br>
+<br>
+<div *ngIf="registrovaniNesvrstaniKorisnici">
+    <form ngNativeValidate [formGroup]="formaZaDodavanjeNovogStudenta" (ngSubmit)="dodajStudenta(formaZaDodavanjeNovogStudenta.value)">
+        <div class="form-row">
+          <div class="col-md-4 mb-3">
+            <label for="validationDefault01">Korisnik</label>
+            <select formControlName="korisnik">
+                <option *ngFor="let korisnik of registrovaniNesvrstaniKorisnici" [value]="korisnik.id">{{korisnik.ime}} | {{korisnik.prezime}} | {{korisnik.email}}</option>
+             </select>
+          </div>
+          <div class="col-md-4 mb-3">
+            <label for="validationDefault01">Broj indeksa</label>
+            <input type="text" class="form-control" formControlName="brojIndeksa" placeholder="Broj indeksa" required>
+          </div>
+          <div class="col-md-4 mb-3">
+            <label for="validationDefault02">Datum rodjenja</label>
+            <input type="date" class="form-control" formControlName="datumRodjenja" placeholder="Datum rodjenja" required>
+          </div>
+          <div class="col-md-4 mb-3">
+            <label for="validationDefault02">Mesto rodjenja</label>
+            <input type="text" class="form-control" formControlName="mestoRodjenja" placeholder="Mesto rodjenja" required>
+          </div>
+          <div class="col-md-4 mb-3">
+            <label for="validationDefault02">Drzava rodjenja</label>
+            <input type="text" class="form-control" formControlName="drzavaRodjenja" placeholder="Drzava rodjenja" required>
+          </div>
+          <div class="col-md-4 mb-3">
+            <label for="validationDefault02">Godina upisa</label>
+            <input type="text" class="form-control" formControlName="godinaUpisa" placeholder="Godina upisa" required>
+          </div>
+          <div class="col-md-4 mb-3">
+            <label for="validationDefault02">JMBG</label>
+            <input type="text" class="form-control" formControlName="jmbg" placeholder="JMBG" required>
+          </div>
+          <div class="col-md-4 mb-3">
+            <label for="validationDefault02">Vanredni</label>
+            <fieldset id="grp1">
+                <p>Da <input type="radio" value="true" name="grp1"></p>
+                <p>Ne <input type="radio" value="false" name="grp1"></p>
+            </fieldset>
+          </div>
+        </div>
+        <button class="btn btn-primary" type="submit">Dodaj studenta</button>
+      </form>
+</div>
+<br>
+<br>

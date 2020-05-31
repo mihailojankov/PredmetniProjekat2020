@@ -76,9 +76,11 @@ public class RegistrovanKorisnikService extends AbstractService<RegistrovanKoris
 			else {
 				ClanAdministrativnogOsoblja clan = repository.nadjiClanaA(korisnik.getId());
 				
+				System.out.println(clan);
+				
 				if(clan != null) {
 					roles.add(clanA);
-					
+					System.out.println(roles);
 					return new User(korisnik.getKorisnickoIme(), korisnik.getLozinka(), roles);
 				}
 				

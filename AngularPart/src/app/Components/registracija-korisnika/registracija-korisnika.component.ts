@@ -43,12 +43,10 @@ export class RegistracijaKorisnikaComponent implements OnInit {
     console.log(response);
 
     if(response.status == 201){
-      console.log("Uspesna registracija")
       this.router.navigate(["/"]);
     }
 
     if(response.status == 409){
-      console.log("Postojeci podaci");
       window.alert("Postojeci podaci");
     }
   }

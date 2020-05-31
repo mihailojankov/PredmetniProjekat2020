@@ -1,6 +1,3 @@
-insert into registrovan_korisnik values(0, "Milutina Bojica 8", "06229911", "jankovm97@gmail.com", "Mihailo",  "miske123", "miske123", "Jankov");
-
-
 insert into registrovan_korisnik values (0, "Adresa 1 korisnika", "23525325", "misa@gmail", "Mihailo", "misa123", "misa123","Jankov");
 insert into registrovan_korisnik values (0, "Adresa 2 korisnika", "463151", "kasija@gmail", "Kasija", "kasija123", "kasija123","Vukajlovic");
 insert into registrovan_korisnik values (0, "Adresa 3 korisnika", "7577575", "bogi@gmail", "Bogdan", "bogi123", "bogi123","Solomun");

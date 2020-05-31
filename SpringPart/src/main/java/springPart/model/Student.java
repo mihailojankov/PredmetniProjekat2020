@@ -27,7 +27,7 @@ public class Student extends AbstractModel{
 	String mestoRodjenja;
 	String drzavaRodjenja;
 	boolean vanredni;
-	Date godinaUpisa;
+	String godinaUpisa;
 	
 	@OneToOne
 	@JoinColumn(name = "korisnik_id")
@@ -50,7 +50,7 @@ public class Student extends AbstractModel{
 	}
 
 	public Student(String jmbg, Date datumRodjenja, String brojIndeksa, String mestoRodjenja, String drzavaRodjenja,
-			boolean vanredni, Date godinaUpisa, RegistrovanKorisnik korisnik, List<Predmet> listaPredmeta,
+			boolean vanredni, String godinaUpisa, RegistrovanKorisnik korisnik, List<Predmet> listaPredmeta,
 			List<PrijavaIspita> prijaveIspita, List<IshodIspita> istorijaIspita) {
 		super();
 		this.jmbg = jmbg;
