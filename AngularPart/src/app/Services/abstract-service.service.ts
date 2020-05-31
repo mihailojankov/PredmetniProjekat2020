@@ -8,7 +8,7 @@ export class AbstractServiceService <D>{
 
   adresaD:string;
   
-
+  
 
   constructor(public http:HttpClient, public deoAdresa:string) { 
 

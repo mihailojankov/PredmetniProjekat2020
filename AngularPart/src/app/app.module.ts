@@ -2,7 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,6 +13,7 @@ import { PrikazPredmetaSmeraComponent } from './Components/prikaz-predmeta-smera
 import { DetaljiOPredmetuComponent } from './Components/detalji-opredmetu/detalji-opredmetu.component';
 import { LoginComponent } from './Components/login/login.component';
 import { Interseptor } from './Models/interseptor';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { ClanAdministrativnogOsobljaProfilComponent } from './Components/clan-administrativnog-osoblja-profil/clan-administrativnog-osoblja-profil.component';
 import { NastavnikProfilComponent } from './Components/nastavnik-profil/nastavnik-profil.component';
 import { StudentProfilComponent } from './Components/student-profil/student-profil.component';
