@@ -8,6 +8,7 @@ import { DetaljiOPredmetuComponent } from './Components/detalji-opredmetu/detalj
 import { ClanAdministrativnogOsobljaProfilComponent } from './Components/clan-administrativnog-osoblja-profil/clan-administrativnog-osoblja-profil.component';
 import { NastavnikProfilComponent } from './Components/nastavnik-profil/nastavnik-profil.component';
 import { StudentProfilComponent } from './Components/student-profil/student-profil.component';
+import { AdminProfilComponent } from './Components/admin-profil/admin-profil.component';
 
 
 const routes: Routes = [
@@ -18,7 +19,8 @@ const routes: Routes = [
   {path:"smerovi/predmeti/detalji", component:DetaljiOPredmetuComponent},
   {path:"clanAdministrativnogOsobljaProfil", component:ClanAdministrativnogOsobljaProfilComponent},
   {path:"nastavnikProfil", component:NastavnikProfilComponent},
-  {path:"studentProfil", component:StudentProfilComponent}
+  {path:"studentProfil", component:StudentProfilComponent},
+  {path:"adminProfil", component:AdminProfilComponent}
 ];
 
 @NgModule({

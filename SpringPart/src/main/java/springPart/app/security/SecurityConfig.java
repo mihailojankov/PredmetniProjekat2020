@@ -57,7 +57,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 			.antMatchers(HttpMethod.GET, "/fakultet/**", "/univerzitet/**", "/smerFakulteta/**", "/predmet/**").permitAll()
 			.antMatchers(HttpMethod.POST, "/registrovanKorisnik").permitAll()
 			.antMatchers("/student/**", "/registrovanKorisnik/**").hasAuthority("CLAN")
-			.antMatchers("/**").hasAuthority("ADMIN")
+			.antMatchers("/registrovanKorisnik/**", "/nastavnik/**","/clanAdministrativnogOsoblja/**").hasAuthority("ADMIN")
 			.and()
 			.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 		

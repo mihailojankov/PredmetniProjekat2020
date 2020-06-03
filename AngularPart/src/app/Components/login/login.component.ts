@@ -48,8 +48,9 @@ export class LoginComponent implements OnInit {
       window.localStorage.setItem("token", "");
       this.ulogovan = false;
   }
-
+  
   chooseProfile(){
+    console.log(this.authority);
       if(this.authority == "CLAN"){
         this.router.navigate(["clanAdministrativnogOsobljaProfil"]);
       }
@@ -58,6 +59,9 @@ export class LoginComponent implements OnInit {
       }
       if(this.authority == "STUDENT"){
         this.router.navigate(["studentProfil"]);
+      }
+      if(this.authority == "ADMIN"){
+        this.router.navigate(["adminProfil"])
       }
       
   }

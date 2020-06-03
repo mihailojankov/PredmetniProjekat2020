@@ -16,7 +16,7 @@ export class ClanAdministrativnogOsobljaProfilComponent implements OnInit {
   formaZaDodavanjeNovogStudenta;
   studenti:Student[];
   registrovaniNesvrstaniKorisnici:RegistrovanKorisnik[];
-  pretraga;//Property 'pretraga' does not exist on type 'ClanAdministrativnogOsobljaProfilComponent' samo zbog ovog errora stavljeno
+  pretraga;
 
   constructor(private service:StudentService, private service2:RegistrovanKorisnikService, private router:Router, private builder:FormBuilder) {
       this.formaZaDodavanjeNovogStudenta = builder.group({

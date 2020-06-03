@@ -17,6 +17,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { ClanAdministrativnogOsobljaProfilComponent } from './Components/clan-administrativnog-osoblja-profil/clan-administrativnog-osoblja-profil.component';
 import { NastavnikProfilComponent } from './Components/nastavnik-profil/nastavnik-profil.component';
 import { StudentProfilComponent } from './Components/student-profil/student-profil.component';
+import { AdminProfilComponent } from './Components/admin-profil/admin-profil.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { StudentProfilComponent } from './Components/student-profil/student-prof
     LoginComponent,
     ClanAdministrativnogOsobljaProfilComponent,
     NastavnikProfilComponent,
-    StudentProfilComponent
+    StudentProfilComponent,
+    AdminProfilComponent
   ],
   imports: [
     BrowserModule,

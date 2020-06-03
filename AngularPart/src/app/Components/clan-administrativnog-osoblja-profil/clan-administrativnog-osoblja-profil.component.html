@@ -28,7 +28,8 @@
             <td>{{student.mestoRodjenja}}</td>
             <td>{{student.drzavaRodjenja}}</td>
             <td>{{student.godinaUpisa}}</td>
-            <td>{{student.vanredni}}</td>
+            <td *ngIf="student.vanredni == true">Da</td>
+            <td *ngIf="student.vanredni == false">Ne</td>
           </tr>
         </tbody>
       </table>
