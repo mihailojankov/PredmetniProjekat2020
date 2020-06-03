@@ -56,6 +56,9 @@ public abstract class AbstractController <E extends AbstractModel, D extends Abs
 	//Dodaj novi
 	@PostMapping(path = "")
 	public ResponseEntity<E> dodaj(@RequestBody E body){
+		
+		System.out.print(body);
+		
 		service.save(body);
 		return new ResponseEntity<E>(HttpStatus.CREATED);
 	}

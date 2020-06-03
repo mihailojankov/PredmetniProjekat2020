@@ -26,7 +26,7 @@ export class ClanAdministrativnogOsobljaProfilComponent implements OnInit {
         mestoRodjenja: "",
         drzavaRodjenja: "",
         datumRodjenja: null,
-        vanredni: false,
+        vanredni: null,
         godinaUpisa: null,
         korisnik: null,
         listaPredmeta: null
@@ -47,28 +47,27 @@ export class ClanAdministrativnogOsobljaProfilComponent implements OnInit {
   dodajStudenta(data){
 
     let izabranKorisnik = null;
+
     for(let i = 0; i < this.registrovaniNesvrstaniKorisnici.length;i++){
         if(this.registrovaniNesvrstaniKorisnici[i].id == data.korisnik){
-          izabranKorisnik = JSON.stringify(this.registrovaniNesvrstaniKorisnici[i]);
+          izabranKorisnik = this.registrovaniNesvrstaniKorisnici[i];
         }
     }
 
-    if(data.vanredni == "true"){
-      data.vanredni = true;
-    }
-    else{
-      data.vanredni = false;
-    }
-
-    
-    console.log(izabranKorisnik, typeof izabranKorisnik);
-
-    let novStudent = {id:0, korisnik:izabranKorisnik, jmbg:data.string, datumRodjenja:data.datumRodjenja,
-    brojIndeksa:data.brojIndeksa, mestoRodjenja:data.mestoRodjenja, drzavaRodjenja:data.drzavaRodjenja,
-    vanredni:data.vanredni, godinaUpisa:data.godinaUpisa}as Student;
 
 
-    this.service.dodaj(data).subscribe(data => this.dobaviStudente());
+    let novStudent = {id:0, 
+          korisnik:izabranKorisnik,
+          jmbg:data.jmbg,
+          datumRodjenja:data.datumRodjenja,
+          brojIndeksa:data.brojIndeksa,
+          mestoRodjenja:data.mestoRodjenja,
+          drzavaRodjenja:data.drzavaRodjenja,
+          vanredni:data.vanredni,
+          godinaUpisa:data.godinaUpisa};
+
+
+    this.service.dodaj(novStudent).subscribe(data => this.dobaviStudente());
   }
 
 

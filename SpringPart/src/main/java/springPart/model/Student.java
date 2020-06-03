@@ -1,5 +1,6 @@
 package springPart.model;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -22,7 +23,7 @@ public class Student extends AbstractModel{
 	
 	@Column(unique = true)
 	String jmbg;
-	Date datumRodjenja;
+	LocalDate datumRodjenja;
 	String brojIndeksa;
 	String mestoRodjenja;
 	String drzavaRodjenja;
@@ -49,7 +50,7 @@ public class Student extends AbstractModel{
 		
 	}
 
-	public Student(String jmbg, Date datumRodjenja, String brojIndeksa, String mestoRodjenja, String drzavaRodjenja,
+	public Student(String jmbg, LocalDate datumRodjenja, String brojIndeksa, String mestoRodjenja, String drzavaRodjenja,
 			boolean vanredni, String godinaUpisa, RegistrovanKorisnik korisnik, List<Predmet> listaPredmeta,
 			List<PrijavaIspita> prijaveIspita, List<IshodIspita> istorijaIspita) {
 		super();

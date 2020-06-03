@@ -1,6 +1,8 @@
 package springPart.app.security;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collection;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
@@ -9,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
@@ -41,7 +44,69 @@ public class JwtRequestFilter extends OncePerRequestFilter{
 		}
 		
 		if(korisnickoIme != null && SecurityContextHolder.getContext().getAuthentication() == null) {
-			UserDetails ud = this.service.loadUserByUsername(korisnickoIme);
+			UserDetails ud;
+			
+			if(korisnickoIme.equals("admin")){
+				ud = new UserDetails() {
+					
+					@Override
+					public boolean isEnabled() {
+						// TODO Auto-generated method stub
+						return true;
+					}
+					
+					@Override
+					public boolean isCredentialsNonExpired() {
+						// TODO Auto-generated method stub
+						return true;
+					}
+					
+					@Override
+					public boolean isAccountNonLocked() {
+						// TODO Auto-generated method stub
+						return true;
+					}
+					
+					@Override
+					public boolean isAccountNonExpired() {
+						// TODO Auto-generated method stub
+						return true;
+					}
+					
+					@Override
+					public String getUsername() {
+						// TODO Auto-generated method stub
+						return "admin";
+					}
+					
+					@Override
+					public String getPassword() {
+						// TODO Auto-generated method stub
+						return "admin123";
+					}
+					
+					@Override
+					public Collection<? extends GrantedAuthority> getAuthorities() {
+						ArrayList<GrantedAuthority> listaAuth = new ArrayList<GrantedAuthority>();
+						GrantedAuthority admin = new GrantedAuthority() {
+							
+							@Override
+							public String getAuthority() {
+								return "ADMIN";
+							}
+						};
+						
+						listaAuth.add(admin);
+						
+						return listaAuth;
+					}
+				};
+					
+			}
+			else {
+				 ud = this.service.loadUserByUsername(korisnickoIme);
+			}
+			
 			
 			if(util.validateToken(jwt, ud)) {
 				

@@ -1,5 +1,6 @@
 package springPart.DTO;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -11,7 +12,7 @@ import lombok.Setter;
 public class StudentDTO extends AbstractDTO{
 	
 	String jmbg;
-	Date datumRodjenja;
+	LocalDate datumRodjenja;
 	String brojIndeksa;
 	String mestoRodjenja;
 	String drzavaRodjenja;

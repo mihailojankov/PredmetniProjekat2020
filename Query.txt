@@ -10,6 +10,9 @@ insert into registrovan_korisnik values (0, "Adresa 9 korisnika", "412414", "mla
 insert into registrovan_korisnik values (0, "Adresa 10 korisnika", "098533", "aleksandra@gmail", "Aleksandra", "aleksandra123", "aleksandra123","Mitrovic");
 insert into registrovan_korisnik values (0, "Adresa 11 korisnika", "098533412", "osoblje@gmail", "Tijana", "tijana123", "tijana123","Novakovic");
 
+insert into registrovan_korisnik values (0, "Adresa 12 korisnika", "098533411232", "student1@gmail", "Tijana", "tijana1234", "tijana1234","Novakovic");
+insert into registrovan_korisnik values (0, "Adresa 12 korisnika", "09853341442", "student2@gmail", "Tijana", "tijana12345", "tijana12345","Novakovic");
+
 insert into nastavnik values (0, true, "biografija asistenta ivana", "414214", false, 8);
 insert into nastavnik values (0, true, "biografija asistenta mladena", "7845745", false, 9);
 insert into nastavnik values (0, true, "biografija asistenta aleksandre", "744574354", false, 10);
@@ -37,11 +40,10 @@ insert into smer_fakulteta values(0, "Smer 7", "Neki opis", 3);
 insert into smer_fakulteta values(0, "Smer 8", "Neki opis", 3);
 insert into smer_fakulteta values(0, "Smer 9", "Neki opis", 3);
 
-insert into student values (0, "270111", '1997-6-12', "Srbija", '2019-1-1', "631244", "Kikinda", false, 1);
-insert into student values (0, "270222", '1998-1-1', "Srbija", '2019-1-1', "97124", "Beograd", false, 2);
-insert into student values (0, "270333", '1998-10-30', "Srbija", '2019-1-1', "423089", "Novi Sad", false, 3);
-insert into student values (0, "270444", '2000-12-5', "Srbija", '2020-1-1', "980543", "Kragujevac", false, 4);
-
+insert into student values (0, "270111", '1997-06-12', "Srbija", '2019', "631244", "Kikinda", false, 1);
+insert into student values (0, "270222", '1998-01-01', "Srbija", '2019', "97124", "Beograd", false, 2);
+insert into student values (0, "270333", '1998-10-30', "Srbija", '2019', "423089", "Novi Sad", false, 3);
+insert into student values (0, "270444", '2000-12-05', "Srbija", '2020', "980543", "Kragujevac", false, 4);
 
 
 insert into predmet values (0, 15, 15, 240, 1, "Matematika", true, 1, "Lorem ipsum asfasfasfsdgsgsdgsdgsdgsdsdg");

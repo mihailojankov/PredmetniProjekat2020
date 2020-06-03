@@ -39,25 +39,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth.userDetailsService(service);
-		
-	
-		
-		ArrayList<GrantedAuthority> listaAuth = new ArrayList<GrantedAuthority>();
-		GrantedAuthority admin = new GrantedAuthority() {
-			
-			@Override
-			public String getAuthority() {
-				return "ADMIN";
-			}
-		};
-		
-		listaAuth.add(admin);
-		
-		auth.inMemoryAuthentication()
-			.withUser("admin").password(passwordEncoder().encode("admin123")).authorities(listaAuth);
-		
-		
-		
 	}
 	
 	@Bean
@@ -76,6 +57,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 			.antMatchers(HttpMethod.GET, "/fakultet/**", "/univerzitet/**", "/smerFakulteta/**", "/predmet/**").permitAll()
 			.antMatchers(HttpMethod.POST, "/registrovanKorisnik").permitAll()
 			.antMatchers("/student/**", "/registrovanKorisnik/**").hasAuthority("CLAN")
+			.antMatchers("/**").hasAuthority("ADMIN")
 			.and()
 			.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 		

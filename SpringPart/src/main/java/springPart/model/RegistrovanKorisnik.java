@@ -22,6 +22,7 @@ public class RegistrovanKorisnik extends AbstractModel{
 	String adresa;
 	
 	
+	
 	public RegistrovanKorisnik() {
 		
 	}
