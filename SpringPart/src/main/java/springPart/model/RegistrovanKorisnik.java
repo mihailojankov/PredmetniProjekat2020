@@ -1,7 +1,16 @@
 package springPart.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+
+import org.springframework.security.core.GrantedAuthority;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -20,7 +29,10 @@ public class RegistrovanKorisnik extends AbstractModel{
 	String prezime;
 	String brojTelefona;
 	String adresa;
+	boolean dodeljen;
 	
+	@ManyToOne(optional = true)
+	Authority authority;
 	
 	
 	public RegistrovanKorisnik() {
@@ -28,7 +40,7 @@ public class RegistrovanKorisnik extends AbstractModel{
 	}
 
 	public RegistrovanKorisnik(String korisnickoIme, String lozinka, String email, String ime, String prezime,
-			String brojTelefona, String adresa) {
+			String brojTelefona, String adresa, boolean dodeljen, Authority authority) {
 		super();
 		this.korisnickoIme = korisnickoIme;
 		this.lozinka = lozinka;
@@ -37,6 +49,16 @@ public class RegistrovanKorisnik extends AbstractModel{
 		this.prezime = prezime;
 		this.brojTelefona = brojTelefona;
 		this.adresa = adresa;
+		this.dodeljen = dodeljen;
+		this.authority = authority;
 	}
+
+	
+
+	
+
+
+
+	
 	
 }

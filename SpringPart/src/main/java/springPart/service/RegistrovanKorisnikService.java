@@ -10,6 +10,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import springPart.model.AbstractModel;
+import springPart.model.Authority;
 import springPart.model.ClanAdministrativnogOsoblja;
 import springPart.model.Nastavnik;
 import springPart.model.RegistrovanKorisnik;
@@ -29,67 +30,13 @@ public class RegistrovanKorisnikService extends AbstractService<RegistrovanKoris
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		
 		RegistrovanKorisnik korisnik = repository.findByUserName(username);
-		ArrayList<GrantedAuthority> roles = new ArrayList<>();
-		
-		GrantedAuthority studentA = new GrantedAuthority() {
-			
-			@Override
-			public String getAuthority() {
-				return "STUDENT";
-			}
-		};
-		
-		GrantedAuthority nastavnikA = new GrantedAuthority() {
-			
-			@Override
-			public String getAuthority() {
-				return "NASTAVNIK";
-			}
-		};
-		
-		GrantedAuthority clanA = new GrantedAuthority() {
-			
-			@Override
-			public String getAuthority() {
-				return "CLAN";
-			}
-		};
-
-		
-		
-		Student student = repository.nadjiStudenta(korisnik.getId());
-		
-		if(student != null) {
-			
-			roles.add(studentA);
-			
-			return new User(korisnik.getKorisnickoIme(), korisnik.getLozinka(), roles);
-		}
-		else {
-			Nastavnik nastavnik = repository.nadjiNastavnika(korisnik.getId());
-			
-			if(nastavnik != null) {
-				roles.add(nastavnikA);
-				
-				return new User(korisnik.getKorisnickoIme(), korisnik.getLozinka(), roles);
-			}
-			else {
-				ClanAdministrativnogOsoblja clan = repository.nadjiClanaA(korisnik.getId());
-				
-				System.out.println(clan);
-				
-				if(clan != null) {
-					roles.add(clanA);
-					System.out.println(roles);
-					return new User(korisnik.getKorisnickoIme(), korisnik.getLozinka(), roles);
-				}
-				
-			}
+		ArrayList<Authority> roles = new ArrayList<>();
+	
+		if(korisnik.getAuthority() != null) {
+			roles.add(korisnik.getAuthority());
 		}
 		
-		
-		
-		return new User(korisnik.getKorisnickoIme(), korisnik.getLozinka(), new ArrayList<>());
+		return new User(korisnik.getKorisnickoIme(), korisnik.getLozinka(), roles);
 	}
 	
 	

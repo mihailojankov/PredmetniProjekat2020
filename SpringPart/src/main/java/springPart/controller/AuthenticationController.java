@@ -44,8 +44,6 @@ public class AuthenticationController {
 	@RequestMapping(value = "/authenticate", method = RequestMethod.POST)
 	public ResponseEntity<AuthResponse> createAuthToken(@RequestBody AuthRequest authRequest) throws Exception{
 		
-		System.out.println("Dosao do admina");
-		
 		//Ako je admin
 		if(authRequest.getKorisnickoIme().equals("admin") && authRequest.getLozinka().equals("admin123")) {
 			

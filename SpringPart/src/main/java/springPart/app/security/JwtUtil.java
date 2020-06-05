@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import springPart.model.Authority;
 
 @Service
 public class JwtUtil {
@@ -42,7 +43,11 @@ public class JwtUtil {
 	
 	public String generateToken(UserDetails userDetails) {
 		Map<String, Object> claims = new HashMap<String, Object>();
-		claims.put("role", userDetails.getAuthorities());
+		
+		for(GrantedAuthority x:userDetails.getAuthorities()) {
+			claims.put("role", x.getAuthority());
+		}
+		
 		
 		return createToken(claims, userDetails.getUsername());
 	}

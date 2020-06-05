@@ -14,12 +14,28 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import springPart.DTO.AbstractDTO;
 import springPart.model.AbstractModel;
+import springPart.model.Authority;
+import springPart.model.Nastavnik;
+import springPart.repository.AuthorityRepository;
+import springPart.service.AuthorityService;
+import springPart.service.ClanAdministrativnogOsobljaService;
 import springPart.service.CommonService;
+import springPart.service.NastavnikService;
+import springPart.service.RegistrovanKorisnikService;
+import springPart.service.StudentService;
 
 public abstract class AbstractController <E extends AbstractModel, D extends AbstractDTO, S extends CommonService<E>>{
 
 	@Autowired
 	public final S service;
+	
+	@Autowired
+	public AuthorityService serviceAuthority;
+	
+	@Autowired
+	public RegistrovanKorisnikService serviceKorisnik;
+	
+	
 	
 	private Class<D> dtoType;
 	ModelMapper mm = new ModelMapper();
@@ -56,8 +72,6 @@ public abstract class AbstractController <E extends AbstractModel, D extends Abs
 	//Dodaj novi
 	@PostMapping(path = "")
 	public ResponseEntity<E> dodaj(@RequestBody E body){
-		
-		System.out.print(body);
 		
 		service.save(body);
 		return new ResponseEntity<E>(HttpStatus.CREATED);

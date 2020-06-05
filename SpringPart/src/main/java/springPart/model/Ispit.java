@@ -21,7 +21,7 @@ public class Ispit extends AbstractModel{
 	@ManyToOne
 	Predmet predmet;
 	
-	@OneToMany
+	@OneToMany(mappedBy = "ispit")
 	List<PrijavaIspita> listaPrijavaIspita;
 
 	public Ispit() {

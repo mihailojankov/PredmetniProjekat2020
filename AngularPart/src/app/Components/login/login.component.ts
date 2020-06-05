@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
         this.ulogovan = true;
 
         let payload = JSON.parse(atob(data.jwt.split('.')[1]));
-        this.authority = payload.role[0].authority;
+        this.authority = payload.role;
     });
   }
 
