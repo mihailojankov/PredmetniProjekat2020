@@ -1,13 +1,13 @@
 <div>
 <label>Prikazi formu za dodavanje nastavnika </label>
-<button (click)="nastavnik()" id="bt">
+<button (click)="nastavnik()" (click)="dobaviNastavnike()" (click)="dobaviKorisnike()" id="bt">
     {{buttonName}}
 </button>
 </div>
 
 <div>
-    <label>Prikazi formu za dodavanje dodavanje administrativnog osoblja</label>
-    <button (click)="clan()" id="bt">
+    <label>Prikazi formu za dodavanje administrativnog osoblja</label>
+    <button (click)="clan()" (click)="dobaviKorisnike()" (click)="dobaviOsoblje()" id="bt">
         {{buttonNameO}}
     </button>
 </div>
@@ -17,7 +17,7 @@
 
 <!--Forma za dodavanje nastavnika-->
 <ng-container *ngIf="showNastavnikForma">
-<div *ngIf="registrovaniNesvrstaniKorisnici">
+<div *ngIf="registrovaniNesvrstaniKorisnici" id="okvir">
     <form ngNativeValidate [formGroup]="formaZaDodavanjeNastavnika" (ngSubmit)="dodajNastavnika(formaZaDodavanjeNastavnika.value)">
         <label>Forma za dodavanje nastavnika</label>
         <div class="form-row">
@@ -51,9 +51,7 @@
             </div>
         </div>
         <button class="btn btn-primary" type="submit">Dodaj nastavnika</button>
-        <br>
-        <br>
-        <br>
+        
     </form>
 </div>
 </ng-container>
@@ -61,7 +59,7 @@
 
 <!-- Pocetak forme za dodavanje administrativnog osoblja-->
 <ng-container *ngIf="showOsobljeForma">
-    <div *ngIf="registrovaniNesvrstaniKorisnici">
+    <div *ngIf="registrovaniNesvrstaniKorisnici" id="okvir">
         <form ngNativeValidate [formGroup]="formaZaDodavanjeOsoblja" (ngSubmit)="dodajOsoblje(formaZaDodavanjeOsoblja.value)">
             <label>Forma za dodavanje administrativnog osoblja</label>
             <div class="form-row">
@@ -83,8 +81,7 @@
             </div>
             <button class="btn btn-primary" type="submit">Dodaj osoblje</button>
             <br>
-        <br>
-        <br>
+        
         </form>
     </div>
     </ng-container>
