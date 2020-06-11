@@ -1,6 +1,7 @@
 insert into authority values (0, "STUDENT");
 insert into authority values (0, "NASTAVNIK");
 insert into authority values (0, "CLAN");
+insert into authority values (0, "ADMIN");
 
 insert into registrovan_korisnik values (0, "Adresa 1 korisnika", "23525325", true,  "misa@gmail", "Mihailo", "misa123", "misa123","Jankov", 1);
 insert into registrovan_korisnik values (0, "Adresa 2 korisnika", "463151", true, "kasija@gmail", "Kasija", "kasija123", "kasija123","Vukajlovic", 1);
@@ -15,6 +16,8 @@ insert into registrovan_korisnik values (0, "Adresa 10 korisnika", "098533", tru
 insert into registrovan_korisnik values (0, "Adresa 11 korisnika", "098533412", true, "osoblje@gmail", "Tijana", "tijana123", "tijana123","Novakovic", 3);
 insert into registrovan_korisnik values (0, "Adresa 12 korisnika", "098533411232", false, "student1@gmail", "Tijana", "tijana1234", "tijana1234","Novakovic", null);
 insert into registrovan_korisnik values (0, "Adresa 13 korisnika", "09853341442", false, "student2@gmail", "Tijana", "tijana12345", "tijana12345","Novakovic", null);
+insert into registrovan_korisnik values (0, "Adresa 14 korisnika", "09853341241442", true, "admin@gmail.com", "Pera", "admin", "admin","Novakovic", 4);
+
 
 insert into nastavnik values (0, true, "biografija asistenta ivana", "414214", false, 8);
 insert into nastavnik values (0, true, "biografija asistenta mladena", "7845745", false, 9);
