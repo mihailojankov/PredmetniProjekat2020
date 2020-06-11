@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import springPart.DTO.RegistrovanKorisnikDTO;
-import springPart.model.RegistrovanKorisnik;
+import springPart.model.korisnikPart.RegistrovanKorisnik;
 import springPart.service.RegistrovanKorisnikService;
 
 @Controller
@@ -28,16 +28,8 @@ public class RegistrovanKorisnikController extends AbstractController<Registrova
 	@Override
 	@PostMapping(path = "")
 	public ResponseEntity<RegistrovanKorisnik> dodaj(@RequestBody RegistrovanKorisnik body){
-		
-		ArrayList<RegistrovanKorisnikDTO> lista = new ArrayList<RegistrovanKorisnikDTO>();
-		for(RegistrovanKorisnik x:service.findAll()) {
-			lista.add(mm.map(x, RegistrovanKorisnikDTO.class));
-		}
-		
-		for(RegistrovanKorisnikDTO postojeci: lista) {
-			if(postojeci.getKorisnickoIme().equals(body.getKorisnickoIme()) || postojeci.getEmail().equals(body.getEmail())) {
-				return new ResponseEntity<RegistrovanKorisnik>(HttpStatus.CONFLICT);
-			}
+		if(service.proveraPostojeceg(body.getEmail(), body.getKorisnickoIme())) {
+			return new ResponseEntity<RegistrovanKorisnik>(HttpStatus.CONFLICT);
 		}
 		
 		service.save(body);

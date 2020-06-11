@@ -1,7 +1,7 @@
 package springPart.service;
 import org.springframework.stereotype.Service;
 
-import springPart.model.Nastavnik;
+import springPart.model.korisnikPart.Nastavnik;
 import springPart.repository.NastavnikRepository;
 
 @Service

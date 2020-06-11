@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import springPart.DTO.AbstractDTO;
 import springPart.model.AbstractModel;
-import springPart.model.Authority;
-import springPart.model.Nastavnik;
+import springPart.model.korisnikPart.Nastavnik;
+import springPart.model.security.Authority;
 import springPart.repository.AuthorityRepository;
 import springPart.service.AuthorityService;
 import springPart.service.ClanAdministrativnogOsobljaService;
@@ -50,6 +50,7 @@ public abstract class AbstractController <E extends AbstractModel, D extends Abs
 	public ResponseEntity<ArrayList<D>> dobaviSve(){
 		
 		ArrayList<D> lista = new ArrayList<D>();
+		
 		for(E x:service.findAll()) {
 			lista.add(mm.map(x, this.dtoType));
 		}

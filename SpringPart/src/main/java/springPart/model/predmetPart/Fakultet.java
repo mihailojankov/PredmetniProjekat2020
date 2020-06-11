@@ -1,4 +1,4 @@
-package springPart.model;
+package springPart.model.predmetPart;
 
 import java.util.List;
 
@@ -10,6 +10,8 @@ import javax.persistence.OneToMany;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
+import springPart.model.AbstractModel;
+import springPart.model.korisnikPart.Nastavnik;
 
 @Getter
 @Setter

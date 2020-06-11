@@ -1,13 +1,15 @@
 package springPart.repository;
+import java.util.Optional;
+
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import springPart.model.AbstractModel;
-import springPart.model.ClanAdministrativnogOsoblja;
-import springPart.model.Nastavnik;
-import springPart.model.RegistrovanKorisnik;
-import springPart.model.Student;
+import springPart.model.korisnikPart.ClanAdministrativnogOsoblja;
+import springPart.model.korisnikPart.Nastavnik;
+import springPart.model.korisnikPart.RegistrovanKorisnik;
+import springPart.model.korisnikPart.Student;
 
 @Repository
 public interface RegistrovanKorisnikRepository extends InheritInterface<RegistrovanKorisnik> {
@@ -19,6 +21,10 @@ public interface RegistrovanKorisnikRepository extends InheritInterface<Registro
 	@Query
 	("SELECT k FROM RegistrovanKorisnik k WHERE k.dodeljen = false")
 	public Iterable<RegistrovanKorisnik> findAll();
+	
+	@Query
+	("SELECT k FROM RegistrovanKorisnik k WHERE k.email=:email AND k.korisnickoIme=:korisnicko")
+	public Optional<RegistrovanKorisnik> proveriPoEmailuIKorisnickomImenu(@PathVariable("email") String email, @PathVariable("korisnicko")String korisnicko);
 	
 	
 }

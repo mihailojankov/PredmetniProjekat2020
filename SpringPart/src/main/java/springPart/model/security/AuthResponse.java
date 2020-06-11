@@ -1,4 +1,4 @@
-package springPart.model;
+package springPart.model.security;
 
 public class AuthResponse {
 	

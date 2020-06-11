@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
-import springPart.model.Authority;
+import springPart.model.security.Authority;
 
 @Service
 public class JwtUtil {

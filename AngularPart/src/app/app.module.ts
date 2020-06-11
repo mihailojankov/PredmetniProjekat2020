@@ -18,6 +18,12 @@ import { ClanAdministrativnogOsobljaProfilComponent } from './Components/clan-ad
 import { NastavnikProfilComponent } from './Components/nastavnik-profil/nastavnik-profil.component';
 import { StudentProfilComponent } from './Components/student-profil/student-profil.component';
 import { AdminProfilComponent } from './Components/admin-profil/admin-profil.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatGridListModule } from '@angular/material/grid-list';
+import {MatCardModule} from '@angular/material/card';
+import {MatButtonModule} from '@angular/material/button';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+
 
 @NgModule({
   declarations: [
@@ -40,7 +46,12 @@ import { AdminProfilComponent } from './Components/admin-profil/admin-profil.com
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
+    BrowserAnimationsModule,
+    MatGridListModule,
+    MatCardModule,
+    MatButtonModule,
+    MatSlideToggleModule
 
   ],
   providers: [

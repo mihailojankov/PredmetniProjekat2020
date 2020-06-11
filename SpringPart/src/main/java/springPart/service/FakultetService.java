@@ -1,6 +1,7 @@
 package springPart.service;
 import org.springframework.stereotype.Service;
-import springPart.model.Fakultet;
+
+import springPart.model.predmetPart.Fakultet;
 import springPart.repository.FakultetRepository;
 
 @Service

@@ -1,7 +1,7 @@
 package springPart.service;
 import org.springframework.stereotype.Service;
 
-import springPart.model.SmerFakulteta;
+import springPart.model.predmetPart.SmerFakulteta;
 import springPart.repository.SmerFakultetaRepository;
 
 @Service

@@ -1,4 +1,4 @@
-package springPart.model;
+package springPart.model.ispitPart;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -9,6 +9,7 @@ import javax.persistence.OneToMany;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
+import springPart.model.AbstractModel;
 
 
 @Getter

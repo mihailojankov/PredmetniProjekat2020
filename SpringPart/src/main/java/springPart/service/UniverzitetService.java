@@ -1,7 +1,7 @@
 package springPart.service;
 import org.springframework.stereotype.Service;
 
-import springPart.model.Univerzitet;
+import springPart.model.predmetPart.Univerzitet;
 import springPart.repository.UniverzitetRepository;
 
 @Service

@@ -9,10 +9,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import springPart.DTO.StudentDTO;
-import springPart.model.Authority;
-import springPart.model.Student;
-import springPart.model.RegistrovanKorisnik;
-import springPart.model.Student;
+import springPart.model.korisnikPart.RegistrovanKorisnik;
+import springPart.model.korisnikPart.Student;
+import springPart.model.security.Authority;
 import springPart.service.StudentService;
 
 @Controller

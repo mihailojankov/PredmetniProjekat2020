@@ -1,4 +1,11 @@
-<div *ngIf="studenti">
+
+
+<button mat-raised-button color="primary" (click)="prikazIDodavanjeStudenataFunction()">Spisak studenata i dodavanje novih</button>
+<br>
+<br>
+
+<div *ngIf="prikazIDodavanjeStudenata">
+<div>
     Search: <input type="text" placeholder="Pretrazite studente" [(ngModel)]="pretraga">
     <table class="table table-hover table-dark">
         <thead>
@@ -79,6 +86,7 @@
         </div>
         <button class="btn btn-primary" type="submit">Dodaj studenta</button>
       </form>
+</div>
 </div>
 <br>
 <br>

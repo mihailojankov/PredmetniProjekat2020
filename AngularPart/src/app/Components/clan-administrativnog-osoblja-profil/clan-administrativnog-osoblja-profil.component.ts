@@ -18,6 +18,9 @@ export class ClanAdministrativnogOsobljaProfilComponent implements OnInit {
   registrovaniNesvrstaniKorisnici:RegistrovanKorisnik[];
   pretraga;
 
+  //Slajdovi
+  prikazIDodavanjeStudenata = false;
+
   constructor(private service:StudentService, private service2:RegistrovanKorisnikService, private router:Router, private builder:FormBuilder) {
       this.formaZaDodavanjeNovogStudenta = builder.group({
         id:0,
@@ -69,6 +72,12 @@ export class ClanAdministrativnogOsobljaProfilComponent implements OnInit {
 
     this.service.dodaj(novStudent).subscribe(data => this.dobaviStudente());
   }
+
+  prikazIDodavanjeStudenataFunction(){
+    this.prikazIDodavanjeStudenata = !this.prikazIDodavanjeStudenata;
+  }
+
+
 
 
 

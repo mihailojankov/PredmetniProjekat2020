@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import springPart.DTO.PredmetDTO;
-import springPart.model.Predmet;
+import springPart.model.predmetPart.Predmet;
 import springPart.service.PredmetService;
 
 @Controller

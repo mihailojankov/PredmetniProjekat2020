@@ -1,4 +1,4 @@
-package springPart.model;
+package springPart.model.korisnikPart;
 
 import java.time.LocalDate;
 import java.util.Date;
@@ -15,6 +15,10 @@ import javax.persistence.OneToOne;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
+import springPart.model.AbstractModel;
+import springPart.model.ispitPart.IshodIspita;
+import springPart.model.ispitPart.PrijavaIspita;
+import springPart.model.predmetPart.Predmet;
 
 @Getter
 @Setter

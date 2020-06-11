@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import springPart.DTO.SmerFakultetaDTO;
-import springPart.model.SmerFakulteta;
+import springPart.model.predmetPart.SmerFakulteta;
 import springPart.service.SmerFakultetaService;
 
 @Controller

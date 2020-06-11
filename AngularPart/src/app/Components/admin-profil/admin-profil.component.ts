@@ -45,21 +45,15 @@ export class AdminProfilComponent implements OnInit {
     }
 
   ngOnInit(): void {
-    this.dobaviKorisnike();
-    this.dobaviNastavnike();
-    this.dobaviOsoblje();
+    this.dobaviSve();
   }
 
-  dobaviNastavnike(){
+  dobaviSve(){
     this.serviceN.dobavi().subscribe(data => this.nastavnici = data);
-  }
-  dobaviKorisnike(){
     this.serviceK.dobavi().subscribe(data =>this.registrovaniNesvrstaniKorisnici = data);
-  }
-
-  dobaviOsoblje(){
     this.serviceO.dobavi().subscribe(data => this.osoblje = data);
   }
+ 
 
 
 
@@ -81,7 +75,7 @@ export class AdminProfilComponent implements OnInit {
     asistent:data.asistent,
     korisnik:izabranKorisnik
   }
-  this.serviceN.dodaj(novNastavnik).subscribe(data => this.dobaviNastavnike());
+  this.serviceN.dodaj(novNastavnik).subscribe(data => this.dobaviSve());
 
     
   }
@@ -113,7 +107,7 @@ export class AdminProfilComponent implements OnInit {
     uloga:data.uloga,
     korisnik:izabranKorisnik
   }
-  this.serviceO.dodaj(novoOsoblje).subscribe(data => this.dobaviOsoblje());
+  this.serviceO.dodaj(novoOsoblje).subscribe(data => this.dobaviSve());
   }
 
   clan(){

@@ -2,7 +2,7 @@ package springPart.service;
 
 import org.springframework.stereotype.Service;
 
-import springPart.model.IshodIspita;
+import springPart.model.ispitPart.IshodIspita;
 import springPart.repository.IshodIspitaRepository;
 
 @Service

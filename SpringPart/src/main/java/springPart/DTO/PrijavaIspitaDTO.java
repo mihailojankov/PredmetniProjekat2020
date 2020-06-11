@@ -3,7 +3,7 @@ package springPart.DTO;
 import java.time.LocalDateTime;
 import lombok.Getter;
 import lombok.Setter;
-import springPart.model.Student;
+import springPart.model.korisnikPart.Student;
 
 @Getter
 @Setter

@@ -1,4 +1,4 @@
-package springPart.model;
+package springPart.model.security;
 
 import java.util.List;
 
@@ -13,6 +13,8 @@ import org.springframework.security.core.GrantedAuthority;
 
 import lombok.Getter;
 import lombok.Setter;
+import springPart.model.AbstractModel;
+import springPart.model.korisnikPart.RegistrovanKorisnik;
 
 @Getter
 @Setter

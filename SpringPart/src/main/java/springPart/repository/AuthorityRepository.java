@@ -4,7 +4,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.PathVariable;
 
-import springPart.model.Authority;
+import springPart.model.security.Authority;
 
 @Repository
 public interface AuthorityRepository extends InheritInterface<Authority>{

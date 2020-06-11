@@ -10,11 +10,11 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import springPart.model.AbstractModel;
-import springPart.model.Authority;
-import springPart.model.ClanAdministrativnogOsoblja;
-import springPart.model.Nastavnik;
-import springPart.model.RegistrovanKorisnik;
-import springPart.model.Student;
+import springPart.model.korisnikPart.ClanAdministrativnogOsoblja;
+import springPart.model.korisnikPart.Nastavnik;
+import springPart.model.korisnikPart.RegistrovanKorisnik;
+import springPart.model.korisnikPart.Student;
+import springPart.model.security.Authority;
 import springPart.repository.RegistrovanKorisnikRepository;
 
 @Service
@@ -30,6 +30,7 @@ public class RegistrovanKorisnikService extends AbstractService<RegistrovanKoris
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		
 		RegistrovanKorisnik korisnik = repository.findByUserName(username);
+		
 		ArrayList<Authority> roles = new ArrayList<>();
 	
 		if(korisnik.getAuthority() != null) {
@@ -37,6 +38,13 @@ public class RegistrovanKorisnikService extends AbstractService<RegistrovanKoris
 		}
 		
 		return new User(korisnik.getKorisnickoIme(), korisnik.getLozinka(), roles);
+	}
+	
+	public boolean proveraPostojeceg(String email, String korisnicko) {
+		if(repository.proveriPoEmailuIKorisnickomImenu(email, korisnicko) == null) {
+			return false;
+		}
+		return true;
 	}
 	
 	

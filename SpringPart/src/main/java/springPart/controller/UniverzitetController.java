@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import springPart.DTO.UniverzitetDTO;
-import springPart.model.Univerzitet;
+import springPart.model.predmetPart.Univerzitet;
 import springPart.service.UniverzitetService;
 
 @Controller

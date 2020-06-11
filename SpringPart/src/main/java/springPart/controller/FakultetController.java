@@ -4,7 +4,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import springPart.DTO.FakultetDTO;
-import springPart.model.Fakultet;
+import springPart.model.predmetPart.Fakultet;
 import springPart.service.FakultetService;
 
 @Controller

@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import springPart.DTO.PrijavaIspitaDTO;
-import springPart.model.PrijavaIspita;
+import springPart.model.ispitPart.PrijavaIspita;
 import springPart.service.PrijavaIspitaService;
 
 @Controller

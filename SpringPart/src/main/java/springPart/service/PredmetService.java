@@ -1,7 +1,7 @@
 package springPart.service;
 import org.springframework.stereotype.Service;
 
-import springPart.model.Predmet;
+import springPart.model.predmetPart.Predmet;
 import springPart.repository.PredmetRepository;
 
 @Service

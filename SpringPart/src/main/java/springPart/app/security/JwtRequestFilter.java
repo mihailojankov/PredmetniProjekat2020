@@ -44,69 +44,8 @@ public class JwtRequestFilter extends OncePerRequestFilter{
 		}
 		
 		if(korisnickoIme != null && SecurityContextHolder.getContext().getAuthentication() == null) {
-			UserDetails ud;
 			
-			if(korisnickoIme.equals("admin")){
-				ud = new UserDetails() {
-					
-					@Override
-					public boolean isEnabled() {
-						// TODO Auto-generated method stub
-						return true;
-					}
-					
-					@Override
-					public boolean isCredentialsNonExpired() {
-						// TODO Auto-generated method stub
-						return true;
-					}
-					
-					@Override
-					public boolean isAccountNonLocked() {
-						// TODO Auto-generated method stub
-						return true;
-					}
-					
-					@Override
-					public boolean isAccountNonExpired() {
-						// TODO Auto-generated method stub
-						return true;
-					}
-					
-					@Override
-					public String getUsername() {
-						// TODO Auto-generated method stub
-						return "admin";
-					}
-					
-					@Override
-					public String getPassword() {
-						// TODO Auto-generated method stub
-						return "admin123";
-					}
-					
-					@Override
-					public Collection<? extends GrantedAuthority> getAuthorities() {
-						ArrayList<GrantedAuthority> listaAuth = new ArrayList<GrantedAuthority>();
-						GrantedAuthority admin = new GrantedAuthority() {
-							
-							@Override
-							public String getAuthority() {
-								return "ADMIN";
-							}
-						};
-						
-						listaAuth.add(admin);
-						
-						return listaAuth;
-					}
-				};
-					
-			}
-			else {
-				 ud = this.service.loadUserByUsername(korisnickoIme);
-			}
-			
+			UserDetails ud = this.service.loadUserByUsername(korisnickoIme);
 			
 			if(util.validateToken(jwt, ud)) {
 				

@@ -2,7 +2,7 @@ package springPart.service;
 
 import org.springframework.stereotype.Service;
 
-import springPart.model.Authority;
+import springPart.model.security.Authority;
 import springPart.repository.AuthorityRepository;
 
 @Service

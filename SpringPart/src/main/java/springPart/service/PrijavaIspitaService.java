@@ -2,7 +2,7 @@ package springPart.service;
 
 import org.springframework.stereotype.Service;
 
-import springPart.model.PrijavaIspita;
+import springPart.model.ispitPart.PrijavaIspita;
 import springPart.repository.PrijavaIspitaRepository;
 
 @Service

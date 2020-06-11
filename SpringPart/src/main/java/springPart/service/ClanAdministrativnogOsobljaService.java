@@ -2,7 +2,7 @@ package springPart.service;
 
 import org.springframework.stereotype.Service;
 
-import springPart.model.ClanAdministrativnogOsoblja;
+import springPart.model.korisnikPart.ClanAdministrativnogOsoblja;
 import springPart.repository.ClanAdministrativnogOsobljaRepository;
 
 @Service

@@ -1,4 +1,4 @@
-package springPart.model;
+package springPart.model.predmetPart;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -9,6 +9,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 import lombok.Data;
+import springPart.model.AbstractModel;
+import springPart.model.korisnikPart.Nastavnik;
 
 @Data
 @Entity

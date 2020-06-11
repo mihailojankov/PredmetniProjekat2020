@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import springPart.DTO.RokDTO;
-import springPart.model.Rok;
+import springPart.model.ispitPart.Rok;
 import springPart.service.RokService;
 
 @Controller

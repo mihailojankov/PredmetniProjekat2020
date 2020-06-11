@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import springPart.DTO.IspitDTO;
-import springPart.model.Ispit;
+import springPart.model.ispitPart.Ispit;
 import springPart.service.IspitService;
 
 @Controller
