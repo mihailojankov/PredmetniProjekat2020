@@ -25,7 +25,9 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatTabsModule} from '@angular/material/tabs';
+import {MatInputModule} from '@angular/material/input';
 import { PocetnaComponent } from './Components/pocetna/pocetna.component';
+
 
 
 
@@ -60,7 +62,8 @@ import { PocetnaComponent } from './Components/pocetna/pocetna.component';
     MatSlideToggleModule,
     MatFormFieldModule,
     MatSidenavModule,
-    MatTabsModule
+    MatTabsModule,
+    MatInputModule
     
 
   ],
