@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { FormBuilder } from '@angular/forms';
 
 
 @Component({
@@ -11,56 +12,47 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  korisnickoIme:string = "";
-  lozinka:string = "";
-  ulogovan = false;
-  authority:string;
+  loginForm;
+  authority;
 
-  constructor(private http:HttpClient, private router:Router) { }
-
-  ngOnInit(): void {
-   /**  if(window.localStorage.getItem("token") != ""){
-      this.ulogovan = true;
-    }
-    */
-  }
-
-
-
-  login(){
-    if(this.korisnickoIme == "" || this.lozinka == ""){
-      return;
-    }
-    window.localStorage.removeItem("token");
-    
-    let korisnik = {korisnickoIme:this.korisnickoIme, lozinka:this.lozinka};
-    this.http.post<any>("http://localhost:8080/authenticate", korisnik).subscribe(data => {
-
-        window.localStorage.setItem("token", data.jwt);
-        this.ulogovan = true;
-
-        let payload = JSON.parse(atob(data.jwt.split('.')[1]));
-        this.authority = payload.role;
+  constructor(private http:HttpClient, private router:Router, builder:FormBuilder) {
+    this.loginForm = builder.group({
+      korisnickoIme:"",
+      lozinka:""
     });
   }
 
-  logout(){
-      window.localStorage.setItem("token", "");
-      this.ulogovan = false;
+  ngOnInit(): void {
+    window.localStorage.setItem("token", "");
   }
+
+  login(data){
+    window.localStorage.setItem("token", "");
+    
+    let korisnik = {korisnickoIme:data.korisnickoIme, lozinka:data.lozinka};
+    this.http.post<any>("http://localhost:8080/authenticate", korisnik).subscribe(data => {
+      window.localStorage.setItem("token", data.jwt);
+      this.router.navigate(["/"]);
+        
+    });
+  }
+
   
   chooseProfile(){
-    console.log(this.authority);
-      if(this.authority == "CLAN"){
+    let payload = JSON.parse(atob(window.localStorage.getItem("token").split('.')[1]));
+    let authority = payload.role;
+
+
+      if(authority == "CLAN"){
         this.router.navigate(["clanAdministrativnogOsobljaProfil"]);
       }
-      if(this.authority == "NASTAVNIK"){
+      if(authority == "NASTAVNIK"){
         this.router.navigate(["nastavnikProfil"]);
       }
-      if(this.authority == "STUDENT"){
+      if(authority == "STUDENT"){
         this.router.navigate(["studentProfil"]);
       }
-      if(this.authority == "ADMIN"){
+      if(authority == "ADMIN"){
         this.router.navigate(["adminProfil"])
       }
       

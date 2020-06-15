@@ -1,29 +1,19 @@
-<div *ngIf="!ulogovan">
-<form  (ngSubmit)="login()" ngNativeValidate>
-    <div>
-        <label for="korisnickoIme">
-          Korisnicko ime
-        </label>
-        <input id="korisnickoIme" type="text" [(ngModel)]="korisnickoIme" name="korisnickoIme" required>
-    </div>
-    
-    <div>
-        <label for="lozinka">
-          Lozinka
-        </label>
-        <input id="lozinka" type="password" [(ngModel)]="lozinka" name="lozinka"  required>
-    </div>
 
-    <button class="button" type="submit">Uloguj se</button>
-    <br>
-    <a [routerLink]="['/registracija']" routerLinkActive="router-link-active" >Registruj se</a>
-</form>
+<div class="login-form">
+  <form [formGroup]="loginForm" ngNativeValidate (ngSubmit)="login(loginForm.value)">
+      <h2 class="text-center">Prijava</h2>       
+      <div class="form-group">
+          <input type="text" class="form-control" formControlName="korisnickoIme" placeholder="Korisnicko ime" required="required">
+      </div>
+      <div class="form-group">
+          <input type="password" class="form-control" formControlName="lozinka" placeholder="Lozinka" required="required">
+      </div>
+      <div class="form-group">
+          <button type="submit" class="btn btn-primary btn-block">Uloguj se</button>
+      </div>    
+      <p class="text-center"><a [routerLink]="['/registracija']" routerLinkActive="router-link-active" >Registruj se</a></p>
+    <h2 style="text-decoration: underline; cursor: pointer;" class="text-center" [routerLink]="['/']" routerLinkActive="router-link-active" >Nastavi kao gost</h2>  
+  </form>
 </div>
 
-<div *ngIf="ulogovan">
-  <p>Uspesno ste ulogovani</p>
-  <button (click)="logout()">Izloguj se</button>
-  <br>
-  <button  (click)="chooseProfile()">Korisnicki profil</button>
-</div>
 

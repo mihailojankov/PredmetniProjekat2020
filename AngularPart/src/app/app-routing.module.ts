@@ -9,10 +9,13 @@ import { ClanAdministrativnogOsobljaProfilComponent } from './Components/clan-ad
 import { NastavnikProfilComponent } from './Components/nastavnik-profil/nastavnik-profil.component';
 import { StudentProfilComponent } from './Components/student-profil/student-profil.component';
 import { AdminProfilComponent } from './Components/admin-profil/admin-profil.component';
+import { LoginComponent } from './Components/login/login.component';
+import { PocetnaComponent } from './Components/pocetna/pocetna.component';
 
 
 const routes: Routes = [
-  {path:"", component:PrikazFakultetaComponent},
+  {path:"", component:PocetnaComponent},
+  {path:"login", component:LoginComponent},
   {path:"registracija", component:RegistracijaKorisnikaComponent},
   {path:"smerovi", component:PrikazSmerovaComponent},
   {path:"smerovi/predmeti", component:PrikazPredmetaSmeraComponent},

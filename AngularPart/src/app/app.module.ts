@@ -5,7 +5,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { MainPageComponent } from './Components/main-page/main-page.component';
 import { RegistracijaKorisnikaComponent } from './Components/registracija-korisnika/registracija-korisnika.component';
 import { PrikazFakultetaComponent } from './Components/prikaz-fakulteta/prikaz-fakulteta.component';
 import { PrikazSmerovaComponent } from './Components/prikaz-smerova/prikaz-smerova.component';
@@ -23,12 +22,18 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatTabsModule} from '@angular/material/tabs';
+import { PocetnaComponent } from './Components/pocetna/pocetna.component';
+
+
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    MainPageComponent,
     RegistracijaKorisnikaComponent,
     PrikazFakultetaComponent,
     PrikazSmerovaComponent,
@@ -38,7 +43,8 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
     ClanAdministrativnogOsobljaProfilComponent,
     NastavnikProfilComponent,
     StudentProfilComponent,
-    AdminProfilComponent
+    AdminProfilComponent,
+    PocetnaComponent
   ],
   imports: [
     BrowserModule,
@@ -51,7 +57,11 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
     MatGridListModule,
     MatCardModule,
     MatButtonModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatFormFieldModule,
+    MatSidenavModule,
+    MatTabsModule
+    
 
   ],
   providers: [

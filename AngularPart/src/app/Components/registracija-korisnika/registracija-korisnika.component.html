@@ -1,52 +1,66 @@
-<form [formGroup]="regForm" (ngSubmit)="registruj(regForm.value)" ngNativeValidate>
-    <div>
+
+<div class="login-form">
+  <form [formGroup]="regForm" (ngSubmit)="registruj(regForm.value)" ngNativeValidate>
+    
+    <h2 class="text-center">Registracija</h2>
+    <div class="form-group">
         <label for="korisnickoIme">
           Korisnicko ime
         </label>
-        <input id="korisnickoIme" type="text" formControlName="korisnickoIme" required>
+        <input id="korisnickoIme" class="form-control" type="text" formControlName="korisnickoIme" required>
     </div>
     
-    <div>
+    <div class="form-group">
         <label for="lozinka">
           Lozinka
         </label>
-        <input id="lozinka" type="password" formControlName="lozinka" required>
+        <input id="lozinka" class="form-control" type="password" formControlName="lozinka" required>
     </div>
 
-    <div>
+    <div class="form-group">
         <label for="email">
           Email
         </label>
-        <input id="email" type="email" formControlName="email" required>
+        <input id="email" class="form-control" type="email" formControlName="email" required>
     </div>
 
-    <div>
+    <div class="form-group">
         <label for="ime">
           Ime
         </label>
-        <input id="ime" type="text" formControlName="ime" required>
+        <input id="ime" class="form-control" type="text" formControlName="ime" required>
     </div>
 
-    <div>
+    <div class="form-group">
         <label for="prezime">
           Prezime
         </label>
-        <input id="prezime" type="text" formControlName="prezime" required>
+        <input id="prezime" class="form-control" type="text" formControlName="prezime" required>
     </div>
 
-    <div>
+    <div class="form-group">
         <label for="brojTelefona">
           Broj telefona
         </label>
-        <input id="brojTelefona" type="text" formControlName="brojTelefona" required>
+        <input id="brojTelefona" class="form-control" type="text" formControlName="brojTelefona" required>
     </div>
 
-    <div>
+    <div class="form-group">
         <label for="adresa">
           Adresa
         </label>
-        <input id="adresa" type="text" formControlName="adresa" required>
+        <input id="adresa" class="form-control"  type="text" formControlName="adresa" required>
     </div>
 
-    <button class="button" type="submit">Registruj se</button>
+    <button class="btn btn-primary btn-block" type="submit">Registruj se</button>
+    <br>
+    <h4 [routerLink]="['/login']" class="text-center" style="text-decoration: underline; cursor: pointer;" routerLinkActive="router-link-active" >Nazad na prijavu</h4>
 </form>
+</div>
+
+
+
+
+
+
+

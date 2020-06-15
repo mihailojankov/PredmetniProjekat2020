@@ -1,21 +1,27 @@
-<div class="main">
-    <mat-grid-list cols="2" rowHeight="2:1">
-        <mat-grid-tile *ngFor="let fakultet of fakulteti">
-            <a [routerLink]="['smerovi']" [queryParams]="{id:fakultet.id}">
-            
-                <mat-card class="single-show-card">
-                    <mat-card-header>
-                      <mat-card-title>{{fakultet.naziv}}</mat-card-title>
-                    </mat-card-header>
-                    <img mat-card-image src="https://www.ekspres.net/wp-content/uploads/2019/06/03/knjige-710x474.jpg">
-                    <mat-card-content>
-                      <p>
-                        {{fakultet.opis}}
-                      </p>
-                    </mat-card-content>
-                  </mat-card>
-            </a>
-        </mat-grid-tile>
-    </mat-grid-list>
-</div>
+      <div *ngIf="!izabranFakultet"> 
+      <mat-grid-list cols="3" rowHeight="400px">
+          <mat-grid-tile *ngFor="let fakultet of fakulteti">
+              <a (click)="izaberiFakultet(fakultet)">
+              
+                  <mat-card class="single-show-card">
+                      <mat-card-header>
+                        <mat-card-title>{{fakultet.naziv}}</mat-card-title>
+                      </mat-card-header>
+                      <img mat-card-image src="https://www.ekspres.net/wp-content/uploads/2019/06/03/knjige-710x474.jpg">
+                      <mat-card-content>
+                        <p>
+                          {{fakultet.opis}}
+                        </p>
+                      </mat-card-content>
+                    </mat-card>
+              </a>
+          </mat-grid-tile>
+      </mat-grid-list>
+    </div>
+
+      <app-prikaz-smerova *ngIf="izabranFakultet" [fakultet]="izabranFakultet"></app-prikaz-smerova>
+
+
+
+
 

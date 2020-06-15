@@ -11,12 +11,13 @@ export class Interseptor implements HttpInterceptor {
 
     private handleAuthError(err: HttpErrorResponse): Observable<any> {
         if(err.status === 401 || err.status === 403 || err.status === 500){
-            window.alert("Nemate pristup!");
-            this.router.navigate([""]);
+            window.localStorage.setItem("token", "");
+            this.router.navigate(["/login"]);
+            //Poruka o pristupu
         }
 
         if(err.status === 409){
-            window.alert("Pogresni podaci!");
+            window.alert("Neispravni podaci!");
         }
 
         return throwError(err);
@@ -29,6 +30,7 @@ export class Interseptor implements HttpInterceptor {
             const authReq = req.clone({headers: req.headers.set("Authorization", token)});
             return next.handle(authReq).pipe(catchError(x=> this.handleAuthError(x)));
         }
+
         return next.handle(req).pipe(catchError(x=> this.handleAuthError(x))); //here use an arrow function, otherwise you may get "Cannot read property 'navigate' of undefined" on angular 4.4.2/net core 2/webpack 2.70
     }
 }

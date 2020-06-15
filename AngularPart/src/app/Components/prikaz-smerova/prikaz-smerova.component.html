@@ -1,11 +1,18 @@
-<div class="container" class="d-inline justify-content-center" *ngIf="fakultet">
-
-    <div class="row" *ngFor="let smer of fakultet.smerovi">
-            <a [routerLink]="['predmeti']" [queryParams]="{id:smer.id}">
-                <div class="col">
-                    <h2>{{smer.naziv}}</h2>
-                    <p>{{smer.opis}}</p>
-                </div>
-            </a>
-    </div>
-</div>
+<mat-grid-list cols="3" rowHeight="400px">
+    <mat-grid-tile *ngFor="let smer of fakultet.smerovi">
+        <a [routerLink]="['predmeti']" [queryParams]="{id:smer.id}">
+        
+            <mat-card class="single-show-card">
+                <mat-card-header>
+                  <mat-card-title>{{smer.naziv}}</mat-card-title>
+                </mat-card-header>
+                <img mat-card-image src="https://www.ekspres.net/wp-content/uploads/2019/06/03/knjige-710x474.jpg">
+                <mat-card-content>
+                  <p>
+                    {{smer.opis}}
+                  </p>
+                </mat-card-content>
+              </mat-card>
+        </a>
+    </mat-grid-tile>
+</mat-grid-list>

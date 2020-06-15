@@ -11,18 +11,13 @@ import { Observable } from 'rxjs';
 })
 export class PrikazSmerovaComponent implements OnInit {
 
+  @Input()
   fakultet:Fakultet;
 
   constructor(private service:FakultetService, private route:ActivatedRoute, private router:Router) { }
 
   ngOnInit(): void {
-    this.dobaviFakultet();
-  }
-
-  dobaviFakultet(){
-    this.service.dobaviPoId(this.route.snapshot.queryParams["id"]).subscribe(data =>{
-        this.fakultet = data;
-    });
+    
   }
 
 }
