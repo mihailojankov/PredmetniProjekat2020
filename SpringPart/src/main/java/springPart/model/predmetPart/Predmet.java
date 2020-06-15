@@ -40,8 +40,7 @@ public class Predmet extends AbstractModel{
 	@OneToMany(mappedBy = "predmet")
 	List<Ispit> ispitiIzPredmeta;
 	
-	@ManyToMany
-	@JoinTable(name = "predmetiNaSmeru", joinColumns = @JoinColumn(name="predmet_id"), inverseJoinColumns = @JoinColumn(name="smer_fakulteta_id"))
+	@ManyToMany(mappedBy = "predmeti")
 	List<SmerFakulteta> listaSmerovaFakulteta;
 	
 	@OneToMany(mappedBy = "predmet")

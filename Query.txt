@@ -63,10 +63,10 @@ insert into predmet values (0, 15, 15, 240, 3, "Isa", true, 6, "Lorem ipsum asfa
 
 insert into predmeti_na_smeru values (1, 1);
 insert into predmeti_na_smeru values (2, 2);
-insert into predmeti_na_smeru values (3, 6);
-insert into predmeti_na_smeru values (4, 3);
-insert into predmeti_na_smeru values (5, 7);
-insert into predmeti_na_smeru values (6, 1);
+insert into predmeti_na_smeru values (6, 3);
+insert into predmeti_na_smeru values (3, 4);
+insert into predmeti_na_smeru values (7, 5);
+insert into predmeti_na_smeru values (1, 6);
 
 
 

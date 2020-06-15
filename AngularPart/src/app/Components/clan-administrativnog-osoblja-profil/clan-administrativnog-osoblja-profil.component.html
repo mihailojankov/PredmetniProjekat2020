@@ -1,6 +1,9 @@
 
 
-<button mat-raised-button color="primary" >Spisak studenata i dodavanje novih</button>
+<mat-checkbox (change)='prikazIDodavanjeStudenataFunction($event)'>Forma za studente</mat-checkbox>
+<br>
+<mat-checkbox (change)='prikazFormeRokaFunction($event)'>Forma za rok</mat-checkbox>
+
 <br>
 <br>
 
@@ -41,52 +44,124 @@
         </tbody>
       </table>
 </div>
+</div>
 <br>
 <br>
-<div *ngIf="registrovaniNesvrstaniKorisnici">
-    <form ngNativeValidate [formGroup]="formaZaDodavanjeNovogStudenta" (ngSubmit)="dodajStudenta(formaZaDodavanjeNovogStudenta.value)">
-        <div class="form-row">
-          <div class="col-md-4 mb-3">
-            <label for="validationDefault01">Korisnik</label>
-            <select formControlName="korisnik">
-                <option *ngFor="let korisnik of registrovaniNesvrstaniKorisnici" [value]="korisnik.id">{{korisnik.ime}} | {{korisnik.prezime}} | {{korisnik.email}}</option>
-             </select>
-          </div>
-          <div class="col-md-4 mb-3">
-            <label for="validationDefault01">Broj indeksa</label>
-            <input type="text" class="form-control" formControlName="brojIndeksa" placeholder="Broj indeksa" required>
-          </div>
-          <div class="col-md-4 mb-3">
-            <label for="validationDefault02">Datum rodjenja</label>
-            <input type="date" class="form-control" formControlName="datumRodjenja" placeholder="Datum rodjenja" required>
-          </div>
-          <div class="col-md-4 mb-3">
-            <label for="validationDefault02">Mesto rodjenja</label>
-            <input type="text" class="form-control" formControlName="mestoRodjenja" placeholder="Mesto rodjenja" required>
-          </div>
-          <div class="col-md-4 mb-3">
-            <label for="validationDefault02">Drzava rodjenja</label>
-            <input type="text" class="form-control" formControlName="drzavaRodjenja" placeholder="Drzava rodjenja" required>
-          </div>
-          <div class="col-md-4 mb-3">
-            <label for="validationDefault02">Godina upisa</label>
-            <input type="text" class="form-control" formControlName="godinaUpisa" placeholder="Godina upisa" required>
-          </div>
-          <div class="col-md-4 mb-3">
-            <label for="validationDefault02">JMBG</label>
-            <input type="text" class="form-control" formControlName="jmbg" placeholder="JMBG" required>
-          </div>
-          <div class="col-md-4 mb-3">
-            <label for="validationDefault02">Vanredni</label>
-            <fieldset id="grp1">
-                <p>Da <input type="radio"  formControlName="vanredni" value="true"></p>
-                <p>Ne <input type="radio"  formControlName="vanredni" value="false"></p>
-            </fieldset>
-          </div>
+    <!--Pocetak diva za forme -->
+    <div style="display: flex;">
+
+
+        <!--Pocetak forme za dodavanje studenta -->
+    <div *ngIf="registrovaniNesvrstaniKorisnici && prikazIDodavanjeStudenata">
+        <form ngNativeValidate [formGroup]="formaZaDodavanjeNovogStudenta" (ngSubmit)="dodajStudenta(formaZaDodavanjeNovogStudenta.value)">
+            <div class="example-container">
+                <p>
+                  <mat-form-field appearance="fill">
+                      <mat-label>Izaberi korisnika</mat-label>
+                      <mat-select formControlName="korisnik">
+                        <mat-option *ngFor="let korisnik of registrovaniNesvrstaniKorisnici" [value]="korisnik" required>{{korisnik.ime}} | {{korisnik.prezime}} | {{korisnik.email}}</mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                </p> 
+                <p>
+                  <mat-form-field appearance="outline">
+                      <mat-label>Broj indeksa</mat-label>
+                      <input matInput placeholder="Broj indeksa" formControlName="brojIndeksa" required>
+                  </mat-form-field>
+                </p>
+                <p>
+                  <mat-form-field>
+                    <mat-label>Datum rodjenja</mat-label>
+                    <input matInput [matDatepicker]="picker" formControlName="datumRodjenja" required>
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                  </mat-form-field>
+                </p>
+                <p>
+                  <mat-form-field appearance="outline">
+                      <mat-label>Mesto rodjenja</mat-label>
+                      <input matInput placeholder="Mesto rodenja" formControlName="mestoRodjenja" required>
+                  </mat-form-field>
+                </p>
+                <p>
+                  <mat-form-field appearance="outline">
+                      <mat-label>Drzava rodjenja</mat-label>
+                      <input matInput placeholder="Drzava rodjenja" formControlName="drzavaRodjenja" required>
+                  </mat-form-field>
+                </p>
+                <p>
+                  <mat-form-field appearance="outline">
+                      <mat-label>Godina upisa</mat-label>
+                      <input matInput placeholder="Godina upisa" formControlName="godinaUpisa" required>
+                  </mat-form-field>
+                </p>
+                <p>
+                  <mat-form-field appearance="outline">
+                      <mat-label>JMBG</mat-label>
+                      <input matInput placeholder="jmbg" formControlName="jmbg" required>
+                  </mat-form-field>
+                </p>
+                <p>
+                  <mat-radio-group formControlName="vanredni" required>
+                      <mat-radio-button value="true">Da</mat-radio-button>
+                      <br>
+                      <mat-radio-button value="false">Ne</mat-radio-button>
+                  </mat-radio-group>
+                </p>
+            </div>
+            <button mat-flat-button color="primary" type="submit">Dodaj student</button>
+          </form>
+    </div>
+        <!--Kraj forme za dodavanje studenta -->
+
+
+
+
+    <!--Pocetak forme za dodavanje roka -->
+    <div *ngIf="prikazFormeRoka">
+      <form ngNativeValidate [formGroup]="formaZaDodavanjeRoka" (ngSubmit)="dodajRok(formaZaDodavanjeRoka.value)">
+        <div class="example-container">
+          <p>
+            <mat-form-field appearance="outline">
+                <mat-label>Naziv</mat-label>
+                <input matInput placeholder="Naziv" formControlName="naziv" required>
+            </mat-form-field>
+          </p>
+          <p>
+            <mat-form-field>
+              <mat-label>Datum pocetka roka</mat-label>
+              <input matInput [matDatepicker]="picker" formControlName="pocetak" required>
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+          </p>
+          <p>
+            <mat-form-field>
+              <mat-label>Datum kraja roka</mat-label>
+              <input matInput [matDatepicker]="picker2" formControlName="kraj" required>
+              <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+              <mat-datepicker #picker2></mat-datepicker>
+            </mat-form-field>
+          </p>
+          <p>
+            <label>Vanredni:</label>
+            <br>
+            <mat-radio-group formControlName="vanredan" required>
+                <mat-radio-button value="true">Da</mat-radio-button>
+                <br>
+                <mat-radio-button value="false">Ne</mat-radio-button>
+            </mat-radio-group>
+          </p>
+          <button mat-flat-button color="primary" type="submit">Dodaj rok</button>
         </div>
-        <button class="btn btn-primary" type="submit">Dodaj studenta</button>
       </form>
-</div>
-</div>
-<br>
-<br>
+    </div>
+    <!--Kraj forme za dodavanje roka -->
+    
+  </div>
+  <!--Kraj diva za forme-->
+
+
+
+  
+  

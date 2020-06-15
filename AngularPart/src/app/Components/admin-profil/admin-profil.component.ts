@@ -7,6 +7,12 @@ import { Nastavnik } from 'src/app/Models/nastavnik';
 import { RegistrovanKorisnik } from 'src/app/Models/registrovan-korisnik';
 import { ClanAdministrativnogOsoblja } from 'src/app/Models/clan-administrativnog-osoblja';
 import { ClanAdministrativnogOsobljaService } from 'src/app/Services/clan-administrativnog-osoblja.service';
+import { PredmetService } from 'src/app/Services/predmet.service';
+import { Predmet } from 'src/app/Models/predmet';
+import { SmerFakulteta } from 'src/app/Models/smer-fakulteta';
+import { SmerFakultetaService } from 'src/app/Services/smer-fakulteta.service';
+import { FakultetService } from 'src/app/Services/fakultet.service';
+import { Fakultet } from 'src/app/Models/fakultet';
 
 @Component({
   selector: 'app-admin-profil',
@@ -15,33 +21,80 @@ import { ClanAdministrativnogOsobljaService } from 'src/app/Services/clan-admini
 })
 export class AdminProfilComponent implements OnInit {
 
+
+  //Forme za dodavanje
   formaZaDodavanjeNastavnika;
-  formaZaDodavanjeOsoblja;//
+  formaZaDodavanjeOsoblja;
+  formaZaDodavanjePredmeta;
+  formaZaDodavanjeSmera;
+  formaZaDodavanjeFakulteta;
+
+  //Prazne inicijalne liste
   nastavnici:Nastavnik[];
-  osoblje:ClanAdministrativnogOsoblja[];//
+  osoblje:ClanAdministrativnogOsoblja[];
   registrovaniNesvrstaniKorisnici:RegistrovanKorisnik[];
+  predmeti:Predmet[];
+  odabraniPredmetiZaSmer:Predmet[] = [];
+  fakulteti:Fakultet[];
+
+  //Modeli za prikaz
   showNastavnikForma = false;
   showOsobljeForma = false;
-  public buttonName:any = 'Prikazi';
-  public buttonNameO:any = 'Prikazi';
+  showPredmetForma = false;
+  showSmerForma = false;
+  showFakultetForma = false;
 
   constructor(private serviceN:NastavnikService, private serviceK:RegistrovanKorisnikService, private serviceO:ClanAdministrativnogOsobljaService,
-    private router:Router, private builder:FormBuilder) {
+      private servicePredmet:PredmetService,private serviceSmer:SmerFakultetaService,
+      private serviceFakultet:FakultetService, private router:Router, private builder:FormBuilder) {
       this.formaZaDodavanjeNastavnika = builder.group({
         id:0,
         biografija:"",
         jmbg:"",
-        profesor:null,
-        asistent:null,
+        profesor:false,
+        asistent:false,
         korisnik:null,
-        predmeti:null
+        predmeti:[],
+        izborTipaNastavnika:""
       } as Nastavnik);
+
       this.formaZaDodavanjeOsoblja = builder.group({
         id:0,
         jmbg:"",
         uloga:"",
         korisnik:null
       } as ClanAdministrativnogOsoblja);
+
+      this.formaZaDodavanjePredmeta = builder.group({
+        id:0,
+        naziv:"",
+        espb:0,
+        obavezan:true,
+        brojPredavanja:15,
+        brojVezbi:15,
+        godinaStudija:0,
+        semestar:0,
+        silabus:""
+      }as Predmet);
+
+      this.formaZaDodavanjeSmera = builder.group({
+        id:0,
+        naziv:"",
+        opis:"",
+        predmeti:[],
+        fakultet:null
+
+      } as SmerFakulteta);
+
+      this.formaZaDodavanjeFakulteta = builder.group({
+        id:0,
+        naziv:"",
+        adresa:"",
+        mesto:"",
+        opis:"",
+        smerovi:[]
+      } as Fakultet);
+
     }
 
   ngOnInit(): void {
@@ -52,73 +105,142 @@ export class AdminProfilComponent implements OnInit {
     this.serviceN.dobavi().subscribe(data => this.nastavnici = data);
     this.serviceK.dobavi().subscribe(data =>this.registrovaniNesvrstaniKorisnici = data);
     this.serviceO.dobavi().subscribe(data => this.osoblje = data);
+    this.servicePredmet.dobavi().subscribe(data => this.predmeti = data);
+    this.serviceFakultet.dobavi().subscribe(data => this.fakulteti = data);
   }
  
-
-
-
   //Za dodavanje nastavnika
   dodajNastavnika(data){
-    let izabranKorisnik = null;
+    
 
-    for(let i = 0; i < this.registrovaniNesvrstaniKorisnici.length;i++){
-      if(this.registrovaniNesvrstaniKorisnici[i].id == data.korisnik){
-        izabranKorisnik = this.registrovaniNesvrstaniKorisnici[i];
-      }
-  }
+    if(data.izborTipaNastavnika == "profesor"){
+      data.profesor = true;
+    }
+    if(data.izborTipaNastavnika == "asistent"){
+      data.asistent = true;
+    }
+    let novNastavnik = {
+      id:0,
+      jmbg:data.jmbg,
+      biografija:data.biografija,
+      profesor:data.profesor,
+      asistent:data.asistent,
+      korisnik:data.korisnik
+    }
 
-  let novNastavnik = {
-    id:0,
-    jmbg:data.jmbg,
-    biografija:data.biografija,
-    profesor:data.profesor,
-    asistent:data.asistent,
-    korisnik:izabranKorisnik
-  }
-  this.serviceN.dodaj(novNastavnik).subscribe(data => this.dobaviSve());
+    this.serviceN.dodaj(novNastavnik).subscribe(data => this.dobaviSve());
 
     
   }
 
-  nastavnik(){
+  //Promena vrednosti prikaza forme nastavnika
+  showNastavnikFormaFunction(event){
     this.showNastavnikForma = !this.showNastavnikForma;
-    if(this.showNastavnikForma)  
-    this.buttonName = "Sakrij";
-  else
-    this.buttonName = "Prikazi";
   }
-
 
 
   //Za dodavanje osoblja
-
   dodajOsoblje(data){
-    let izabranKorisnik = null;
 
-    for(let i = 0; i < this.registrovaniNesvrstaniKorisnici.length;i++){
-      if(this.registrovaniNesvrstaniKorisnici[i].id == data.korisnik){
-        izabranKorisnik = this.registrovaniNesvrstaniKorisnici[i];
-      }
+    let novoOsoblje = {
+      id:0,
+      jmbg:data.jmbg,
+      uloga:data.uloga,
+      korisnik:data.korisnik
+    }
+
+    this.serviceO.dodaj(novoOsoblje).subscribe(data => this.dobaviSve());
   }
 
-  let novoOsoblje = {
-    id:0,
-    jmbg:data.jmbg,
-    uloga:data.uloga,
-    korisnik:izabranKorisnik
-  }
-  this.serviceO.dodaj(novoOsoblje).subscribe(data => this.dobaviSve());
-  }
-
-  clan(){
+  //Promena vrednosti prikaza forme osoblja
+  showOsobljeFormaFunction(event){
     this.showOsobljeForma = !this.showOsobljeForma;
-    if(this.showOsobljeForma)  
-    this.buttonNameO = "Sakrij";
-  else
-    this.buttonNameO = "Prikazi";
   }
-  
 
+
+  //Funkcija za dodavanje predmeta
+  dodajPredmet(data){
+    
+    let noviPredmet = {
+      id:0,
+      naziv:data.naziv,
+      espb:data.espb,
+      obavezan:data.obavezan,
+      brojPredavanja:data.brojPredavanja,
+      brojVezbi:data.brojVezbi,
+      godinaStudija:data.godinaStudija,
+      semestar:data.semestar,
+      silabus:data.silabus
+    }
+
+    this.servicePredmet.dodaj(noviPredmet).subscribe(data => {
+      window.alert("Uspesno ste dodali predmet");
+    })
+  }
+
+  //Promena vrednosti prikaza forme predmeta
+  showPredmetFormaFunction(event){
+    this.showPredmetForma = !this.showPredmetForma;
+  }
+
+
+  //Funkcija za dodavanje smera fakulteta
+  dodajSmer(data){
+
+    let noviSmer = {
+      id:0,
+      naziv:data.naziv,
+      opis:data.opis,
+      predmeti:this.odabraniPredmetiZaSmer,
+      fakultet:data.fakultet
+    }
+
+    this.serviceSmer.dodaj(noviSmer).subscribe(data => {
+      window.alert("Uspesno ste dodali smer");
+    })
+  }
+
+  //Promena vrednosti prikaza forme smera fakulteta
+  showSmerFormaFunction(event){
+    this.showSmerForma = !this.showSmerForma;
+  }
+
+
+  //Dodavanje selektovanih predmeta u privremenu listu pre dodavanja smera
+  zakaciPredmetNaSmer(data){
+    console.log(data);
+    if(this.odabraniPredmetiZaSmer.find(element => element == data) == undefined && data != ""){
+      
+      this.odabraniPredmetiZaSmer.push(data);
+    }
+  }
+
+
+  //Funkcija za dodavanje fakulteta
+  dodajFakultet(data){
+
+    let novFakultet = {id:0,
+    naziv: data.naziv,
+    adresa:data.adresa,
+    mesto:data.mesto,
+    opis:data.opis,
+    smerovi:[]
+  }
+  this.serviceFakultet.dodaj(novFakultet).subscribe(data =>{
+    window.alert("Dodali ste novi fakultet");
+  })
+  }
+
+
+  //Promena vrednosti prikaza forme fakulteta
+  showFakultetFormaFunction(event){
+    this.showFakultetForma = !this.showFakultetForma;
+  }
+
+
+
+  
+  
 
 
 }

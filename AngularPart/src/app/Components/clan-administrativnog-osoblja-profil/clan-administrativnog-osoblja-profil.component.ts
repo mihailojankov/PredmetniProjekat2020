@@ -5,6 +5,7 @@ import { FormBuilder } from '@angular/forms';
 import { RegistrovanKorisnikService } from 'src/app/Services/registrovan-korisnik.service';
 import { Student } from 'src/app/Models/student';
 import { RegistrovanKorisnik } from 'src/app/Models/registrovan-korisnik';
+import { RokService } from 'src/app/Services/rok.service';
 
 @Component({
   selector: 'app-clan-administrativnog-osoblja-profil',
@@ -13,15 +14,22 @@ import { RegistrovanKorisnik } from 'src/app/Models/registrovan-korisnik';
 })
 export class ClanAdministrativnogOsobljaProfilComponent implements OnInit {
 
+  //Forme
   formaZaDodavanjeNovogStudenta;
+  formaZaDodavanjeRoka;
+
+  //Inicijalno prazne liste
   studenti:Student[];
   registrovaniNesvrstaniKorisnici:RegistrovanKorisnik[];
+
+  //Polje za pretragu
   pretraga;
 
   //Slajdovi
   prikazIDodavanjeStudenata = false;
+  prikazFormeRoka = false;
 
-  constructor(private service:StudentService, private service2:RegistrovanKorisnikService, private router:Router, private builder:FormBuilder) {
+  constructor(private service:StudentService, private service2:RegistrovanKorisnikService,private serviceRok:RokService, private router:Router, private builder:FormBuilder) {
       this.formaZaDodavanjeNovogStudenta = builder.group({
         id:0,
         jmbg:"",
@@ -29,12 +37,21 @@ export class ClanAdministrativnogOsobljaProfilComponent implements OnInit {
         mestoRodjenja: "",
         drzavaRodjenja: "",
         datumRodjenja: null,
-        vanredni: null,
-        godinaUpisa: null,
+        vanredni: false,
+        godinaUpisa: "",
         korisnik: null,
-        listaPredmeta: null
+        listaPredmeta: []
 
       }as Student);
+
+      this.formaZaDodavanjeRoka = builder.group({
+        id:0,
+        naziv:"",
+        pocetak:null,
+        kraj:null,
+        vanredan:false,
+        listaPrijavaIspita:[]
+      })
   }
 
   ngOnInit(): void {
@@ -47,20 +64,12 @@ export class ClanAdministrativnogOsobljaProfilComponent implements OnInit {
     
   }
 
+
+  //Funkcija za dodavanje studenta
   dodajStudenta(data){
 
-    let izabranKorisnik = null;
-
-    for(let i = 0; i < this.registrovaniNesvrstaniKorisnici.length;i++){
-        if(this.registrovaniNesvrstaniKorisnici[i].id == data.korisnik){
-          izabranKorisnik = this.registrovaniNesvrstaniKorisnici[i];
-        }
-    }
-
-
-
     let novStudent = {id:0, 
-          korisnik:izabranKorisnik,
+          korisnik:data.korisnik,
           jmbg:data.jmbg,
           datumRodjenja:data.datumRodjenja,
           brojIndeksa:data.brojIndeksa,
@@ -73,8 +82,28 @@ export class ClanAdministrativnogOsobljaProfilComponent implements OnInit {
     this.service.dodaj(novStudent).subscribe(data => this.dobaviStudente());
   }
 
-  prikazIDodavanjeStudenataFunction(){
+  prikazIDodavanjeStudenataFunction(event){
     this.prikazIDodavanjeStudenata = !this.prikazIDodavanjeStudenata;
+  }
+
+  //Funkcija za dodavanje roka
+  dodajRok(data){
+    
+    let novRok = {
+      id:0,
+      naziv:data.naziv,
+      pocetak:data.pocetak,
+      kraj:data.kraj,
+      vanredan:data.vanredan,
+      listaPrijavaIspita:[]
+    };
+    this.serviceRok.dodaj(novRok).subscribe(data => {
+      window.alert("Uspesno ste dodali rok");
+    });
+  }
+
+  prikazFormeRokaFunction(event){
+    this.prikazFormeRoka = !this.prikazFormeRoka;
   }
 
 

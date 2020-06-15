@@ -26,6 +26,11 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatInputModule} from '@angular/material/input';
+import {MatSelectModule} from '@angular/material/select'
+import {MatRadioModule} from '@angular/material/radio';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 import { PocetnaComponent } from './Components/pocetna/pocetna.component';
 
 
@@ -63,7 +68,12 @@ import { PocetnaComponent } from './Components/pocetna/pocetna.component';
     MatFormFieldModule,
     MatSidenavModule,
     MatTabsModule,
-    MatInputModule
+    MatInputModule,
+    MatSelectModule,
+    MatRadioModule,
+    MatCheckboxModule,
+    MatDatepickerModule,
+    MatNativeDateModule
     
 
   ],

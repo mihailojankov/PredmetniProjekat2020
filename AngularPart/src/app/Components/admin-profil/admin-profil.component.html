@@ -1,103 +1,252 @@
-<div>
-<label>Prikazi formu za dodavanje nastavnika </label>
-<button (click)="nastavnik()" id="bt">
-    {{buttonName}}
-</button>
-</div>
 
-<div>
-    <label>Prikazi formu za dodavanje dodavanje administrativnog osoblja</label>
-    <button (click)="clan()" id="bt">
-        {{buttonNameO}}
-    </button>
-</div>
+<mat-checkbox (change)='showNastavnikFormaFunction($event)'>Forma za nastavnika</mat-checkbox>
+<br>
+<mat-checkbox (change)='showOsobljeFormaFunction($event)'>Forma za osoblje</mat-checkbox>
+<br>
+<mat-checkbox (change)='showPredmetFormaFunction($event)'>Forma za predmet</mat-checkbox>
+<br>
+<mat-checkbox (change)='showSmerFormaFunction($event)'>Forma za smer</mat-checkbox>
+<br>
+<mat-checkbox (change)='showFakultetFormaFunction($event)'>Forma za fakultet</mat-checkbox>
 
 
 
 
-<!--Forma za dodavanje nastavnika-->
+<!--Pocetak diva za forme-->
+<div style="display:flex">
+
+
+<!-- Pocetak forme za dodavanje nastavnika-->
 <ng-container *ngIf="showNastavnikForma">
 <div *ngIf="registrovaniNesvrstaniKorisnici">
     <form ngNativeValidate [formGroup]="formaZaDodavanjeNastavnika" (ngSubmit)="dodajNastavnika(formaZaDodavanjeNastavnika.value)">
         <label>Forma za dodavanje nastavnika</label>
-        <div class="form-row">
-            <div class="col-md-4 mb-3">
-                <label for="validationDefault01">Korisnik</label>
-                <select formControlName="korisnik">
-                    <option *ngFor="let korisnik of registrovaniNesvrstaniKorisnici" [value]="korisnik.id">{{korisnik.ime}} | {{korisnik.prezime}} | {{korisnik.email}}</option>
-                 </select>
-            </div>
-            <div class="col-md-4 mb-3">
-                <label for="validationDefault01">Jmbg</label>
-                <input type="text" class="form-control" formControlName="jmbg" placeholder="Jmbg" required>
-            </div>
-            <div class="col-md-4 mb-3">
-                <label for="validationDefault01">Biografija</label>
-                <input type="text" class="form-control" formControlName="biografija" placeholder="Biografija" required>
-            </div>
-            <div class="col-md-4 mb-3">
-                <label for="validationDefault02">Profesor</label>
-                <fieldset id="grp1">
-                    <p>Da <input type="radio" formControlName="profesor" value="true"></p>
-                    <p>Ne <input type="radio" formControlName="profesor" value="false"></p>
-                </fieldset>
-            </div>
-            <div class="col-md-4 mb-3">
-                <label for="validationDefault02">Asistent</label>
-                <fieldset id="grp2">
-                    <p>Da <input type="radio" formControlName="asistent" value="true"></p>
-                    <p>Ne <input type="radio" formControlName="asistent" value="false"></p>
-                </fieldset>
-            </div>
+        <div class="example-container">
+            <p>
+                <mat-form-field appearance="fill">
+                    <mat-label>Izaberi korisnika</mat-label>
+                    <mat-select formControlName="korisnik">
+                      <mat-option *ngFor="let korisnik of registrovaniNesvrstaniKorisnici" [value]="korisnik" required>{{korisnik.ime}} | {{korisnik.prezime}} | {{korisnik.email}}</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </p> 
+                <p>
+                    <mat-form-field appearance="outline">
+                        <mat-label>JMBG</mat-label>
+                        <input matInput placeholder="JMBG" formControlName="jmbg" required>
+                    </mat-form-field>
+                </p>
+                <p>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Biografija</mat-label>
+                        <textarea matInput placeholder="Biografija" formControlName="biografija" required></textarea>
+                    </mat-form-field>
+                </p>
+                <p>
+                    <mat-radio-group formControlName="izborTipaNastavnika" required>
+                        <mat-radio-button value="profesor">Profesor</mat-radio-button>
+                        <br>
+                        <mat-radio-button value="asistent">Asistent</mat-radio-button>
+                    </mat-radio-group>
+                </p>
+
         </div>
-        <button class="btn btn-primary" type="submit">Dodaj nastavnika</button>
-        <br>
-        <br>
-        <br>
+        <button mat-flat-button color="primary" type="submit">Dodaj nastavnika</button>
     </form>
 </div>
 </ng-container>
 
-<p>
-    <mat-form-field appearance="outline">
-        <mat-label>JMBG</mat-label>
-        <input matInput placeholder="JMBG">
-    </mat-form-field>
-</p>
-<p>
-    <mat-form-field appearance="outline">
-        <mat-label>Biografija</mat-label>
-        <textarea matInput placeholder="Biografija"></textarea>
-    </mat-form-field>
-</p>
+
 <!-- Kraj forme za dodavanje nastavnika-->
 
 <!-- Pocetak forme za dodavanje administrativnog osoblja-->
 <ng-container *ngIf="showOsobljeForma">
     <div *ngIf="registrovaniNesvrstaniKorisnici">
         <form ngNativeValidate [formGroup]="formaZaDodavanjeOsoblja" (ngSubmit)="dodajOsoblje(formaZaDodavanjeOsoblja.value)">
-            <label>Forma za dodavanje administrativnog osoblja</label>
-            <div class="form-row">
-                <div class="col-md-4 mb-3">
-                    <label for="validationDefault01">Korisnik</label>
-                    <select formControlName="korisnik">
-                        <option *ngFor="let korisnik of registrovaniNesvrstaniKorisnici" [value]="korisnik.id">{{korisnik.ime}} | {{korisnik.prezime}} | {{korisnik.email}}</option>
-                     </select>
-                </div>
-                <div class="col-md-4 mb-3">
-                    <label for="validationDefault01">Jmbg</label>
-                    <input type="text" class="form-control" formControlName="jmbg" placeholder="Jmbg" required>
-                </div>
-                <div class="col-md-4 mb-3">
-                    <label for="validationDefault01">Uloga</label>
-                    <input type="text" class="form-control" formControlName="uloga" placeholder="Uloga" required>
-                </div>
+            <label>Forma za dodavanje osoblja</label>
+            <div class="example-container">
+                <p>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Izaberi korisnika</mat-label>
+                        <mat-select formControlName="korisnik">
+                          <mat-option *ngFor="let korisnik of registrovaniNesvrstaniKorisnici" [value]="korisnik" required>{{korisnik.ime}} | {{korisnik.prezime}} | {{korisnik.email}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>  
+                </p>
+                <p>
+                    <mat-form-field appearance="outline">
+                        <mat-label>JMBG</mat-label>
+                        <input matInput placeholder="JMBG" formControlName="jmbg" required>
+                    </mat-form-field>
+                </p>
+                <p>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Uloga</mat-label>
+                        <input matInput placeholder="Uloga" formControlName="uloga" required> 
+                    </mat-form-field>
+                </p>
                 
             </div>
-            <button class="btn btn-primary" type="submit">Dodaj osoblje</button>
-            <br>
-        <br>
-        <br>
+            <button mat-flat-button color="primary" type="submit">Dodaj osoblje</button>
+            
         </form>
     </div>
-    </ng-container>
+</ng-container>
+<!-- Kraj forme za dodavanje osoblja-->
+
+
+<!-- Pocetak forme za dodavanje predmeta-->
+<ng-container *ngIf="showPredmetForma">
+    <div>
+        <form ngNativeValidate [formGroup]="formaZaDodavanjePredmeta" (ngSubmit)="dodajPredmet(formaZaDodavanjePredmeta.value)">
+            <label>Forma za predmeta</label>
+            <div class="example-container">
+                <p>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Naziv</mat-label>
+                        <input matInput placeholder="Naziv" formControlName="naziv" required>
+                    </mat-form-field>
+                </p>
+                <p>
+                    <mat-form-field appearance="outline">
+                        <mat-label>ESPB</mat-label>
+                        <input matInput placeholder="ESPB" formControlName="espb" required>
+                    </mat-form-field>
+                </p>
+                <p>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Broj predavanja</mat-label>
+                        <input matInput placeholder="Broj predavanja" formControlName="brojPredavanja" value="15" required>
+                    </mat-form-field>
+                </p>
+                <p>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Broj vezbi</mat-label>
+                        <input matInput placeholder="Broj vezbi" formControlName="brojVezbi" value="15" required>
+                    </mat-form-field>
+                </p>
+                <p>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Godina studija</mat-label>
+                        <input matInput placeholder="Godina studija" formControlName="godinaStudija" required>
+                    </mat-form-field>
+                </p>
+                <p>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Semestar</mat-label>
+                        <input matInput placeholder="Semestar" formControlName="semestar" required>
+                    </mat-form-field>
+                </p>
+                <p>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Silabus</mat-label>
+                        <input matInput placeholder="Silabus" formControlName="silabus" required>
+                    </mat-form-field>
+                </p>
+                <p>
+                    <label>Obavezan:</label>
+                    <br>
+                    <mat-radio-group formControlName="obavezan" required>
+                        <mat-radio-button value="true">Da</mat-radio-button>
+                        <br>
+                        <mat-radio-button value="false">Ne</mat-radio-button>
+                    </mat-radio-group>
+                </p>
+                
+            </div>
+            <button mat-flat-button color="primary" type="submit">Dodaj predmet</button>
+            
+        </form>
+    </div>
+</ng-container>
+<!-- Kraj forme za dodavanje predmeta-->
+<!-- Pocetak forme za dodavanje smera fakulteta-->
+<ng-container *ngIf="showSmerForma">
+    <div>
+        <form ngNativeValidate [formGroup]="formaZaDodavanjeSmera" (ngSubmit)="dodajSmer(formaZaDodavanjeSmera.value)">
+            <label>Forma za smer </label>
+            <div class="example-container">
+                <p>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Naziv</mat-label>
+                        <input matInput placeholder="Naziv" formControlName="naziv" required>
+                    </mat-form-field>
+                </p>
+                <p>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Opis</mat-label>
+                        <textarea matInput placeholder="Opis" formControlName="opis" required></textarea>
+                    </mat-form-field>
+                </p>
+                <p>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Izaberi fakultet</mat-label>
+                        <mat-select formControlName="fakultet">
+                          <mat-option *ngFor="let fakultet of fakulteti" [value]="fakultet" required>{{fakultet.id}} | {{fakultet.naziv}} | {{fakultet.mesto}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>  
+                </p>
+                <p>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Izaberi Predmete</mat-label>
+                        <mat-select formControlName="predmeti" (selectionChange)="zakaciPredmetNaSmer($event.value)">
+                          <mat-option *ngFor="let predmet of predmeti" [value]="predmet" required>Id:{{predmet.id}} | {{predmet.naziv}} | Semestar:{{predmet.semestar}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>  
+                </p>
+                <div *ngFor="let predmet of odabraniPredmetiZaSmer">
+                    Id:{{predmet.id}} | {{predmet.naziv}} | Semestar:{{predmet.semestar}}
+                </div>
+            </div>
+            <button mat-flat-button color="primary" type="submit">Dodaj smer</button>
+            
+        </form>
+    </div>
+</ng-container>
+
+
+<!-- Kraj forme za dodavanje smera fakulteta-->
+
+
+<!--Pocetak forme za dodavanje fakulteta-->
+<ng-container *ngIf="showFakultetForma">
+    <div>
+        <form ngNativeValidate [formGroup]="formaZaDodavanjeFakulteta" (ngSubmit)="dodajFakultet(formaZaDodavanjeFakulteta.value)">
+            <label>Forma za fakultet</label>
+            <div class="example-container">
+                <p>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Naziv</mat-label>
+                        <input matInput placeholder="Naziv" formControlName="naziv" required>
+                    </mat-form-field>
+                </p>
+                <p>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Adresa</mat-label>
+                        <input matInput placeholder="Adresa" formControlName="adresa" required>
+                    </mat-form-field>
+                </p>
+                <p>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Mesto</mat-label>
+                        <input matInput placeholder="Mesto" formControlName="mesto" required>
+                    </mat-form-field>
+                </p>
+                <p>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Opis</mat-label>
+                        <input matInput placeholder="Opis" formControlName="opis" required>
+                    </mat-form-field>
+                </p>
+            </div>
+            <button mat-flat-button color="primary" type="submit">Dodaj fakultet</button>
+            
+        </form>
+    </div>
+</ng-container>
+
+<!-- Kraj forme za dodavanje fakulteta-->
+
+
+</div>
+<!--kraj diva za forme -->
