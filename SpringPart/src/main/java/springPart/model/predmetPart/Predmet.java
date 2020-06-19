@@ -16,8 +16,6 @@ import springPart.model.ispitPart.Ispit;
 import springPart.model.korisnikPart.Nastavnik;
 import springPart.model.korisnikPart.Student;
 
-@Getter
-@Setter
 @Entity
 public class Predmet extends AbstractModel{
 	
@@ -68,12 +66,110 @@ public class Predmet extends AbstractModel{
 		this.listaSmerovaFakulteta = listaSmerovaFakulteta;
 		this.istorijaIspita = istorijaIspita;
 	}
-	
 
-	
-	
-	
-	
+	public String getNaziv() {
+		return naziv;
+	}
+
+	public void setNaziv(String naziv) {
+		this.naziv = naziv;
+	}
+
+	public int getEspb() {
+		return espb;
+	}
+
+	public void setEspb(int espb) {
+		this.espb = espb;
+	}
+
+	public boolean isObavezan() {
+		return obavezan;
+	}
+
+	public void setObavezan(boolean obavezan) {
+		this.obavezan = obavezan;
+	}
+
+	public int getBrojPredavanja() {
+		return brojPredavanja;
+	}
+
+	public void setBrojPredavanja(int brojPredavanja) {
+		this.brojPredavanja = brojPredavanja;
+	}
+
+	public int getBrojVezbi() {
+		return brojVezbi;
+	}
+
+	public void setBrojVezbi(int brojVezbi) {
+		this.brojVezbi = brojVezbi;
+	}
+
+	public String getSilabus() {
+		return silabus;
+	}
+
+	public void setSilabus(String silabus) {
+		this.silabus = silabus;
+	}
+
+	public int getGodinaStudija() {
+		return godinaStudija;
+	}
+
+	public void setGodinaStudija(int godinaStudija) {
+		this.godinaStudija = godinaStudija;
+	}
+
+	public int getSemestar() {
+		return semestar;
+	}
+
+	public void setSemestar(int semestar) {
+		this.semestar = semestar;
+	}
+
+	public List<Nastavnik> getListaNastavnika() {
+		return listaNastavnika;
+	}
+
+	public void setListaNastavnika(List<Nastavnik> listaNastavnika) {
+		this.listaNastavnika = listaNastavnika;
+	}
+
+	public List<Student> getListaStudenata() {
+		return listaStudenata;
+	}
+
+	public void setListaStudenata(List<Student> listaStudenata) {
+		this.listaStudenata = listaStudenata;
+	}
+
+	public List<Ispit> getIspitiIzPredmeta() {
+		return ispitiIzPredmeta;
+	}
+
+	public void setIspitiIzPredmeta(List<Ispit> ispitiIzPredmeta) {
+		this.ispitiIzPredmeta = ispitiIzPredmeta;
+	}
+
+	public List<SmerFakulteta> getListaSmerovaFakulteta() {
+		return listaSmerovaFakulteta;
+	}
+
+	public void setListaSmerovaFakulteta(List<SmerFakulteta> listaSmerovaFakulteta) {
+		this.listaSmerovaFakulteta = listaSmerovaFakulteta;
+	}
+
+	public List<IshodIspita> getIstorijaIspita() {
+		return istorijaIspita;
+	}
+
+	public void setIstorijaIspita(List<IshodIspita> istorijaIspita) {
+		this.istorijaIspita = istorijaIspita;
+	}
 	
 	
 }

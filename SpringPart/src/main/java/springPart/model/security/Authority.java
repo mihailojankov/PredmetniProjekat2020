@@ -16,8 +16,6 @@ import lombok.Setter;
 import springPart.model.AbstractModel;
 import springPart.model.korisnikPart.RegistrovanKorisnik;
 
-@Getter
-@Setter
 @Entity
 public class Authority extends AbstractModel implements GrantedAuthority{
 	
@@ -37,7 +35,26 @@ public class Authority extends AbstractModel implements GrantedAuthority{
 		this.authority = authority;
 		this.korisnici = korisnici;
 	}
-	
+
+
+	public String getAuthority() {
+		return authority;
+	}
+
+
+	public void setAuthority(String authority) {
+		this.authority = authority;
+	}
+
+
+	public List<RegistrovanKorisnik> getKorisnici() {
+		return korisnici;
+	}
+
+
+	public void setKorisnici(List<RegistrovanKorisnik> korisnici) {
+		this.korisnici = korisnici;
+	}
 	
 	
 }

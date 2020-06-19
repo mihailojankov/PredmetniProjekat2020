@@ -47,5 +47,69 @@ public class Univerzitet extends AbstractModel{
 		this.fakulteti = fakulteti;
 	}
 
+	public String getNaziv() {
+		return naziv;
+	}
+
+	public void setNaziv(String naziv) {
+		this.naziv = naziv;
+	}
+
+	public LocalDate getDatumOsnivanja() {
+		return datumOsnivanja;
+	}
+
+	public void setDatumOsnivanja(LocalDate datumOsnivanja) {
+		this.datumOsnivanja = datumOsnivanja;
+	}
+
+	public String getDrzava() {
+		return drzava;
+	}
+
+	public void setDrzava(String drzava) {
+		this.drzava = drzava;
+	}
+
+	public String getAdresa() {
+		return adresa;
+	}
+
+	public void setAdresa(String adresa) {
+		this.adresa = adresa;
+	}
+
+	public String getMesto() {
+		return mesto;
+	}
+
+	public void setMesto(String mesto) {
+		this.mesto = mesto;
+	}
+
+	public String getOpisUniverziteta() {
+		return opisUniverziteta;
+	}
+
+	public void setOpisUniverziteta(String opisUniverziteta) {
+		this.opisUniverziteta = opisUniverziteta;
+	}
+
+	public Nastavnik getRektor() {
+		return rektor;
+	}
+
+	public void setRektor(Nastavnik rektor) {
+		this.rektor = rektor;
+	}
+
+	public List<Fakultet> getFakulteti() {
+		return fakulteti;
+	}
+
+	public void setFakulteti(List<Fakultet> fakulteti) {
+		this.fakulteti = fakulteti;
+	}
+
 	
 }

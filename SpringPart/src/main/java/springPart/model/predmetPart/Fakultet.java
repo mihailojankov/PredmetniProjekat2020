@@ -13,8 +13,6 @@ import lombok.Setter;
 import springPart.model.AbstractModel;
 import springPart.model.korisnikPart.Nastavnik;
 
-@Getter
-@Setter
 @Entity
 public class Fakultet extends AbstractModel{
 	
@@ -48,10 +46,62 @@ public class Fakultet extends AbstractModel{
 		this.smerovi = smerovi;
 		this.univerzitet = univerzitet;
 	}
-	
-	
-	
-	
-	
+
+	public String getNaziv() {
+		return naziv;
+	}
+
+	public void setNaziv(String naziv) {
+		this.naziv = naziv;
+	}
+
+	public String getAdresa() {
+		return adresa;
+	}
+
+	public void setAdresa(String adresa) {
+		this.adresa = adresa;
+	}
+
+	public String getMesto() {
+		return mesto;
+	}
+
+	public void setMesto(String mesto) {
+		this.mesto = mesto;
+	}
+
+	public String getOpis() {
+		return opis;
+	}
+
+	public void setOpis(String opis) {
+		this.opis = opis;
+	}
+
+	public Nastavnik getDekan() {
+		return dekan;
+	}
+
+	public void setDekan(Nastavnik dekan) {
+		this.dekan = dekan;
+	}
+
+	public List<SmerFakulteta> getSmerovi() {
+		return smerovi;
+	}
+
+	public void setSmerovi(List<SmerFakulteta> smerovi) {
+		this.smerovi = smerovi;
+	}
+
+	public Univerzitet getUniverzitet() {
+		return univerzitet;
+	}
+
+	public void setUniverzitet(Univerzitet univerzitet) {
+		this.univerzitet = univerzitet;
+	}
+
 	
 }

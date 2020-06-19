@@ -8,8 +8,6 @@ import lombok.Getter;
 import lombok.Setter;
 import springPart.model.AbstractModel;
 
-@Getter
-@Setter
 @Entity
 public class ClanAdministrativnogOsoblja extends AbstractModel{
 	
@@ -27,6 +25,30 @@ public class ClanAdministrativnogOsoblja extends AbstractModel{
 		super();
 		this.jmbg = jmbg;
 		this.uloga = uloga;
+		this.korisnik = korisnik;
+	}
+
+	public String getJmbg() {
+		return jmbg;
+	}
+
+	public void setJmbg(String jmbg) {
+		this.jmbg = jmbg;
+	}
+
+	public String getUloga() {
+		return uloga;
+	}
+
+	public void setUloga(String uloga) {
+		this.uloga = uloga;
+	}
+
+	public RegistrovanKorisnik getKorisnik() {
+		return korisnik;
+	}
+
+	public void setKorisnik(RegistrovanKorisnik korisnik) {
 		this.korisnik = korisnik;
 	}
 

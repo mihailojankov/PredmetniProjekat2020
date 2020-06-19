@@ -6,8 +6,6 @@ import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import springPart.model.AbstractModel;
 
-
-
 @Entity
 public class Rok extends AbstractModel{
 	

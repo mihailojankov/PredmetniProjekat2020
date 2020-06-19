@@ -11,8 +11,6 @@ import lombok.Setter;
 import springPart.model.AbstractModel;
 import springPart.model.korisnikPart.Student;
 
-@Getter
-@Setter
 @Entity
 public class PrijavaIspita extends AbstractModel{
 	
@@ -38,5 +36,38 @@ public class PrijavaIspita extends AbstractModel{
 		this.rok = rok;
 		this.ispit = ispit;
 	}
+
+	public LocalDateTime getDatumPrijave() {
+		return datumPrijave;
+	}
+
+	public void setDatumPrijave(LocalDateTime datumPrijave) {
+		this.datumPrijave = datumPrijave;
+	}
+
+	public Student getStudent() {
+		return student;
+	}
+
+	public void setStudent(Student student) {
+		this.student = student;
+	}
+
+	public Rok getRok() {
+		return rok;
+	}
+
+	public void setRok(Rok rok) {
+		this.rok = rok;
+	}
+
+	public Ispit getIspit() {
+		return ispit;
+	}
+
+	public void setIspit(Ispit ispit) {
+		this.ispit = ispit;
+	}
+	
 	
 }

@@ -13,8 +13,6 @@ import lombok.Setter;
 import springPart.model.AbstractModel;
 import springPart.model.predmetPart.Predmet;
 
-@Getter
-@Setter
 @Entity
 public class Ispit extends AbstractModel{
 	
@@ -34,6 +32,30 @@ public class Ispit extends AbstractModel{
 		super();
 		this.datumVreme = datumVreme;
 		this.predmet = predmet;
+		this.listaPrijavaIspita = listaPrijavaIspita;
+	}
+
+	public LocalDateTime getDatumVreme() {
+		return datumVreme;
+	}
+
+	public void setDatumVreme(LocalDateTime datumVreme) {
+		this.datumVreme = datumVreme;
+	}
+
+	public Predmet getPredmet() {
+		return predmet;
+	}
+
+	public void setPredmet(Predmet predmet) {
+		this.predmet = predmet;
+	}
+
+	public List<PrijavaIspita> getListaPrijavaIspita() {
+		return listaPrijavaIspita;
+	}
+
+	public void setListaPrijavaIspita(List<PrijavaIspita> listaPrijavaIspita) {
 		this.listaPrijavaIspita = listaPrijavaIspita;
 	}
 	

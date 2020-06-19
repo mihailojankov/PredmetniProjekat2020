@@ -52,4 +52,5 @@ public class RokDTO extends AbstractDTO{
 	public void setPrijavaIspitaList(List<PrijavaIspita> prijavaIspitaList) {
 		this.prijavaIspitaList = prijavaIspitaList;
 	}
+	
 }

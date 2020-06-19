@@ -12,8 +12,6 @@ import lombok.Getter;
 import lombok.Setter;
 import springPart.model.AbstractModel;
 
-@Getter
-@Setter
 @Entity
 public class SmerFakulteta extends AbstractModel{
 	
@@ -40,4 +38,37 @@ public class SmerFakulteta extends AbstractModel{
 		this.fakultet = fakultet;
 	}
 
+	public String getNaziv() {
+		return naziv;
+	}
+
+	public void setNaziv(String naziv) {
+		this.naziv = naziv;
+	}
+
+	public String getOpis() {
+		return opis;
+	}
+
+	public void setOpis(String opis) {
+		this.opis = opis;
+	}
+
+	public List<Predmet> getPredmeti() {
+		return predmeti;
+	}
+
+	public void setPredmeti(List<Predmet> predmeti) {
+		this.predmeti = predmeti;
+	}
+
+	public Fakultet getFakultet() {
+		return fakultet;
+	}
+
+	public void setFakultet(Fakultet fakultet) {
+		this.fakultet = fakultet;
+	}
+
+	
 }
