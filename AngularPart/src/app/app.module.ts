@@ -26,19 +26,20 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatInputModule} from '@angular/material/input';
-import {MatSelectModule} from '@angular/material/select'
+import {MatSelectModule} from '@angular/material/select';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { NgxMatDatetimePickerModule, NgxMatTimepickerModule, NgxMatNativeDateModule } from '@angular-material-components/datetime-picker';
 import { PocetnaComponent } from './Components/pocetna/pocetna.component';
+import {JwtModule, JwtHelperService} from '@auth0/angular-jwt';
+import {RoleGuardService} from './Services/role-guard.service';
 
 
 
 
-
-
+// @ts-ignore
 @NgModule({
   declarations: [
     AppComponent,
@@ -56,7 +57,7 @@ import { PocetnaComponent } from './Components/pocetna/pocetna.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule, 
+    AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
@@ -77,8 +78,15 @@ import { PocetnaComponent } from './Components/pocetna/pocetna.component';
     MatNativeDateModule,
     NgxMatDatetimePickerModule,
     NgxMatNativeDateModule,
-    NgxMatTimepickerModule
-    
+    NgxMatTimepickerModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: function tokenGetter() {
+          return localStorage.getItem('token');
+        }
+      }
+    })
+
 
   ],
   providers: [
@@ -86,7 +94,8 @@ import { PocetnaComponent } from './Components/pocetna/pocetna.component';
       provide: HTTP_INTERCEPTORS,
       useClass: Interseptor,
       multi: true
-    }
+    },
+    RoleGuardService
   ],
   bootstrap: [AppComponent]
 })

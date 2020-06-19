@@ -11,19 +11,31 @@ import { StudentProfilComponent } from './Components/student-profil/student-prof
 import { AdminProfilComponent } from './Components/admin-profil/admin-profil.component';
 import { LoginComponent } from './Components/login/login.component';
 import { PocetnaComponent } from './Components/pocetna/pocetna.component';
+import {RoleGuardService} from './Services/role-guard.service';
 
 
 const routes: Routes = [
-  {path:"", component:PocetnaComponent},
-  {path:"login", component:LoginComponent},
-  {path:"registracija", component:RegistracijaKorisnikaComponent},
-  {path:"smerovi", component:PrikazSmerovaComponent},
-  {path:"smerovi/predmeti", component:PrikazPredmetaSmeraComponent},
-  {path:"smerovi/predmeti/detalji", component:DetaljiOPredmetuComponent},
-  {path:"clanAdministrativnogOsobljaProfil", component:ClanAdministrativnogOsobljaProfilComponent},
-  {path:"nastavnikProfil", component:NastavnikProfilComponent},
-  {path:"studentProfil", component:StudentProfilComponent},
-  {path:"adminProfil", component:AdminProfilComponent}
+  {path: '', component: PocetnaComponent},
+  {path: 'login', component: LoginComponent},
+  {path: 'registracija', component: RegistracijaKorisnikaComponent},
+  {path: 'smerovi', component: PrikazSmerovaComponent},
+  {path: 'smerovi/predmeti', component: PrikazPredmetaSmeraComponent},
+  {path: 'smerovi/predmeti/detalji', component: DetaljiOPredmetuComponent},
+  {path: 'clanAdministrativnogOsobljaProfil',
+    component: ClanAdministrativnogOsobljaProfilComponent,
+    canActivate: [RoleGuardService],
+    data: {expectedRole: 'CLAN'}},
+  {path: 'nastavnikProfil',
+    component: NastavnikProfilComponent,
+    canActivate: [RoleGuardService],
+    data: {expectedRole: 'NASTAVNIK'}},
+  {path: 'studentProfil',
+    component: StudentProfilComponent,
+    canActivate: [RoleGuardService],
+    data: {expectedRole: 'STUDENT'}},
+  {path: 'adminProfil', component: AdminProfilComponent,
+    canActivate: [RoleGuardService],
+    data: {expectedRole: 'ADMIN'}}
 ];
 
 @NgModule({

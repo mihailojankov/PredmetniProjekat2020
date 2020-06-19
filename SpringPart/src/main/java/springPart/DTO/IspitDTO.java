@@ -11,5 +11,4 @@ public class IspitDTO extends AbstractDTO{
 	
     LocalDateTime datumVreme;
 	PredmetDTO predmet;
-	List<PrijavaIspitaDTO> listaPrijavaIspita;
 }

@@ -1,5 +1,7 @@
 package springPart.controller;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -7,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import springPart.DTO.RokDTO;
 import springPart.model.ispitPart.Rok;
 import springPart.service.RokService;
+
+import java.util.ArrayList;
 
 @Controller
 @CrossOrigin
@@ -17,5 +21,4 @@ public class RokController extends AbstractController<Rok, RokDTO, RokService> {
 		super(service, RokDTO.class);
 		
 	}
-
 }

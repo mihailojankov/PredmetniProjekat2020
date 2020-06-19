@@ -2,18 +2,12 @@ package springPart.model.ispitPart;
 
 import java.time.LocalDate;
 import java.util.List;
-
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
-
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 import springPart.model.AbstractModel;
 
 
-@Getter
-@Setter
+
 @Entity
 public class Rok extends AbstractModel{
 	
@@ -36,6 +30,47 @@ public class Rok extends AbstractModel{
 		this.pocetak = pocetak;
 		this.kraj = kraj;
 		this.vanredan = vanredan;
+		this.listaPrijavaIspita = listaPrijavaIspita;
+	}
+
+
+	public String getNaziv() {
+		return naziv;
+	}
+
+	public void setNaziv(String naziv) {
+		this.naziv = naziv;
+	}
+
+	public LocalDate getPocetak() {
+		return pocetak;
+	}
+
+	public void setPocetak(LocalDate pocetak) {
+		this.pocetak = pocetak;
+	}
+
+	public LocalDate getKraj() {
+		return kraj;
+	}
+
+	public void setKraj(LocalDate kraj) {
+		this.kraj = kraj;
+	}
+
+	public boolean isVanredan() {
+		return vanredan;
+	}
+
+	public void setVanredan(boolean vanredan) {
+		this.vanredan = vanredan;
+	}
+
+	public List<PrijavaIspita> getListaPrijavaIspita() {
+		return listaPrijavaIspita;
+	}
+
+	public void setListaPrijavaIspita(List<PrijavaIspita> listaPrijavaIspita) {
 		this.listaPrijavaIspita = listaPrijavaIspita;
 	}
 }

@@ -8,8 +8,7 @@ import springPart.model.korisnikPart.Student;
 @Getter
 @Setter
 public class PrijavaIspitaDTO extends AbstractDTO{
-	
 	LocalDateTime datumPrijave;
-	Student student;
+	StudentDTO student;
 	IspitDTO ispit;
 }
