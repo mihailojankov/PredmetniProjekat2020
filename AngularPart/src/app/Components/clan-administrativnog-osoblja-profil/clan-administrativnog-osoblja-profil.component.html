@@ -3,6 +3,9 @@
 <mat-checkbox (change)='prikazIDodavanjeStudenataFunction($event)'>Forma za studente</mat-checkbox>
 <br>
 <mat-checkbox (change)='prikazFormeRokaFunction($event)'>Forma za rok</mat-checkbox>
+<br>
+<mat-checkbox (change)='prikazFormeIspitaFunction($event)'>Forma za ispit</mat-checkbox>
+
 
 <br>
 <br>
@@ -157,6 +160,36 @@
       </form>
     </div>
     <!--Kraj forme za dodavanje roka -->
+
+    <!--Pocetak forme za dodavanje ispita -->
+    <div *ngIf="prikazFormeIspita">
+      <form ngNativeValidate [formGroup]="formaZaDodavanjeIspita" (ngSubmit)="dodajIspit(formaZaDodavanjeIspita.value)">
+        <div class="example-container">
+          <p>
+          <mat-form-field>
+            <input matInput [ngxMatDatetimePicker]="picker" placeholder="Choose a date" formControlName="datumVreme">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <ngx-mat-datetime-picker #picker [showSpinners]="true" [showSeconds]="false"
+               [touchUi]="false" [enableMeridian]="false" 
+               [disableMinute]="false" [hideTime]="false">
+            </ngx-mat-datetime-picker>
+         </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field appearance="fill">
+              <mat-label>Izaberi predmet</mat-label>
+              <mat-select formControlName="predmet">
+                <mat-option *ngFor="let predmet of predmeti" [value]="predmet" required>{{predmet.naziv}} | {{predmet.id}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+        </p> 
+          
+          <button mat-flat-button color="primary" type="submit">Dodaj ispit</button>
+        </div>
+      </form>
+    </div>
+
+    <!--Kraj forme za dodavanje ispita-->
     
   </div>
   <!--Kraj diva za forme-->
