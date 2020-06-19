@@ -1,1 +1,28 @@
-<p>student-profil works!</p>
+<br>
+<mat-checkbox (change)='prikazFormePrijaveIspitaFunction($event)'>Forma za prijava ispita</mat-checkbox>
+
+
+<div *ngIf="prikazFormePrijaveIspita">
+    <form ngNativeValidate [formGroup]="formaZaDodavanjePrijaveIspita" (ngSubmit)="dodajPrijavuIspita(formaZaDodavanjePrijaveIspita.value)">
+      <div class="example-container">
+        <p>
+            <mat-form-field appearance="fill">
+                <mat-label>Izaberi ispit</mat-label>
+                <mat-select formControlName="ispit">
+                  <mat-option *ngFor="let ispit of ispiti" [value]="ispit" required>{{ispit.predmet.naziv}} | {{ispit.id}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+          </p> 
+          <p>
+            <mat-form-field appearance="fill">
+                <mat-label>Izaberi rok</mat-label>
+                <mat-select formControlName="rok">
+                  <mat-option *ngFor="let rok of rokovi" [value]="rok" required>{{rok.naziv}} | {{rok.pocetak}} | {{rok.kraj}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+          </p> 
+        
+        <button mat-flat-button color="primary" type="submit">Prijavi ispit</button>
+      </div>
+    </form>
+  </div>

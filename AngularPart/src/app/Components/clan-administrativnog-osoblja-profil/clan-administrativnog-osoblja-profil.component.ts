@@ -6,6 +6,12 @@ import { RegistrovanKorisnikService } from 'src/app/Services/registrovan-korisni
 import { Student } from 'src/app/Models/student';
 import { RegistrovanKorisnik } from 'src/app/Models/registrovan-korisnik';
 import { RokService } from 'src/app/Services/rok.service';
+import { IspitService } from 'src/app/Services/ispit.service';
+import { Rok } from 'src/app/Models/rok';
+import { PrijavaIspita } from 'src/app/Models/prijava-ispita';
+import { Ispit } from 'src/app/Models/ispit';
+import { Predmet } from 'src/app/Models/predmet';
+import { PredmetService } from 'src/app/Services/predmet.service';
 
 @Component({
   selector: 'app-clan-administrativnog-osoblja-profil',
@@ -17,10 +23,13 @@ export class ClanAdministrativnogOsobljaProfilComponent implements OnInit {
   //Forme
   formaZaDodavanjeNovogStudenta;
   formaZaDodavanjeRoka;
+  formaZaDodavanjeIspita;
 
   //Inicijalno prazne liste
   studenti:Student[];
   registrovaniNesvrstaniKorisnici:RegistrovanKorisnik[];
+  predmeti:Predmet[];
+  
 
   //Polje za pretragu
   pretraga;
@@ -28,8 +37,10 @@ export class ClanAdministrativnogOsobljaProfilComponent implements OnInit {
   //Slajdovi
   prikazIDodavanjeStudenata = false;
   prikazFormeRoka = false;
+  prikazFormeIspita = false;
 
-  constructor(private service:StudentService, private service2:RegistrovanKorisnikService,private serviceRok:RokService, private router:Router, private builder:FormBuilder) {
+  constructor(private service:StudentService, private service2:RegistrovanKorisnikService,private serviceRok:RokService,
+    private serviceIspit:IspitService,private servicePredmet:PredmetService, private router:Router, private builder:FormBuilder) {
       this.formaZaDodavanjeNovogStudenta = builder.group({
         id:0,
         jmbg:"",
@@ -50,8 +61,17 @@ export class ClanAdministrativnogOsobljaProfilComponent implements OnInit {
         pocetak:null,
         kraj:null,
         vanredan:false,
+        listaPrijavaIspit:[]
+      }as Rok);
+
+      this.formaZaDodavanjeIspita = builder.group({
+        id:0,
+        datumVreme:null,
+        predmet:null,
         listaPrijavaIspita:[]
-      })
+      }as Ispit);
+      
+      
   }
 
   ngOnInit(): void {
@@ -61,6 +81,7 @@ export class ClanAdministrativnogOsobljaProfilComponent implements OnInit {
   dobaviStudente(){
     this.service.dobavi().subscribe(data =>this.studenti = data);
     this.service2.dobavi().subscribe(data =>this.registrovaniNesvrstaniKorisnici = data);
+    this.servicePredmet.dobavi().subscribe(data =>this.predmeti = data);
     
   }
 
@@ -95,7 +116,7 @@ export class ClanAdministrativnogOsobljaProfilComponent implements OnInit {
       pocetak:data.pocetak,
       kraj:data.kraj,
       vanredan:data.vanredan,
-      listaPrijavaIspita:[]
+      listaPrijavaIspit:[]
     };
     this.serviceRok.dodaj(novRok).subscribe(data => {
       window.alert("Uspesno ste dodali rok");
@@ -107,7 +128,24 @@ export class ClanAdministrativnogOsobljaProfilComponent implements OnInit {
   }
 
 
+  //Funkcija za dodavanje ispita
+  dodajIspit(data){
+
+    let novIspit = {
+      id:0,
+      datumVreme:data.datumVreme,
+      predmet:data.predmet,
+      listaPrijavaIspita:[]
+    };
+
+    this.serviceIspit.dodaj(novIspit).subscribe(data => {
+      window.alert("Uspesno ste dodali ispit");
+    });
+  }
 
 
+  prikazFormeIspitaFunction(event){
+    this.prikazFormeIspita = !this.prikazFormeIspita;
+  }
 
 }
