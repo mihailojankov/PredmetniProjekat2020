@@ -11,6 +11,5 @@ public class PrijavaIspitaDTO extends AbstractDTO{
 	
 	LocalDateTime datumPrijave;
 	Student student;
-	RokDTO rok;
 	IspitDTO ispit;
 }
