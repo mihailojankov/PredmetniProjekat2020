@@ -46,6 +46,27 @@ public class RegistrovanKorisnikService extends AbstractService<RegistrovanKoris
 		}
 		return true;
 	}
+
+	public Object findUser(String username){
+
+		RegistrovanKorisnik korisnik = repository.findByUserName(username);
+
+		if(korisnik != null){
+			if(korisnik.getAuthority().getAuthority().equals("NASTAVNIK")){
+				Nastavnik nastavnik = repository.findNastavnik(korisnik.getId());
+				return nastavnik;
+			}
+			if(korisnik.getAuthority().getAuthority().equals("CLAN")){
+				ClanAdministrativnogOsoblja clanAdministrativnogOsoblja = repository.findClanAdministrativnogOsoblja(korisnik.getId());
+				return clanAdministrativnogOsoblja;
+			}
+			if(korisnik.getAuthority().getAuthority().equals("STUDENT")){
+				Student student = repository.findStudent(korisnik.getId());
+				return student;
+			}
+		}
+		return korisnik;
+	}
 	
 	
 

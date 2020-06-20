@@ -4,8 +4,6 @@ import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
-import lombok.Getter;
-import lombok.Setter;
 
 public class StudentDTO extends AbstractDTO{
 	

@@ -1,8 +1,7 @@
 package springPart.DTO;
 
 import java.time.LocalDateTime;
-import lombok.Getter;
-import lombok.Setter;
+
 import springPart.model.korisnikPart.Student;
 
 public class PrijavaIspitaDTO extends AbstractDTO{

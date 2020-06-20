@@ -6,10 +6,6 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 import springPart.model.AbstractModel;
 import springPart.model.predmetPart.Predmet;
 

@@ -5,13 +5,13 @@ import java.util.ArrayList;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
-import springPart.DTO.RegistrovanKorisnikDTO;
+import springPart.DTO.*;
+import springPart.model.korisnikPart.ClanAdministrativnogOsoblja;
+import springPart.model.korisnikPart.Nastavnik;
 import springPart.model.korisnikPart.RegistrovanKorisnik;
+import springPart.model.korisnikPart.Student;
 import springPart.service.RegistrovanKorisnikService;
 
 @Controller
@@ -36,6 +36,27 @@ public class RegistrovanKorisnikController extends AbstractController<Registrova
 		
 		
 		return new ResponseEntity<RegistrovanKorisnik>(HttpStatus.CREATED);
+	}
+
+	@GetMapping(path = "dobaviKorisnickePodatke")
+	public ResponseEntity<?> dobaviKorisnickePodatke(@RequestParam("username") String username){
+
+		Object podaci = service.findUser(username);
+
+		if(podaci.getClass().equals(Nastavnik.class)){
+			podaci = mm.map(podaci, NastavnikDTO.class);
+		}
+		if(podaci.getClass().equals(ClanAdministrativnogOsoblja.class)){
+			podaci = mm.map(podaci, ClanAdministrativnogOsobljaDTO.class);
+		}
+		if(podaci.getClass().equals(Student.class)){
+			podaci = mm.map(podaci, StudentDTO.class);
+		}
+		if(podaci.getClass().equals(RegistrovanKorisnik.class)){
+			podaci = mm.map(podaci, RegistrovanKorisnikDTO.class);
+		}
+
+		return new ResponseEntity<>(podaci,HttpStatus.OK);
 	}
 
 	

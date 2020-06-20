@@ -10,9 +10,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import org.springframework.security.core.GrantedAuthority;
-
-import lombok.Getter;
-import lombok.Setter;
 import springPart.model.AbstractModel;
 import springPart.model.korisnikPart.RegistrovanKorisnik;
 

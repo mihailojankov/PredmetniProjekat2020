@@ -16,6 +16,15 @@ public interface RegistrovanKorisnikRepository extends InheritInterface<Registro
 	@Query
 	("SELECT k FROM RegistrovanKorisnik k WHERE k.korisnickoIme = :username")
 	public RegistrovanKorisnik findByUserName(@PathVariable("username") String username);
+
+	@Query("SELECT k FROM Nastavnik k WHERE k.korisnik.id=:id")
+	public Nastavnik findNastavnik(@PathVariable("id") Long id);
+
+	@Query("SELECT k FROM Student k WHERE k.korisnik.id=:id")
+	public Student findStudent(@PathVariable("id") Long id);
+
+	@Query("SELECT k FROM ClanAdministrativnogOsoblja k WHERE k.korisnik.id=:id")
+	public ClanAdministrativnogOsoblja findClanAdministrativnogOsoblja(@PathVariable("id") Long id);
 	
 	@Override
 	@Query

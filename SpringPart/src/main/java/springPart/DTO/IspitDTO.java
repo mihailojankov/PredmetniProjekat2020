@@ -2,8 +2,6 @@ package springPart.DTO;
 
 import java.time.LocalDateTime;
 import java.util.List;
-import lombok.Getter;
-import lombok.Setter;
 
 public class IspitDTO extends AbstractDTO{
 	

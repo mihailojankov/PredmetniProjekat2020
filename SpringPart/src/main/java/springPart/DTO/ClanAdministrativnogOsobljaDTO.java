@@ -1,6 +1,4 @@
 package springPart.DTO;
-import lombok.Getter;
-import lombok.Setter;
 
 public class ClanAdministrativnogOsobljaDTO extends AbstractDTO{
 	String jmbg;

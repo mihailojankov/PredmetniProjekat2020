@@ -4,10 +4,6 @@ import java.time.LocalDateTime;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
-
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 import springPart.model.AbstractModel;
 import springPart.model.korisnikPart.Student;
 

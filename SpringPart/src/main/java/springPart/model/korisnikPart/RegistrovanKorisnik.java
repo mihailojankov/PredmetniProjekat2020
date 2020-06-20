@@ -5,14 +5,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-
-import org.springframework.security.core.GrantedAuthority;
-
-import lombok.Getter;
-import lombok.Setter;
 import springPart.model.AbstractModel;
 import springPart.model.security.Authority;
 
