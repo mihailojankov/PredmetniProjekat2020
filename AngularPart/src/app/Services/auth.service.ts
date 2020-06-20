@@ -7,6 +7,7 @@ import {Nastavnik} from '../Models/nastavnik';
 import {Student} from '../Models/student';
 import {ClanAdministrativnogOsoblja} from '../Models/clan-administrativnog-osoblja';
 import {RegistrovanKorisnik} from '../Models/registrovan-korisnik';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,11 @@ export class AuthService {
   currentUser;
   profilePage;
 
-  constructor(public jwtHelperService: JwtHelperService, public http: HttpClient, public router: Router) {
+  public jwtHelperService: JwtHelperService = new JwtHelperService();
+   
+
+  constructor(public http: HttpClient, public router: Router) {
+    this.setCurrentUser();
   }
 
   public isAuthenticated(): boolean {
@@ -30,7 +35,7 @@ export class AuthService {
   }
 
 
-  public setCurrentUser(data) {
+  public login(data){
     window.localStorage.setItem('token', '');
 
     const korisnik = {korisnickoIme: data.korisnickoIme, lozinka: data.lozinka};
@@ -38,6 +43,11 @@ export class AuthService {
       window.localStorage.setItem('token', data.jwt);
       this.router.navigate(['/']);
 
+  });
+  }
+
+  public setCurrentUser() {
+    
       const token = window.localStorage.getItem('token');
       const payload = decode(token);
 
@@ -50,28 +60,26 @@ export class AuthService {
 
       this.http.get<any>('http://localhost:8080/registrovanKorisnik/dobaviKorisnickePodatke', {params: param}).subscribe(data => {
 
-          console.log(data);
           if (payload.role === 'NASTAVNIK') {
-            this.currentUser = data as Nastavnik;
+            this.currentUser = data;
             this.profilePage = 'nastavnikProfil';
           }
 
           if (payload.role === 'STUDENT') {
-            this.currentUser = data as Student;
+            this.currentUser = data;
             this.profilePage = 'studentProfil';
           }
 
           if (payload.role === 'CLAN') {
-            this.currentUser = data as ClanAdministrativnogOsoblja;
+            this.currentUser = data;
             this.profilePage = 'clanAdministrativnogOsobljaProfil';
           } else {
 
-            this.currentUser = data as RegistrovanKorisnik;
+            this.currentUser = data;
             this.profilePage = 'korisnikProfil';
           }
       });
 
-    });
 
   }
 

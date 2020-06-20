@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
   }
 
   login(data) {
-    this.authService.setCurrentUser(data);
+    this.authService.login(data);
   }
 
 

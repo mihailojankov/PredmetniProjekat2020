@@ -8,6 +8,9 @@ import { PrijavaIspita } from 'src/app/Models/prijava-ispita';
 import { Ispit } from 'src/app/Models/ispit';
 import { IspitService } from 'src/app/Services/ispit.service';
 import { PrijavaIspitaService } from 'src/app/Services/prijava-ispita.service';
+import { AuthService } from 'src/app/Services/auth.service';
+import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-student-profil',
@@ -25,7 +28,10 @@ export class StudentProfilComponent implements OnInit {
   prikazFormePrijaveIspita = false;
 
   constructor(private servicePredmet:PredmetService, private serviceRok:RokService,
-    private serviceIspit:IspitService, private servicePrijavaIspita:PrijavaIspitaService, private formBuilder:FormBuilder) {
+    private serviceIspit:IspitService,private authService:AuthService, private servicePrijavaIspita:PrijavaIspitaService, private formBuilder:FormBuilder,
+    private router:Router) {
+
+    
     this.formaZaDodavanjePrijaveIspita = formBuilder.group({
       id:0,
       datumPrijave:null,
@@ -37,6 +43,7 @@ export class StudentProfilComponent implements OnInit {
 
   ngOnInit(): void {
     this.dobaviSve();
+    this.authService.setCurrentUser();
   }
 
   dobaviSve(){
@@ -44,7 +51,6 @@ export class StudentProfilComponent implements OnInit {
     this.servicePredmet.dobavi().subscribe(data => this.predmeti = data);
     this.serviceRok.dobavi().subscribe(data => {
       this.rokovi = data;
-      console.log(data);
     });
   }
 
@@ -52,7 +58,7 @@ export class StudentProfilComponent implements OnInit {
     let novaPrijavaIspita = {
       id:0,
       datumPrijave:new Date(),
-      student:null,/// za promeniti
+      student:this.authService.getCurrentUser(),
       rok:data.rok,
       ispit:data.ispit
     }

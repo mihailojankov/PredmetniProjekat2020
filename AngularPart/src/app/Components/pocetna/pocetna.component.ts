@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/Services/auth.service';
+import { __values } from 'tslib';
 
 @Component({
   selector: 'app-pocetna',
@@ -9,7 +11,7 @@ export class PocetnaComponent implements OnInit {
 
   izabranFakultet;
 
-  constructor() { }
+  constructor(private authService:AuthService) { }
 
   ngOnInit(): void {
   }

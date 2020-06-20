@@ -19,16 +19,20 @@ public class Ispit extends AbstractModel{
 	
 	@OneToMany(mappedBy = "ispit")
 	List<PrijavaIspita> listaPrijavaIspita;
+	
+	@ManyToOne()
+	Rok rok;
 
 	public Ispit() {
 		
 	}
 
-	public Ispit(LocalDateTime datumVreme, Predmet predmet, List<PrijavaIspita> listaPrijavaIspita) {
+	public Ispit(LocalDateTime datumVreme, Predmet predmet, List<PrijavaIspita> listaPrijavaIspita, Rok rok) {
 		super();
 		this.datumVreme = datumVreme;
 		this.predmet = predmet;
 		this.listaPrijavaIspita = listaPrijavaIspita;
+		this.rok = rok;
 	}
 
 	public LocalDateTime getDatumVreme() {
@@ -54,6 +58,16 @@ public class Ispit extends AbstractModel{
 	public void setListaPrijavaIspita(List<PrijavaIspita> listaPrijavaIspita) {
 		this.listaPrijavaIspita = listaPrijavaIspita;
 	}
+
+	public Rok getRok() {
+		return rok;
+	}
+
+	public void setRok(Rok rok) {
+		this.rok = rok;
+	}
+
+	
 	
 	
 	

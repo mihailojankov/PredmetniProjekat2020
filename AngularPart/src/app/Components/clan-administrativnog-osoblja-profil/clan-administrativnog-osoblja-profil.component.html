@@ -183,6 +183,15 @@
               </mat-select>
             </mat-form-field>
         </p> 
+
+        <p>
+          <mat-form-field appearance="fill">
+              <mat-label>Izaberi rok</mat-label>
+              <mat-select formControlName="rok">
+                <mat-option *ngFor="let rok of rokovi" [value]="rok" required>{{rok.id}} | {{rok.naziv}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+        </p> 
           
           <button mat-flat-button color="primary" type="submit">Dodaj ispit</button>
         </div>

@@ -7,6 +7,7 @@ public class IspitDTO extends AbstractDTO{
 	
     LocalDateTime datumVreme;
 	PredmetDTO predmet;
+	RokDTO rok;
 	public LocalDateTime getDatumVreme() {
 		return datumVreme;
 	}
@@ -18,6 +19,12 @@ public class IspitDTO extends AbstractDTO{
 	}
 	public void setPredmet(PredmetDTO predmet) {
 		this.predmet = predmet;
+	}
+	public RokDTO getRok() {
+		return rok;
+	}
+	public void setRok(RokDTO rok) {
+		this.rok = rok;
 	}
 	
 	

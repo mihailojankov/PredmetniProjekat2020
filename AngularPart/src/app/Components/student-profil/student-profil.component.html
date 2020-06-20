@@ -9,18 +9,11 @@
             <mat-form-field appearance="fill">
                 <mat-label>Izaberi ispit</mat-label>
                 <mat-select formControlName="ispit">
-                  <mat-option *ngFor="let ispit of ispiti" [value]="ispit" required>{{ispit.predmet.naziv}} | {{ispit.id}}</mat-option>
+                  <mat-option *ngFor="let ispit of ispiti" [value]="ispit" required>{{ispit.predmet.naziv}} | {{ispit.datumVreme}} | {{ispit.rok.naziv}} </mat-option>
                 </mat-select>
               </mat-form-field>
           </p> 
-          <p>
-            <mat-form-field appearance="fill">
-                <mat-label>Izaberi rok</mat-label>
-                <mat-select formControlName="rok">
-                  <mat-option *ngFor="let rok of rokovi" [value]="rok" required>{{rok.naziv}} | {{rok.pocetak}} | {{rok.kraj}}</mat-option>
-                </mat-select>
-              </mat-form-field>
-          </p> 
+          
         
         <button mat-flat-button color="primary" type="submit">Prijavi ispit</button>
       </div>
