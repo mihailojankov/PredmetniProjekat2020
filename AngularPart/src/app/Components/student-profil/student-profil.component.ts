@@ -21,23 +21,23 @@ export class StudentProfilComponent implements OnInit {
 
   formaZaDodavanjePrijaveIspita;
 
-  predmeti:Predmet[];
-  rokovi:Rok[];
-  ispiti:Ispit[];
+  predmeti: Predmet[];
+  rokovi: Rok[];
+  ispiti: Ispit[];
 
   prikazFormePrijaveIspita = false;
 
-  constructor(private servicePredmet:PredmetService, private serviceRok:RokService,
-    private serviceIspit:IspitService,private authService:AuthService, private servicePrijavaIspita:PrijavaIspitaService, private formBuilder:FormBuilder,
-    private router:Router) {
+  constructor(private servicePredmet: PredmetService, private serviceRok: RokService,
+              private serviceIspit: IspitService, private authService: AuthService, private servicePrijavaIspita: PrijavaIspitaService, private formBuilder: FormBuilder,
+              private router: Router) {
 
-    
+
     this.formaZaDodavanjePrijaveIspita = formBuilder.group({
-      id:0,
-      datumPrijave:null,
-      student:null,
-      rok:null,
-      ispit:null
+      id: 0,
+      datumPrijave: null,
+      student: null,
+      rok: null,
+      ispit: null
     }as PrijavaIspita);
    }
 
@@ -46,7 +46,7 @@ export class StudentProfilComponent implements OnInit {
     this.authService.setCurrentUser();
   }
 
-  dobaviSve(){
+  dobaviSve() {
     this.serviceIspit.dobavi().subscribe(data => this.ispiti = data);
     this.servicePredmet.dobavi().subscribe(data => this.predmeti = data);
     this.serviceRok.dobavi().subscribe(data => {
@@ -54,20 +54,20 @@ export class StudentProfilComponent implements OnInit {
     });
   }
 
-  dodajPrijavuIspita(data){
-    let novaPrijavaIspita = {
-      id:0,
-      datumPrijave:new Date(),
-      student:this.authService.getCurrentUser(),
-      rok:data.rok,
-      ispit:data.ispit
-    }
+  dodajPrijavuIspita(data) {
+    const novaPrijavaIspita = {
+      id: 0,
+      datumPrijave: new Date(),
+      student: this.authService.getCurrentUser(),
+      rok: data.rok,
+      ispit: data.ispit
+    };
     this.servicePrijavaIspita.dodaj(novaPrijavaIspita).subscribe(data => {
-      window.alert("Uspesno ste prijavili ispit");
+      window.alert('Uspesno ste prijavili ispit');
     });
   }
 
-  prikazFormePrijaveIspitaFunction(event){
+  prikazFormePrijaveIspitaFunction(event) {
     this.prikazFormePrijaveIspita = !this.prikazFormePrijaveIspita;
   }
 

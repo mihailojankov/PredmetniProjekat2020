@@ -18,10 +18,10 @@ export class AuthService {
   profilePage;
 
   public jwtHelperService: JwtHelperService = new JwtHelperService();
-   
+
 
   constructor(public http: HttpClient, public router: Router) {
-    this.setCurrentUser();
+
   }
 
   public isAuthenticated(): boolean {
@@ -47,7 +47,7 @@ export class AuthService {
   }
 
   public setCurrentUser() {
-    
+
       const token = window.localStorage.getItem('token');
       const payload = decode(token);
 
