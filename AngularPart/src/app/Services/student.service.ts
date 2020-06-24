@@ -14,6 +14,9 @@ export class StudentService extends AbstractServiceService<Student> {
     super(http, "student");
    }
 
+   public pronadjiStudentePoPredmetu(id) :Observable<Student[]>{
+     return this.http.get<Student[]>(this.adresaD + "/pronadjiStudentePoPredmetu/" + id);
+   }
   
 
 

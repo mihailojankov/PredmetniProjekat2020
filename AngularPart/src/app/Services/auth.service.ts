@@ -8,14 +8,12 @@ import {Student} from '../Models/student';
 import {ClanAdministrativnogOsoblja} from '../Models/clan-administrativnog-osoblja';
 import {RegistrovanKorisnik} from '../Models/registrovan-korisnik';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
+import {map} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  currentToken;
-  currentUser;
-  profilePage;
 
   public jwtHelperService: JwtHelperService = new JwtHelperService();
 
@@ -29,8 +27,6 @@ export class AuthService {
     if (token === undefined || token === null || token === '') {
       return false;
     }
-    this.currentToken = token;
-
     return !this.jwtHelperService.isTokenExpired(token);
   }
 
@@ -44,53 +40,26 @@ export class AuthService {
       this.router.navigate(['/']);
 
   });
+
   }
 
-  public setCurrentUser() {
+  public getCurrentUser() : Observable<any> {
 
       const token = window.localStorage.getItem('token');
       const payload = decode(token);
 
       const param = new HttpParams().set('username', payload.sub);
 
-      if (payload.role === 'ADMIN') {
-        this.profilePage = 'adminProfil';
-        return;
-      }
-
-      this.http.get<any>('http://localhost:8080/registrovanKorisnik/dobaviKorisnickePodatke', {params: param}).subscribe(data => {
-
-          if (payload.role === 'NASTAVNIK') {
-            this.currentUser = data;
-            this.profilePage = 'nastavnikProfil';
-          }
-
-          if (payload.role === 'STUDENT') {
-            this.currentUser = data;
-            this.profilePage = 'studentProfil';
-          }
-
-          if (payload.role === 'CLAN') {
-            this.currentUser = data;
-            this.profilePage = 'clanAdministrativnogOsobljaProfil';
-          } else {
-
-            this.currentUser = data;
-            this.profilePage = 'korisnikProfil';
-          }
-      });
-
-
-  }
-
-  public getCurrentUser() {
-    return this.currentUser;
-  }
-
-  public getCurrentProfilePage() {
-    return this.getCurrentProfilePage();
+     return this.http.get<any>('http://localhost:8080/registrovanKorisnik/dobaviKorisnickePodatke', {params: param});
   }
 
 
+  public getCurrentProfile(){
+      const token = window.localStorage.getItem('token');
+      const payload = decode(token);
+
+      return payload.role;
+
+  }
 
 }

@@ -11,6 +11,9 @@ import { PrijavaIspitaService } from 'src/app/Services/prijava-ispita.service';
 import { AuthService } from 'src/app/Services/auth.service';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { Student } from 'src/app/Models/student';
+import { ObserveOnMessage } from 'rxjs/internal/operators/observeOn';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-student-profil',
@@ -24,6 +27,9 @@ export class StudentProfilComponent implements OnInit {
   predmeti: Predmet[];
   rokovi: Rok[];
   ispiti: Ispit[];
+  trenutniStudent :Student;
+  prijaveIspita:PrijavaIspita[];
+
 
   prikazFormePrijaveIspita = false;
 
@@ -43,7 +49,7 @@ export class StudentProfilComponent implements OnInit {
 
   ngOnInit(): void {
     this.dobaviSve();
-    this.authService.setCurrentUser();
+    
   }
 
   dobaviSve() {
@@ -52,18 +58,23 @@ export class StudentProfilComponent implements OnInit {
     this.serviceRok.dobavi().subscribe(data => {
       this.rokovi = data;
     });
+
+    this.servicePrijavaIspita.dobavi().subscribe(data => this.prijaveIspita = data);
+
+    this.authService.getCurrentUser().subscribe(data => this.trenutniStudent = data);
   }
 
   dodajPrijavuIspita(data) {
     const novaPrijavaIspita = {
       id: 0,
       datumPrijave: new Date(),
-      student: this.authService.getCurrentUser(),
+      student: this.trenutniStudent,
       rok: data.rok,
       ispit: data.ispit
     };
     this.servicePrijavaIspita.dodaj(novaPrijavaIspita).subscribe(data => {
       window.alert('Uspesno ste prijavili ispit');
+      this.dobaviSve();
     });
   }
 

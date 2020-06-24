@@ -1,1 +1,48 @@
-<p>nastavnik-profil works!</p>
+<mat-form-field appearance="fill">
+<mat-select  (selectionChange)="pronadjiStudentaPoPredmetu($event.value)">
+    <mat-option *ngFor="let predmet of predmeti" [value]="predmet" >Id:{{predmet.id}} | {{predmet.naziv}} | Semestar:{{predmet.semestar}}</mat-option>
+  </mat-select>
+</mat-form-field>
+
+
+
+
+<br>
+<br>
+<div *ngIf="studenti">
+        Search: <input type="text" placeholder="Pretrazite studente" [(ngModel)]="pretraga">
+        <table class="table table-hover table-dark">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Ime</th>
+                <th scope="col">Prezime</th>
+                <th scope="col">E-mail</th>
+                <th scope="col">Broj indeksa</th>
+                <th scope="col">JMBG</th>
+                <th scope="col">Datum rodjenja</th>
+                <th scope="col">Mesto rodjenja</th>
+                <th scope="col">Drzava rodjenja</th>
+                <th scope="col">Godina upisa</th>
+                <th scope="col">Vanredni</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let student of studenti | filter:pretraga">
+                <th scope="row">{{student.id}}</th>
+                <td>{{student.korisnik.ime}}</td>
+                <td>{{student.korisnik.prezime}}</td>
+                <td>{{student.korisnik.email}}</td>
+                <td>{{student.brojIndeksa}}</td>
+                <td>{{student.jmbg}}</td>
+                <td>{{student.datumRodjenja}}</td>
+                <td>{{student.mestoRodjenja}}</td>
+                <td>{{student.drzavaRodjenja}}</td>
+                <td>{{student.godinaUpisa}}</td>
+                <td *ngIf="student.vanredni == true">Da</td>
+                <td *ngIf="student.vanredni == false">Ne</td>
+              </tr>
+            </tbody>
+          </table>
+</div>
+    

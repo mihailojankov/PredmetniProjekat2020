@@ -11,7 +11,7 @@ export class PocetnaComponent implements OnInit {
 
   izabranFakultet;
 
-  constructor(private authService:AuthService) { }
+  constructor() { }
 
   ngOnInit(): void {
   }
