@@ -30,6 +30,7 @@ export class ClanAdministrativnogOsobljaProfilComponent implements OnInit {
   registrovaniNesvrstaniKorisnici:RegistrovanKorisnik[];
   predmeti:Predmet[];
   rokovi:Rok[];
+  odabraniPredmetiZaStudenta:Predmet[] = [];
 
   //Polje za pretragu
   pretraga;
@@ -99,14 +100,24 @@ export class ClanAdministrativnogOsobljaProfilComponent implements OnInit {
           mestoRodjenja:data.mestoRodjenja,
           drzavaRodjenja:data.drzavaRodjenja,
           vanredni:data.vanredni,
-          godinaUpisa:data.godinaUpisa};
+          godinaUpisa:data.godinaUpisa,
+          listaPredmeta:this.odabraniPredmetiZaStudenta};
 
-
+      console.log(this.odabraniPredmetiZaStudenta);
     this.service.dodaj(novStudent).subscribe(data => this.dobaviSve());
   }
 
   prikazIDodavanjeStudenataFunction(event){
     this.prikazIDodavanjeStudenata = !this.prikazIDodavanjeStudenata;
+  }
+
+  //Dodavanje izabranih predmeta u privremenu listu za studenta
+  zakaciPredmetZaStudenta(data) {
+    console.log(data);
+    if (this.odabraniPredmetiZaStudenta.find(element => element == data) == undefined && data != '') {
+
+      this.odabraniPredmetiZaStudenta.push(data);
+    }
   }
 
   //Funkcija za dodavanje roka
