@@ -75,12 +75,13 @@ export class NastavnikProfilComponent implements OnInit {
   }
 
   dodajIshodeIspita() {
-    this.ishodIspitaService.dodajIshodeIspita(this.listaOcenjenih).subscribe(data => {
-      window.alert('Uspesno zabeleno!');
-      this.dobaviSve();
-      this.listaOcenjenih = [];
-    });
-
+    if (this.listaOcenjenih.length != 0) {
+      this.ishodIspitaService.dodajIshodeIspita(this.listaOcenjenih).subscribe(data => {
+        window.alert('Uspesno zabelezeno!');
+        this.dobaviSve();
+        this.listaOcenjenih = [];
+      });
+    }
   }
 
 }
