@@ -8,10 +8,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-<<<<<<< HEAD
-
-=======
->>>>>>> origin/master
 import springPart.model.AbstractModel;
 import springPart.model.predmetPart.Fakultet;
 import springPart.model.predmetPart.Predmet;

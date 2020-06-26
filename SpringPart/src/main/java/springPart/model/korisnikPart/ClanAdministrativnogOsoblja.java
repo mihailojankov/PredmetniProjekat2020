@@ -2,10 +2,6 @@ package springPart.model.korisnikPart;
 
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
-<<<<<<< HEAD
-
-=======
->>>>>>> origin/master
 import springPart.model.AbstractModel;
 
 @Entity

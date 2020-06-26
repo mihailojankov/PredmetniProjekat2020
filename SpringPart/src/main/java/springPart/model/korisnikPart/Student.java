@@ -11,10 +11,6 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-<<<<<<< HEAD
-
-=======
->>>>>>> origin/master
 import springPart.model.AbstractModel;
 import springPart.model.ispitPart.IshodIspita;
 import springPart.model.ispitPart.PrijavaIspita;
