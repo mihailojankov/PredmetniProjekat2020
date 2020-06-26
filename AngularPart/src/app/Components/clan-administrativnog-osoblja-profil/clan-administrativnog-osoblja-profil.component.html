@@ -111,8 +111,19 @@
                       <mat-radio-button value="false">Ne</mat-radio-button>
                   </mat-radio-group>
                 </p>
+                <p>
+                  <mat-form-field appearance="fill">
+                      <mat-label>Izaberi Predmete</mat-label>
+                      <mat-select formControlName="listaPredmeta" (selectionChange)="zakaciPredmetZaStudenta($event.value)">
+                        <mat-option *ngFor="let predmet of predmeti" [value]="predmet" required>Id:{{predmet.id}} | {{predmet.naziv}} | Semestar:{{predmet.semestar}}</mat-option>
+                      </mat-select>
+                  </mat-form-field>
+              </p>
+              <div *ngFor="let predmet of odabraniPredmetiZaStudenta">
+                  Id:{{predmet.id}} | {{predmet.naziv}} | Semestar:{{predmet.semestar}}
+              </div>
             </div>
-            <button mat-flat-button color="primary" type="submit">Dodaj student</button>
+            <button mat-flat-button color="primary" type="submit">Dodaj studenta</button>
           </form>
     </div>
         <!--Kraj forme za dodavanje studenta -->
@@ -180,6 +191,15 @@
               <mat-label>Izaberi predmet</mat-label>
               <mat-select formControlName="predmet">
                 <mat-option *ngFor="let predmet of predmeti" [value]="predmet" required>{{predmet.naziv}} | {{predmet.id}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+        </p> 
+
+        <p>
+          <mat-form-field appearance="fill">
+              <mat-label>Izaberi rok</mat-label>
+              <mat-select formControlName="rok">
+                <mat-option *ngFor="let rok of rokovi" [value]="rok" required>{{rok.id}} | {{rok.naziv}}</mat-option>
               </mat-select>
             </mat-form-field>
         </p> 

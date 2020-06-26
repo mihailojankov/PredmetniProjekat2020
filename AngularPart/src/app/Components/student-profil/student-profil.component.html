@@ -1,7 +1,7 @@
 <br>
 <mat-checkbox (change)='prikazFormePrijaveIspitaFunction($event)'>Forma za prijava ispita</mat-checkbox>
 
-
+<!--Pocetak forme za prijavu ispita kod studenta-->
 <div *ngIf="prikazFormePrijaveIspita">
     <form ngNativeValidate [formGroup]="formaZaDodavanjePrijaveIspita" (ngSubmit)="dodajPrijavuIspita(formaZaDodavanjePrijaveIspita.value)">
       <div class="example-container">
@@ -9,20 +9,40 @@
             <mat-form-field appearance="fill">
                 <mat-label>Izaberi ispit</mat-label>
                 <mat-select formControlName="ispit">
-                  <mat-option *ngFor="let ispit of ispiti" [value]="ispit" required>{{ispit.predmet.naziv}} | {{ispit.id}}</mat-option>
+                  <mat-option *ngFor="let ispit of ispiti" [value]="ispit" required>{{ispit.predmet.naziv}} | {{ispit.datumVreme}} | {{ispit.rok.naziv}} </mat-option>
                 </mat-select>
               </mat-form-field>
           </p> 
-          <p>
-            <mat-form-field appearance="fill">
-                <mat-label>Izaberi rok</mat-label>
-                <mat-select formControlName="rok">
-                  <mat-option *ngFor="let rok of rokovi" [value]="rok" required>{{rok.naziv}} | {{rok.pocetak}} | {{rok.kraj}}</mat-option>
-                </mat-select>
-              </mat-form-field>
-          </p> 
+          
         
         <button mat-flat-button color="primary" type="submit">Prijavi ispit</button>
       </div>
     </form>
   </div>
+
+  <!--Kraj forme za prijavu ispita kod studenta-->
+<br>
+<br>
+
+  <div *ngFor="let pi of prijaveIspita">
+    <p>{{pi.ispit.datumVreme}} | {{pi.ispit.predmet.naziv}} | {{pi.ispit.rok.naziv}}</p>
+  </div>
+
+
+<br>
+<br>
+<!--Pocetak diva za prikaz studentovih podataka-->
+  <div *ngIf="trenutniStudent">
+
+    <p>Podaci o studentu</p>
+    <h3>Ime i prezime : {{trenutniStudent.korisnik.ime}} {{trenutniStudent.korisnik.prezime}}</h3>
+    <p>JMBG : {{trenutniStudent.jmbg}}</p>
+    <p>Datum rodjenja : {{trenutniStudent.datumRodjenja}}</p>
+    <p>Broj indeksa : {{trenutniStudent.brojIndeksa}}</p>
+    <p>Mesto rodjenja : {{trenutniStudent.mestoRodjenja}}</p>
+    <p>Drzava rodjenja : {{trenutniStudent.drzavaRodjenja}}</p>
+
+  </div>
+  <!--Kraj diva za prikaz studentovih podataka-->
+
+ 

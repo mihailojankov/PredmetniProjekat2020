@@ -1,8 +1,5 @@
 package springPart.DTO;
 
-import lombok.Getter;
-import lombok.Setter;
-
 public class IshodIspitaDTO extends AbstractDTO{
 	
 	float prviKolokvijumBodovi;

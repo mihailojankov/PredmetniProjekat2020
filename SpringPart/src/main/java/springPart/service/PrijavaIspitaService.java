@@ -11,5 +11,9 @@ public class PrijavaIspitaService extends AbstractService<PrijavaIspita, Prijava
 	public PrijavaIspitaService(PrijavaIspitaRepository repository) {
 		super(repository);
 	}
+	
+	public Iterable<PrijavaIspita> nadjiPrijavePoIdStudenta(Long id) {
+		return repository.nadjiPrijavePoIdStudenta(id);
+	}
 	 
 }

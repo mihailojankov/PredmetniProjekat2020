@@ -11,6 +11,9 @@ public class PredmetService extends AbstractService<Predmet, PredmetRepository>{
 		super(repository);
 	}
 
+	public Iterable<Predmet> pronadjiPoProfesoru(Long id){
+		return repository.pronadjiPoProfesoru(id);
+	}
 	
 	
 	

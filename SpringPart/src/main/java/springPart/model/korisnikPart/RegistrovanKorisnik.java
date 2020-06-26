@@ -5,12 +5,14 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+<<<<<<< HEAD
 import javax.persistence.OneToMany;
 
 import org.springframework.security.core.GrantedAuthority;
 
+=======
+>>>>>>> origin/master
 import springPart.model.AbstractModel;
 import springPart.model.security.Authority;
 

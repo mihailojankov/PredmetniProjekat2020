@@ -19,6 +19,10 @@ export class PredmetService extends AbstractServiceService<Predmet> {
     return this.http.get<Predmet[]>(this.adresaD + "/pronadjiPoSmeru/" + id);
   }
 
+  dobaviPoProfesoru(id):Observable<Predmet[]>{
+    return this.http.get<Predmet[]>(this.adresaD + "/pronadjiPoProfesoru/" + id);
+  }
+
 
 
 }

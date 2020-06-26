@@ -35,6 +35,9 @@ import { NgxMatDatetimePickerModule, NgxMatTimepickerModule, NgxMatNativeDateMod
 import { PocetnaComponent } from './Components/pocetna/pocetna.component';
 import {JwtModule, JwtHelperService} from '@auth0/angular-jwt';
 import {RoleGuardService} from './Services/role-guard.service';
+import { AuthService } from './Services/auth.service';
+import {MatPaginatorModule} from '@angular/material/paginator';
+
 
 
 
@@ -79,6 +82,7 @@ import {RoleGuardService} from './Services/role-guard.service';
     NgxMatDatetimePickerModule,
     NgxMatNativeDateModule,
     NgxMatTimepickerModule,
+    MatPaginatorModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: function tokenGetter() {
@@ -96,7 +100,7 @@ import {RoleGuardService} from './Services/role-guard.service';
       multi: true
     },
     RoleGuardService
-  ],
+    ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

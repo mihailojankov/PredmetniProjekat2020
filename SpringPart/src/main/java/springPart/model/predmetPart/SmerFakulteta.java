@@ -7,9 +7,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 import springPart.model.AbstractModel;
 
 @Entity

@@ -55,9 +55,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 			.authorizeRequests()
 			.antMatchers("/authenticate").permitAll()
 			.antMatchers(HttpMethod.GET, "/fakultet/**", "/univerzitet/**", "/smerFakulteta/**", "/predmet/**").permitAll()
-			.antMatchers(HttpMethod.GET, "/rok/**").hasAnyAuthority("STUDENT", "ADMIN", "CLAN")
+			.antMatchers(HttpMethod.GET, "/rok/**").hasAnyAuthority("STUDENT", "ADMIN", "CLAN", "NASTAVNIK")
 			.antMatchers(HttpMethod.POST, "/registrovanKorisnik").permitAll()
-			.antMatchers("/student/**", "/registrovanKorisnik/**").hasAnyAuthority("CLAN", "ADMIN")
+			.antMatchers(HttpMethod.GET, "/registrovanKorisnik/**").permitAll()
+			.antMatchers("/student/**", "/registrovanKorisnik/**").hasAnyAuthority("CLAN", "ADMIN", "NASTAVNIK")
 			.antMatchers("/nastavnik/**","/clanAdministrativnogOsoblja/**").hasAuthority("ADMIN")
 			.and()
 			.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);

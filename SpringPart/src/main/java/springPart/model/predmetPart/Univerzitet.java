@@ -7,12 +7,10 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-
-import lombok.Data;
 import springPart.model.AbstractModel;
 import springPart.model.korisnikPart.Nastavnik;
 
-@Data
+
 @Entity
 public class Univerzitet extends AbstractModel{
 	

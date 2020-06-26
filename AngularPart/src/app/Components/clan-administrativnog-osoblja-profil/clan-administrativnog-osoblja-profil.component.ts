@@ -29,7 +29,8 @@ export class ClanAdministrativnogOsobljaProfilComponent implements OnInit {
   studenti:Student[];
   registrovaniNesvrstaniKorisnici:RegistrovanKorisnik[];
   predmeti:Predmet[];
-  
+  rokovi:Rok[];
+  odabraniPredmetiZaStudenta:Predmet[] = [];
 
   //Polje za pretragu
   pretraga;
@@ -68,20 +69,22 @@ export class ClanAdministrativnogOsobljaProfilComponent implements OnInit {
         id:0,
         datumVreme:null,
         predmet:null,
-        listaPrijavaIspita:[]
+        listaPrijavaIspita:[],
+        rok:null
       }as Ispit);
       
       
   }
 
   ngOnInit(): void {
-    this.dobaviStudente();
+    this.dobaviSve();
   }
 
-  dobaviStudente(){
+  dobaviSve(){
     this.service.dobavi().subscribe(data =>this.studenti = data);
     this.service2.dobavi().subscribe(data =>this.registrovaniNesvrstaniKorisnici = data);
     this.servicePredmet.dobavi().subscribe(data =>this.predmeti = data);
+    this.serviceRok.dobavi().subscribe(data => this.rokovi = data);
     
   }
 
@@ -97,14 +100,24 @@ export class ClanAdministrativnogOsobljaProfilComponent implements OnInit {
           mestoRodjenja:data.mestoRodjenja,
           drzavaRodjenja:data.drzavaRodjenja,
           vanredni:data.vanredni,
-          godinaUpisa:data.godinaUpisa};
+          godinaUpisa:data.godinaUpisa,
+          listaPredmeta:this.odabraniPredmetiZaStudenta};
 
-
-    this.service.dodaj(novStudent).subscribe(data => this.dobaviStudente());
+      console.log(this.odabraniPredmetiZaStudenta);
+    this.service.dodaj(novStudent).subscribe(data => this.dobaviSve());
   }
 
   prikazIDodavanjeStudenataFunction(event){
     this.prikazIDodavanjeStudenata = !this.prikazIDodavanjeStudenata;
+  }
+
+  //Dodavanje izabranih predmeta u privremenu listu za studenta
+  zakaciPredmetZaStudenta(data) {
+    console.log(data);
+    if (this.odabraniPredmetiZaStudenta.find(element => element == data) == undefined && data != '') {
+
+      this.odabraniPredmetiZaStudenta.push(data);
+    }
   }
 
   //Funkcija za dodavanje roka
@@ -120,6 +133,7 @@ export class ClanAdministrativnogOsobljaProfilComponent implements OnInit {
     };
     this.serviceRok.dodaj(novRok).subscribe(data => {
       window.alert("Uspesno ste dodali rok");
+      this.dobaviSve();
     });
   }
 
@@ -135,11 +149,13 @@ export class ClanAdministrativnogOsobljaProfilComponent implements OnInit {
       id:0,
       datumVreme:data.datumVreme,
       predmet:data.predmet,
-      listaPrijavaIspita:[]
+      listaPrijavaIspita:[],
+      rok:data.rok
     };
 
     this.serviceIspit.dodaj(novIspit).subscribe(data => {
       window.alert("Uspesno ste dodali ispit");
+      this.dobaviSve();
     });
   }
 

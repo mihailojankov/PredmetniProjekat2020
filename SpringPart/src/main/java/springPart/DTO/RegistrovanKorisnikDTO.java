@@ -1,7 +1,5 @@
 package springPart.DTO;
 
-import lombok.Getter;
-import lombok.Setter;
 
 public class RegistrovanKorisnikDTO extends AbstractDTO{
 	

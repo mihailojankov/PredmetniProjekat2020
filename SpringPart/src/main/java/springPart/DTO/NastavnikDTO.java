@@ -2,8 +2,6 @@ package springPart.DTO;
 
 import java.util.List;
 
-import lombok.Getter;
-import lombok.Setter;
 
 public class NastavnikDTO extends AbstractDTO{
 	String biografija;
