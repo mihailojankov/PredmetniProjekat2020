@@ -10,25 +10,23 @@ import { Router } from '@angular/router';
 })
 export class PrikazFakultetaComponent implements OnInit {
 
-  fakulteti:Fakultet[];
+  fakulteti: Fakultet[];
   @Input()
   izabranFakultet;
 
 
-  constructor(private service:FakultetService, private router:Router) { }
+  constructor(private service: FakultetService, private router: Router) { }
 
   ngOnInit(): void {
       this.dobaviSve();
       this.izabranFakultet = undefined;
   }
 
-  dobaviSve(){
+  dobaviSve() {
     this.service.dobavi().subscribe(data => this.fakulteti = data);
   }
 
-  izaberiFakultet(fakultet:Fakultet){
-    this.izabranFakultet = fakultet;
-  }
+
 
 
 

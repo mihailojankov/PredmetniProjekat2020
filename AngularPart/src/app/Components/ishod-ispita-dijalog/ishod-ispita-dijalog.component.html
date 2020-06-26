@@ -1,0 +1,33 @@
+<form ngNativeValidate [formGroup]="ishodIspitaForm" (ngSubmit)="dodajIshod(ishodIspitaForm.value)">
+  <div class="example-container">
+    <p>
+      <mat-form-field appearance="fill">
+        <mat-label>Prvi kolokvijum bodovi</mat-label>
+        <input matInput placeholder="Prvi kolokvijum bodovi" formControlName="prviKolokvijumBodovi" required>
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field appearance="fill">
+        <mat-label>Drugi kolokvijum bodovi</mat-label>
+        <input matInput placeholder="Drugi kolokvijum bodovi" formControlName="drugiKolokvijumBodovi" required>
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field appearance="fill">
+        <mat-label>Zavrsni ispit bodovi</mat-label>
+        <input matInput placeholder="Zavrsni ispit bodovi" formControlName="zavrsniIspitBodovi" required>
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field appearance="fill">
+        <mat-label>Polozen predmet</mat-label>
+        <mat-select formControlName="polozen">
+          <mat-option [value]="true" required>Da</mat-option>
+          <mat-option [value]="false" required>Ne</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </p>
+    <button mat-flat-button color="primary" type="submit">Oceni studenta</button>
+
+  </div>
+</form>

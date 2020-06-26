@@ -1,4 +1,10 @@
-<mat-tab-group animationDuration="1500ms" mat-align-tabs="center">
+<mat-tab-group animationDuration="0ms" mat-align-tabs="center">
     <mat-tab label="O nama"></mat-tab>
-    <mat-tab label="Nasi fakulteti"><app-prikaz-fakulteta [izabranFakultet]="izabranFakultet"></app-prikaz-fakulteta></mat-tab>
+    <mat-tab label="Nasi fakulteti"><app-prikaz-fakulteta></app-prikaz-fakulteta></mat-tab>
+    <mat-tab *ngIf="role" label="Profil">
+      <app-admin-profil *ngIf="role == 'ADMIN'"></app-admin-profil>
+      <app-student-profil *ngIf="role == 'STUDENT'"></app-student-profil>
+      <app-clan-administrativnog-osoblja-profil *ngIf="role == 'CLAN'"></app-clan-administrativnog-osoblja-profil>
+      <app-nastavnik-profil *ngIf="role == 'NASTAVNIK'"></app-nastavnik-profil>
+    </mat-tab>
 </mat-tab-group>

@@ -27,8 +27,8 @@ export class StudentProfilComponent implements OnInit {
   predmeti: Predmet[];
   rokovi: Rok[];
   ispiti: Ispit[];
-  trenutniStudent :Student;
-  prijaveIspita:PrijavaIspita[];
+  trenutniStudent: Student;
+  prijaveIspita: PrijavaIspita[];
 
 
   prikazFormePrijaveIspita = false;
@@ -49,7 +49,7 @@ export class StudentProfilComponent implements OnInit {
 
   ngOnInit(): void {
     this.dobaviSve();
-    
+
   }
 
   dobaviSve() {

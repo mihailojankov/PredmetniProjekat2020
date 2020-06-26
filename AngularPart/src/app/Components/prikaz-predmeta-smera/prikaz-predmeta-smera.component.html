@@ -1,7 +1,7 @@
-<mat-grid-list cols="3" rowHeight="400px">
+<mat-grid-list cols="3" rowHeight="400px" *ngIf="smer">
     <mat-grid-tile *ngFor="let predmet of smer.predmeti">
         <a [routerLink]="['detalji']" [queryParams]="{id:predmet.id}">
-        
+
             <mat-card class="single-show-card">
                 <mat-card-header>
                   <mat-card-title>{{predmet.naziv}}</mat-card-title>

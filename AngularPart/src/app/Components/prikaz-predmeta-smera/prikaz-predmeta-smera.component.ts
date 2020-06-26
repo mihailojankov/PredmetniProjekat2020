@@ -13,15 +13,15 @@ import { SmerFakultetaService } from 'src/app/Services/smer-fakulteta.service';
 })
 export class PrikazPredmetaSmeraComponent implements OnInit {
 
-  smer:SmerFakulteta;
+  smer: SmerFakulteta;
 
-  constructor(private service:SmerFakultetaService, private router:Router, private route:ActivatedRoute) { }
+  constructor(private service: SmerFakultetaService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.dobaviSmer();
   }
 
-  dobaviSmer(){
+  dobaviSmer() {
     this.service.dobaviPoId(this.route.snapshot.queryParams["id"]).subscribe(data => {
       this.smer = data;
     });

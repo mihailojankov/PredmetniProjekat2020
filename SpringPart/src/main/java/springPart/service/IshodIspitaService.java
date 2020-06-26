@@ -12,4 +12,7 @@ public class IshodIspitaService extends AbstractService<IshodIspita, IshodIspita
 		super(repository);
 	}
 
+	public IshodIspita pronadjiIshod(Long studentId, Long predmetId){
+		return repository.pronadjiIshod(studentId, predmetId);
+	}
 }

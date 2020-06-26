@@ -31,7 +31,7 @@ export class AuthService {
   }
 
 
-  public login(data){
+  public login(data) {
     window.localStorage.setItem('token', '');
 
     const korisnik = {korisnickoIme: data.korisnickoIme, lozinka: data.lozinka};
@@ -43,22 +43,26 @@ export class AuthService {
 
   }
 
-  public getCurrentUser() : Observable<any> {
+  public getCurrentUser(): Observable<any> {
 
       const token = window.localStorage.getItem('token');
       const payload = decode(token);
 
       const param = new HttpParams().set('username', payload.sub);
 
-     return this.http.get<any>('http://localhost:8080/registrovanKorisnik/dobaviKorisnickePodatke', {params: param});
+      return this.http.get<any>('http://localhost:8080/registrovanKorisnik/dobaviKorisnickePodatke', {params: param});
   }
 
 
-  public getCurrentProfile(){
-      const token = window.localStorage.getItem('token');
-      const payload = decode(token);
+  public getCurrentProfile() {
 
-      return payload.role;
+      if (this.isAuthenticated()) {
+        const token = window.localStorage.getItem('token');
+        const payload = decode(token);
+
+        return payload.role;
+      }
+      return '';
 
   }
 
