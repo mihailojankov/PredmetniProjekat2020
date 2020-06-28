@@ -10,7 +10,6 @@ export class PocetnaComponent implements OnInit {
 
   role = "";
 
-
   constructor(private serviceAuth: AuthService) { }
 
   ngOnInit(): void {
