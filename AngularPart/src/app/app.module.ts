@@ -39,6 +39,9 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatMenuModule} from '@angular/material/menu';
 import { IshodIspitaDijalogComponent } from './Components/ishod-ispita-dijalog/ishod-ispita-dijalog.component';
+import { MatTableModule } from '@angular/material/table'  
+import { MatIconModule } from '@angular/material/icon'
+
 
 
 
@@ -88,6 +91,8 @@ import { IshodIspitaDijalogComponent } from './Components/ishod-ispita-dijalog/i
     MatMenuModule,
     MatPaginatorModule,
     MatSnackBarModule,
+    MatTableModule,
+    MatIconModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: function tokenGetter() {

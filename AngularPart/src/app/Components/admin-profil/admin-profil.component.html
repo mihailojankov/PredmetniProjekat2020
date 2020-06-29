@@ -1,13 +1,20 @@
 
+<div>
 <mat-checkbox (change)='showNastavnikFormaFunction($event)'>Forma za nastavnika</mat-checkbox>
+<mat-checkbox (change)='showOsobljeFormaFunction($event)' class="razdvoj">Forma za osoblje</mat-checkbox>
+</div>
+
 <br>
-<mat-checkbox (change)='showOsobljeFormaFunction($event)'>Forma za osoblje</mat-checkbox>
-<br>
+
+<div>
 <mat-checkbox (change)='showPredmetFormaFunction($event)'>Forma za predmet</mat-checkbox>
+<mat-checkbox (change)='showSmerFormaFunction($event)' class="razdvoj">Forma za smer</mat-checkbox>
+</div>
 <br>
-<mat-checkbox (change)='showSmerFormaFunction($event)'>Forma za smer</mat-checkbox>
-<br>
+<div>
 <mat-checkbox (change)='showFakultetFormaFunction($event)'>Forma za fakultet</mat-checkbox>
+<mat-checkbox (change)='showTabelaOsobljeFunction($event)' class="razdvoj">Tabela za osoblje</mat-checkbox>
+</div>
 
 
 
@@ -251,3 +258,36 @@
 
 </div>
 <!--kraj diva za forme -->
+
+<!--Pocetak prikaza tabele za administrativo osoblje i njihovo brisanje-->
+<div *ngIf="showTabelaOsoblje">
+    Search: <input type="text" placeholder="Pretrazite osoblje" [(ngModel)]="pretraga">
+    <table class="table table-hover table-dark">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Ime</th>
+            <th scope="col">Prezime</th>
+            <th scope="col">E-mail</th>
+            <th scope="col">Jmbg</th>
+            <th scope="col">Obrisi clana</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let clan of osoblje | filter:pretraga">
+            <th scope="row">{{clan.id}}</th>
+            <td>{{clan.korisnik.ime}}</td>
+            <td>{{clan.korisnik.prezime}}</td>
+            <td>{{clan.korisnik.email}}</td>
+            <td>{{clan.jmbg}}</td>
+                <button mat-fab color="primary" aria-label="Example icon button with a delete icon" (click)=obrisi(clan.id)>
+                    <mat-icon>delete</mat-icon>
+                </button>
+                    
+          </tr>
+        </tbody>
+      </table>
+</div>
+<!--Kraj prikaza tabele za administrativo osoblje i njihovo brisanje-->
+
+

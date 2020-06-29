@@ -14,6 +14,9 @@ import { SmerFakultetaService } from 'src/app/Services/smer-fakulteta.service';
 import { FakultetService } from 'src/app/Services/fakultet.service';
 import { Fakultet } from 'src/app/Models/fakultet';
 
+
+
+
 @Component({
   selector: 'app-admin-profil',
   templateUrl: './admin-profil.component.html',
@@ -21,6 +24,7 @@ import { Fakultet } from 'src/app/Models/fakultet';
 })
 export class AdminProfilComponent implements OnInit {
 
+  pretraga;
 
   // Forme za dodavanje
   formaZaDodavanjeNastavnika;
@@ -43,7 +47,10 @@ export class AdminProfilComponent implements OnInit {
   showPredmetForma = false;
   showSmerForma = false;
   showFakultetForma = false;
+  showTabelaOsoblje = false;
 
+
+ 
   constructor(private serviceN: NastavnikService, private serviceK: RegistrovanKorisnikService,
               private serviceO: ClanAdministrativnogOsobljaService,
               private servicePredmet: PredmetService, private serviceSmer: SmerFakultetaService,
@@ -105,10 +112,13 @@ export class AdminProfilComponent implements OnInit {
   dobaviSve() {
     this.serviceN.dobavi().subscribe(data => this.nastavnici = data);
     this.serviceK.dobavi().subscribe(data => this.registrovaniNesvrstaniKorisnici = data);
-    this.serviceO.dobavi().subscribe(data => this.osoblje = data);
+    this.serviceO.dobavi().subscribe(data => {
+      this.osoblje = data;
+    });
     this.servicePredmet.dobavi().subscribe(data => this.predmeti = data);
     this.serviceFakultet.dobavi().subscribe(data => this.fakulteti = data);
   }
+
 
   // Za dodavanje nastavnika
   dodajNastavnika(data) {
@@ -238,6 +248,13 @@ export class AdminProfilComponent implements OnInit {
     this.showFakultetForma = !this.showFakultetForma;
   }
 
+  //Brisanje clana administrativnog osoblja
+  obrisi(id){
+    this.serviceO.obrisi(id).subscribe(data => this.dobaviSve());
+  }
+  showTabelaOsobljeFunction(event) {
+    this.showTabelaOsoblje = !this.showTabelaOsoblje;
+  }
 
 
 
