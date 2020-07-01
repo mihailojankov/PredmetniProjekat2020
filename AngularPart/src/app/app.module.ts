@@ -41,7 +41,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import { IshodIspitaDijalogComponent } from './Components/ishod-ispita-dijalog/ishod-ispita-dijalog.component';
 import { MatTableModule } from '@angular/material/table'  
 import { MatIconModule } from '@angular/material/icon'
-
+import {NgxPaginationModule} from 'ngx-pagination'
 
 
 
@@ -92,6 +92,7 @@ import { MatIconModule } from '@angular/material/icon'
     MatPaginatorModule,
     MatSnackBarModule,
     MatTableModule,
+    NgxPaginationModule,
     MatIconModule,
     JwtModule.forRoot({
       config: {

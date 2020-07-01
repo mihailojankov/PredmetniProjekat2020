@@ -25,6 +25,9 @@ import { Fakultet } from 'src/app/Models/fakultet';
 export class AdminProfilComponent implements OnInit {
 
   pretraga;
+  
+  
+  p:number = 1;
 
   // Forme za dodavanje
   formaZaDodavanjeNastavnika;
@@ -249,9 +252,11 @@ export class AdminProfilComponent implements OnInit {
   }
 
   //Brisanje clana administrativnog osoblja
-  obrisi(id){
+  obrisiClana(id){
     this.serviceO.obrisi(id).subscribe(data => this.dobaviSve());
   }
+
+  
   showTabelaOsobljeFunction(event) {
     this.showTabelaOsoblje = !this.showTabelaOsoblje;
   }

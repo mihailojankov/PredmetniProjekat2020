@@ -274,20 +274,19 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let clan of osoblje | filter:pretraga">
+          <tr *ngFor="let clan of osoblje | filter:pretraga | paginate: { itemsPerPage:1, currentPage: p}">
             <th scope="row">{{clan.id}}</th>
             <td>{{clan.korisnik.ime}}</td>
             <td>{{clan.korisnik.prezime}}</td>
             <td>{{clan.korisnik.email}}</td>
             <td>{{clan.jmbg}}</td>
-                <button mat-fab color="primary" aria-label="Example icon button with a delete icon" (click)=obrisi(clan.id)>
+                <button mat-fab color="primary" aria-label="Example icon button with a delete icon" (click)=obrisiClana(clan.id)>
                     <mat-icon>delete</mat-icon>
                 </button>
-                    
           </tr>
         </tbody>
       </table>
+      <pagination-controls (pageChange)="p = $event"></pagination-controls>
 </div>
 <!--Kraj prikaza tabele za administrativo osoblje i njihovo brisanje-->
-
 
