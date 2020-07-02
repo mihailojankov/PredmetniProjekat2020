@@ -26,7 +26,7 @@ export class AdminProfilComponent implements OnInit {
 
   pretraga;
   
-  
+  //Za prikaz stranice u tabeli za osoblje
   p:number = 1;
 
   // Forme za dodavanje

@@ -40,6 +40,10 @@ export class ClanAdministrativnogOsobljaProfilComponent implements OnInit {
   prikazFormeRoka = false;
   prikazFormeIspita = false;
 
+
+  //Za prikaz stranice u tabeli za studente
+  p:number = 1;
+
   constructor(private service:StudentService, private service2:RegistrovanKorisnikService,private serviceRok:RokService,
     private serviceIspit:IspitService,private servicePredmet:PredmetService, private router:Router, private builder:FormBuilder) {
       this.formaZaDodavanjeNovogStudenta = builder.group({
