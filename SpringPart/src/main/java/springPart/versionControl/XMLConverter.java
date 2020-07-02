@@ -17,9 +17,6 @@ public class XMLConverter{
 
         jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
 
-        //Marshal the employees list in console
-        jaxbMarshaller.marshal(ishodi, System.out);
-
         SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss");
         Date date = new Date(System.currentTimeMillis());
 
