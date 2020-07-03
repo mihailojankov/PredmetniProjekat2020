@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ishodi>
+    <ishod>
+        <ime>Mihailo</ime>
+        <prezime>Jankov</prezime>
+        <brojIndeksa>270111</brojIndeksa>
+        <prviKolokvijum>124.0</prviKolokvijum>
+        <drugiKolokvijum>124.0</drugiKolokvijum>
+        <zavrsniIspit>124.0</zavrsniIspit>
+        <polozen>true</polozen>
+    </ishod>
+    <ishod>
+        <ime>Bogdan</ime>
+        <prezime>Solomun</prezime>
+        <brojIndeksa>270333</brojIndeksa>
+        <prviKolokvijum>12.0</prviKolokvijum>
+        <drugiKolokvijum>12.0</drugiKolokvijum>
+        <zavrsniIspit>1.0</zavrsniIspit>
+        <polozen>false</polozen>
+    </ishod>
+</ishodi>

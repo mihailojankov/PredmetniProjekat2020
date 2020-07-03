@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ishodi>
+    <ishod>
+        <ime>Mihailo</ime>
+        <prezime>Jankov</prezime>
+        <brojIndeksa>270111</brojIndeksa>
+        <prviKolokvijum>12.0</prviKolokvijum>
+        <drugiKolokvijum>12.0</drugiKolokvijum>
+        <zavrsniIspit>12.0</zavrsniIspit>
+        <polozen>false</polozen>
+    </ishod>
+</ishodi>

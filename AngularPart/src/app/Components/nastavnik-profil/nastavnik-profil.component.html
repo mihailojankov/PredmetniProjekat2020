@@ -1,3 +1,5 @@
+
+<h2>Izaberite predmet</h2>
 <mat-form-field appearance="fill">
 <mat-select  (selectionChange)="pronadjiStudentaPoPredmetu($event.value)">
     <mat-option *ngFor="let predmet of predmeti" [value]="predmet" >Id:{{predmet.id}} | {{predmet.naziv}} | Semestar:{{predmet.semestar}}</mat-option>
@@ -28,7 +30,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let student of studenti | filter:pretraga">
+              <tr *ngFor="let student of studenti | filter:pretraga" (click)="dodajUListuOcenjenih(student)" style="cursor: pointer;">
                 <th scope="row">{{student.id}}</th>
                 <td>{{student.korisnik.ime}}</td>
                 <td>{{student.korisnik.prezime}}</td>
@@ -44,5 +46,14 @@
               </tr>
             </tbody>
           </table>
+  <br>
+  <br>
+  <div style="display: flex" *ngFor="let ishod of listaOcenjenih">
+    Broj indeksa: {{ishod.student.brojIndeksa}}/
+    K1: {{ishod.prviKolokvijumBodovi}}/
+    K2: {{ishod.drugiKolokvijumBodovi}}/
+    Zavrsni: {{ishod.zavrsniIspitBodovi}}
+    <br>
+  </div>
+  <button *ngIf="listaOcenjenih.length > 0" mat-button (click)="dodajIshodeIspita()">Zabelezi ocene</button>
 </div>
-    

@@ -1,9 +1,7 @@
-      <div *ngIf="!izabranFakultet"> 
+      <div *ngIf="!izabranFakultet">
       <mat-grid-list cols="3" rowHeight="400px">
-          <mat-grid-tile *ngFor="let fakultet of fakulteti">
-              <a (click)="izaberiFakultet(fakultet)">
-              
-                  <mat-card class="single-show-card">
+          <mat-grid-tile *ngFor="let fakultet of fakulteti" >
+                  <mat-card [matMenuTriggerFor]="menu" #menuTrigger="matMenuTrigger" (click)="menuTrigger.openMenu()" class="single-show-card" >
                       <mat-card-header>
                         <mat-card-title>{{fakultet.naziv}}</mat-card-title>
                       </mat-card-header>
@@ -14,8 +12,21 @@
                         </p>
                       </mat-card-content>
                     </mat-card>
-              </a>
+
+                    <mat-menu #menu="matMenu" [overlapTrigger]="false">
+                      <span (mouseleave)="menuTrigger.closeMenu()">
+                        <div *ngFor="let s of fakultet.smerovi">
+                          <a [routerLink]="['/smerovi/predmeti']" [queryParams]="{ id: s.id}">
+                            <button mat-menu-item class="menu-class">
+                              {{s.naziv}}
+                            </button>
+                          </a>
+
+                        </div>
+                      </span>
+                    </mat-menu>
           </mat-grid-tile>
+
       </mat-grid-list>
     </div>
 

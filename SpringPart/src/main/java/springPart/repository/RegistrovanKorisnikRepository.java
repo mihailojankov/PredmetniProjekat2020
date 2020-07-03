@@ -32,7 +32,7 @@ public interface RegistrovanKorisnikRepository extends InheritInterface<Registro
 	public Iterable<RegistrovanKorisnik> findAll();
 	
 	@Query
-	("SELECT k FROM RegistrovanKorisnik k WHERE k.email=:email AND k.korisnickoIme=:korisnicko")
+	("SELECT k FROM RegistrovanKorisnik k WHERE k.email=:email OR k.korisnickoIme=:korisnicko")
 	public Optional<RegistrovanKorisnik> proveriPoEmailuIKorisnickomImenu(@PathVariable("email") String email, @PathVariable("korisnicko")String korisnicko);
 	
 	

@@ -1,6 +1,7 @@
 package springPart.service;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Optional;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.User;
@@ -41,7 +42,7 @@ public class RegistrovanKorisnikService extends AbstractService<RegistrovanKoris
 	}
 	
 	public boolean proveraPostojeceg(String email, String korisnicko) {
-		if(repository.proveriPoEmailuIKorisnickomImenu(email, korisnicko) == null) {
+		if(repository.proveriPoEmailuIKorisnickomImenu(email, korisnicko).equals(Optional.empty())) {
 			return false;
 		}
 		return true;

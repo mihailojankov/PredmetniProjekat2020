@@ -53,6 +53,9 @@ public class JwtRequestFilter extends OncePerRequestFilter{
 				uapToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
 				SecurityContextHolder.getContext().setAuthentication(uapToken);
 			}
+			else{
+				System.out.println("Token nije validan!");
+			}
 		}
 		filterChain.doFilter(request, response);
 	}

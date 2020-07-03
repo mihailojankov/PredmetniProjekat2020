@@ -23,10 +23,11 @@
   <!--Kraj forme za prijavu ispita kod studenta-->
 <br>
 <br>
-
+<div *ngIf="prijaveIspita">
   <div *ngFor="let pi of prijaveIspita">
     <p>{{pi.ispit.datumVreme}} | {{pi.ispit.predmet.naziv}} | {{pi.ispit.rok.naziv}}</p>
   </div>
+</div>
 
 
 <br>

@@ -35,8 +35,13 @@ import { NgxMatDatetimePickerModule, NgxMatTimepickerModule, NgxMatNativeDateMod
 import { PocetnaComponent } from './Components/pocetna/pocetna.component';
 import {JwtModule, JwtHelperService} from '@auth0/angular-jwt';
 import {RoleGuardService} from './Services/role-guard.service';
-import { AuthService } from './Services/auth.service';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatMenuModule} from '@angular/material/menu';
+import { IshodIspitaDijalogComponent } from './Components/ishod-ispita-dijalog/ishod-ispita-dijalog.component';
+import { MatTableModule } from '@angular/material/table'  
+import { MatIconModule } from '@angular/material/icon'
+import {NgxPaginationModule} from 'ngx-pagination'
 
 
 
@@ -56,7 +61,8 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     NastavnikProfilComponent,
     StudentProfilComponent,
     AdminProfilComponent,
-    PocetnaComponent
+    PocetnaComponent,
+    IshodIspitaDijalogComponent
   ],
   imports: [
     BrowserModule,
@@ -82,7 +88,12 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     NgxMatDatetimePickerModule,
     NgxMatNativeDateModule,
     NgxMatTimepickerModule,
+    MatMenuModule,
     MatPaginatorModule,
+    MatSnackBarModule,
+    MatTableModule,
+    NgxPaginationModule,
+    MatIconModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: function tokenGetter() {

@@ -7,6 +7,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'AngularPart';
-  constructor(public router:Router){}
+  title = 'LMS';
+  links = [{name: 'Pocetna', link: ''}, {name: 'Prijava', link: '/login'}, {name: 'Registracija', link: '/registracija'}];
+  activeLink = 'login';
+  constructor(public router: Router) {}
 }

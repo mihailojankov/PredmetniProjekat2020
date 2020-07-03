@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from 'src/app/Services/auth.service';
-import { __values } from 'tslib';
+import {AuthService} from '../../Services/auth.service';
 
 @Component({
   selector: 'app-pocetna',
@@ -9,11 +8,14 @@ import { __values } from 'tslib';
 })
 export class PocetnaComponent implements OnInit {
 
-  izabranFakultet;
+  role = "";
 
-  constructor() { }
+  constructor(private serviceAuth: AuthService) { }
 
   ngOnInit(): void {
+      this.role = this.serviceAuth.getCurrentProfile();
   }
+
+
 
 }

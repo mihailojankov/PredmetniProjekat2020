@@ -1,18 +1,20 @@
 
-<div class="login-form">
+<div class="midDiv">
   <form [formGroup]="loginForm" ngNativeValidate (ngSubmit)="login(loginForm.value)">
-      <h2 class="text-center">Prijava</h2>       
-      <div class="form-group">
-          <input type="text" class="form-control" formControlName="korisnickoIme" placeholder="Korisnicko ime" required="required">
-      </div>
-      <div class="form-group">
-          <input type="password" class="form-control" formControlName="lozinka" placeholder="Lozinka" required="required">
-      </div>
-      <div class="form-group">
-          <button type="submit" class="btn btn-primary btn-block">Uloguj se</button>
-      </div>    
-      <p class="text-center"><a [routerLink]="['/registracija']" routerLinkActive="router-link-active" >Registruj se</a></p>
-    <h2 style="text-decoration: underline; cursor: pointer;" class="text-center" [routerLink]="['/']" routerLinkActive="router-link-active" >Nastavi kao gost</h2>  
+      <h2>Prijava</h2>
+      <p>
+        <mat-form-field appearance="outline">
+          <mat-label>Korisnicko ime</mat-label>
+          <input matInput type="text" formControlName="korisnickoIme">
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="outline">
+          <mat-label>Lozinka</mat-label>
+          <input matInput type="password" formControlName="lozinka">
+        </mat-form-field>
+      </p>
+    <button id="b1" mat-flat-button color="primary" type="submit">Prijavi se</button>
   </form>
 </div>
 
