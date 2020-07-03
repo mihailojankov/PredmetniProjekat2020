@@ -29,6 +29,7 @@ public class RegistrovanKorisnikController extends AbstractController<Registrova
 	@PostMapping(path = "")
 	public ResponseEntity<RegistrovanKorisnik> dodaj(@RequestBody RegistrovanKorisnik body){
 		if(service.proveraPostojeceg(body.getEmail(), body.getKorisnickoIme())) {
+			System.out.println(body.getKorisnickoIme());
 			return new ResponseEntity<RegistrovanKorisnik>(HttpStatus.CONFLICT);
 		}
 		
